@@ -1,0 +1,13 @@
+.main__statistic {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 10px 15px;
+    border-radius: 20px;
+    align-items: center;
+    width: auto;
+    height: 15vh;
+    border: 4px solid #C3C3C3;
+    margin-inline: 2vw ;
+}
+

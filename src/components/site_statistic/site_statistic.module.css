@@ -1,0 +1,46 @@
+
+.site_statistic_container{
+    width: 60vw;
+    height: 10vh;
+    background-color: #D9D9D9;
+    border-radius: 3vh;
+    overflow: hidden;
+}
+
+.site_statistic_container.active {
+    height: 50vh;
+}
+
+.site_statistic_header {
+    background-color: #CBCBCB;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    padding-left: 5vh;
+}
+
+.header_name_uri {
+
+}
+
+.header_indexed {
+    margin: 0 5vh 0 auto;
+    display: flex;
+    align-items: center;
+    background-color: #CBCBCB;
+}
+
+.header_indexed_icon {
+
+}
+
+
+.header_indexed_text {
+}
+
+.header_triangle {
+    margin-right: 15px;
+    rotate: 180deg;
+}

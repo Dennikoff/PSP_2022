@@ -1,14 +1,17 @@
 
 .site_statistic_container{
-    width: 60vw;
+    min-width: 60vw;
     height: 10vh;
     background-color: #D9D9D9;
     border-radius: 3vh;
     overflow: hidden;
+    margin-top: 2vh;
+
 }
 
+
 .site_statistic_container.active {
-    height: 50vh;
+    height: 40vh;
 }
 
 .site_statistic_header {
@@ -43,4 +46,33 @@
 .header_triangle {
     margin-right: 15px;
     rotate: 180deg;
+}
+
+.header_triangle.active {
+    rotate: 0deg;
+}
+
+.site_statistic_body {
+    padding: 10px;
+}
+
+.last_seen_statistic_box {
+    display: grid;
+    grid-template-columns: 25vw auto;
+}
+.date_time {
+    display: flex;
+    justify-content: left;
+}
+
+.last_seen_time {
+    margin-left: 2vw;
+}
+
+.site_statistic_body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-inline: 30px;
+    height: 30vh;
 }

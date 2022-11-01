@@ -1,9 +1,10 @@
 import React from 'react';
-import './statistic.css'
+import './statistic.module.css'
+import classes from './statistic.module.css'
 
 const Statistic = ({value, title}) => {
     return (
-        <div className='main__statistic'>
+        <div className={classes.main__statistic}>
             <p>
                 {value}
             </p>

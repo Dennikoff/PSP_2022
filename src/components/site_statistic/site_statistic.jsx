@@ -45,8 +45,8 @@ const SiteStatistic = ({statistic, isOpened, setIsOpened}) => {
                 </div>
             </div>
             <div className={classes.site_statistic_body}>
-                <div className={classes.last_seen_statistic_box}>
-                    <div className="last_seen_title">
+                <div className={classes.site_statistic_box}>
+                    <div className={classes.statistic_site_title}>
                         Последние изменения:
                     </div>
                     <div className={classes.date_time}>
@@ -62,24 +62,24 @@ const SiteStatistic = ({statistic, isOpened, setIsOpened}) => {
                         </div>
                     </div>
                 </div>
-                <div className={classes.last_seen_statistic_box}>
-                    <div className="pages_title">
+                <div className={classes.site_statistic_box}>
+                    <div className={classes.statistic_site_title}>
                         Страницы:
                     </div>
                     <div className="pages_number_last_seen">
                         {statistic.pages}
                     </div>
                 </div>
-                <div className={classes.last_seen_statistic_box}>
-                    <div className="lemmas_title">
+                <div className={classes.site_statistic_box}>
+                    <div className={classes.statistic_site_title}>
                         Леммы:
                     </div>
                     <div className="lemmas_number_last_seen">
                         {statistic.lemmas}
                     </div>
                 </div>
-                <div className={classes.last_seen_statistic_box}>
-                    <div className="error_title">
+                <div className={classes.site_statistic_box}>
+                    <div className={classes.statistic_site_title}>
                         Ошибка:
                     </div>
                     <div className="error_number_last_seen">

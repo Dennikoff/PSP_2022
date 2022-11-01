@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const ManagementPage = () => {
     return (
         <div className='body'>

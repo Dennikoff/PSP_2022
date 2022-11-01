@@ -2,7 +2,7 @@ import './styles/App.css';
 import {BrowserRouter, Link} from "react-router-dom";
 import Navbar from "./components/navbar/navbar";
 import {useState} from "react";
-import Roter from "./components/roter/roter";
+import MyRouter from "./components/router/myRouter";
 
 function App() {
 
@@ -48,7 +48,7 @@ function App() {
     return (
         <BrowserRouter>
             <Navbar/>
-            <Roter statistic={siteStatistics}/>
+            <MyRouter statistic={siteStatistics}/>
         </BrowserRouter>
     );
 }

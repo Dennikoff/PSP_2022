@@ -1,0 +1,22 @@
+{
+  "result": true,
+  "statistics": {
+    "total": {
+      "sites": 10,
+      "pages": 436423,
+      "lemmas": 5127891,
+      "isIndexing": true
+    },
+    "detailed": [
+      {
+        "url": "http://www.site.com",
+        "name": "Имя сайта",
+        "status": "INDEXED",
+        "statusTime": 1600160357,
+        "error": "Ошибка индексации: главнаястраница сайта недоступна",
+        "pages": 5764,
+        "lemmas": 321115
+      }
+    ]
+  }
+}

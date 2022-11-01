@@ -1,41 +1,77 @@
-import React, {useState} from 'react';
+import React from 'react';
 import classes from './site_statistic.module.css'
 import imageOk from '../../img/index_info_ok.png'
 import imageProcess from '../../img/index_info_process.png'
 import triangle from '../../img/triangle.png'
 
+function getDate(date) {
+    let str = ''
+    if(date.getDate().toString().length < 2) {
+        str = str + `0${date.getDate().toString()}.`
+    }else {
+        str = str + date.getDate().toString() + '.'
+    }
+    if(date.getMonth().toString().length < 2) {
+        str = str + `0${date.getMonth().toString()}.`
+    } else {
+        str = str + date.getMonth().toString() + '.'
+    }
+    str += date.getFullYear().toString()
+    return str
+}
+
+function getTime(date) {
+    let str = ''
+    if(date.getHours().toString().length < 2) {
+        str = str + `0${date.getHours().toString()}:`
+    }else {
+        str = str + date.getHours().toString() + ':'
+    }
+    if(date.getMinutes().toString().length < 2) {
+        str = str + `0${date.getMinutes().toString()}:`
+    } else {
+        str = str + date.getMinutes().toString() + ':'
+    }
+    if(date.getSeconds().toString().length < 2) {
+        str = str + `0${date.getSeconds().toString()}`
+    } else {
+        str = str + date.getSeconds().toString()
+    }
+    return str
+}
+
 const SiteStatistic = ({statistic, isOpened, setIsOpened}) => {
     const statisticClasses = [classes.site_statistic_container]
-    const trianlgeClasses = [classes.header_triangle]
+    const triangleClasses = [classes.header_triangle]
 
     if(statistic.isOpened) {
         statisticClasses.push(classes.active)
-        trianlgeClasses.push(classes.active)
+        triangleClasses.push(classes.active)
     }
 
     return (
         <div className={statisticClasses.join(' ')}>
             <div className={classes.site_statistic_header}>
                 <span className={classes.header_name_uri}>
-                    {`${statistic.siteName} - ${statistic.siteURI}`}
+                    {`${statistic.name} - ${statistic.url}`}
                 </span>
 
                 <div className={classes.header_indexed}>
                     <div className={classes.header_indexed_icon}>
-                        {statistic.indexed
+                        {statistic.status
                             ? <img src={imageOk} alt="Error"/>
                             : <img src={imageProcess} alt="Error"/>
                         }
                     </div>
                     <div className={classes.header_indexed_text}>
-                            {statistic.indexed
+                            {statistic.status
                                 ? <span>Проиндексирован</span>
                                 : <span>Индексация</span>
                             }
                     </div>
                 </div>
                 <div
-                    className={trianlgeClasses.join(' ')}
+                    className={triangleClasses.join(' ')}
                     onClick={() => {
                         statistic.isOpened = !statistic.isOpened
                         setIsOpened(!isOpened)
@@ -51,14 +87,10 @@ const SiteStatistic = ({statistic, isOpened, setIsOpened}) => {
                     </div>
                     <div className={classes.date_time}>
                         <div className="last_seen_date">
-                            {`${statistic.lastChanged.getDate()}.` +
-                                `${statistic.lastChanged.getMonth()}.` +
-                                `${statistic.lastChanged.getFullYear()}`}
+                            {getDate(statistic.statusTime)}
                         </div>
                         <div className={classes.last_seen_time}>
-                            {`${statistic.lastChanged.getHours()}:` +
-                                `${statistic.lastChanged.getMinutes()}:` +
-                                `${statistic.lastChanged.getSeconds()}`}
+                            {getTime(statistic.statusTime)}
                         </div>
                     </div>
                 </div>

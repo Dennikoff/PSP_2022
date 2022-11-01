@@ -1,56 +1,78 @@
 import './styles/App.css';
-import {BrowserRouter, Link} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 import Navbar from "./components/navbar/navbar";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import MyRouter from "./components/router/myRouter";
+import json from './json_templates/stat.json'
+
 
 function App() {
-
     const [siteStatistics, setSiteStatistics] = useState([
-        {   siteName: 'Сайт дельфинов',
-            siteURI: 'https://site.ru',
-            indexed: false,
-            lastChanged: new Date(2015, 1, 20),
+        {   name: 'Сайт дельфинов',
+            url: 'https://site.ru',
+            status: false,
+            statusTime: new Date(2015, 1, 20),
+            error: "Some error: error",
             pages: 10000,
             lemmas: 100412,
-            error: "Some error: error",
             isOpened: false
         },
-        {   siteName: 'Сайт собак',
-            siteURI: 'https://site2.ru',
-            indexed: true,
-            lastChanged: new Date(2017, 1, 12),
+        {   name: 'Сайт собак',
+            url: 'https://site2.ru',
+            status: true,
+            statusTime: new Date(2017, 1, 12),
+            error: "Some error: error",
             pages: 10000,
             lemmas: 100412,
-            error: "Some error: error",
             isOpened: false
         },
-        {   siteName: 'Сайт людей',
-            siteURI: 'https://site3.ru',
-            indexed: true,
-            lastChanged: new Date(2012, 1, 10),
+        {   name: 'Сайт людей',
+            url: 'https://site3.ru',
+            status: true,
+            statusTime: new Date(2012, 1, 10),
+            error: "Some error: error",
             pages: 10000,
             lemmas: 100412,
-            error: "Some error: error",
             isOpened: false
         },
-        {   siteName: 'Сайт людей',
-            siteURI: 'https://site4.ru',
-            indexed: true,
-            lastChanged: new Date(2012, 1, 10),
+        {   name: 'Сайт людей',
+            url: 'https://site4.ru',
+            status: true,
+            statusTime: new Date(2012, 1, 10),
+            error: "Some error: error",
             pages: 10000,
             lemmas: 100412,
-            error: "Some error: error",
             isOpened: false
         }
     ])
+    const [fullStatistic, setFullStatistics] = useState({
+        sites: 0,
+        pages: 0,
+        lemmas: 0,
+        isIndexing: false
+    })
+
+
+    useEffect( () => {
+            const fullstat = json['statistics']['total']
+            const stat = []
+            for(let statistic of json['statistics']['detailed']){
+
+                statistic.statusTime = new Date(statistic.statusTime)
+                statistic.statusTime.format = 'DD.MM.YYYY'
+                stat.push(statistic)
+            }
+            setFullStatistics(fullstat)
+            setSiteStatistics(stat)
+        }, [])
 
     return (
         <BrowserRouter>
             <Navbar/>
-            <MyRouter statistic={siteStatistics}/>
+            <MyRouter statistic={siteStatistics}
+                      fullStatistic={fullStatistic}/>
         </BrowserRouter>
-    );
+    )
 }
 
 export default App;

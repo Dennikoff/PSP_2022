@@ -1,0 +1,22 @@
+{
+  "result": true,
+  "statistics": {
+    "total": {
+      "sites": 1,
+      "pages": 3562,
+      "lemmas": 7679,
+      "indexing": false
+    },
+    "detailed": [
+      {
+        "url": "https://www.playback.ru/",
+        "name": "PlayBack",
+        "status": "FAILED",
+        "statusTime": 1660345266000,
+        "error": "null",
+        "pages": 3563,
+        "lemmas": 7679
+      }
+    ]
+  }
+}

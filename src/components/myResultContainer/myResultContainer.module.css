@@ -1,0 +1,16 @@
+
+.result_container {
+    margin-top: 2vh;
+}
+
+.result_title {
+
+}
+
+.result_sites_container {
+    margin-top: 1vh;
+    height: 50vh;
+    border: 1px solid #C3C3C3;
+    background-color: #F3F3F3;
+    border-radius: 2vh;
+}

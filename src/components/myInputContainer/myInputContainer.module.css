@@ -1,0 +1,18 @@
+.query_button {
+    height: 120%;
+    margin-left: 3vw;
+    padding: 5px;
+}
+
+.query_input {
+    width: 50vw;
+}
+
+.query_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 5vh;
+    align-items: center;
+    height: 40px;
+}

@@ -12,38 +12,15 @@
 }
 
 
-.query_container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 5vh;
-    align-items: center;
-    height: 40px;
-}
+
 
 .site_body {
     width: 60vw;
 }
 
-.query_input {
-    width: 50vw;
-}
+
 
 .site_selector{
     margin-top: 5vh;
     width: 60vw;
-}
-
-.query_button {
-    height: 120%;
-    margin-left: 3vw;
-    padding: 5px;
-}
-
-.result_container {
-
-}
-
-.result_title {
-
 }

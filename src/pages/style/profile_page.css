@@ -1,4 +1,4 @@
-.search__body {
+.profile__body {
     border-left: 1px solid #C3C3C3;
     width: 100%;
     display: flex;
@@ -7,6 +7,6 @@
     overflow: auto;
 }
 
-.search__title {
+.profile__title {
     margin-top: 10vh;
 }

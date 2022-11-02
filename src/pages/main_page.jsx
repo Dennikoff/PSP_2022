@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import StatisticContainer from "../components/statistic_full_container/statisticContainer";
 import SiteStatisticList from "../components/site_statistic_list/site_statistic_list";
-import './style/management_page.css'
+import './style/main_page.css'
 
 const MainPage = ({siteStatistics, fullStatistic}) => {
 
@@ -9,7 +9,7 @@ const MainPage = ({siteStatistics, fullStatistic}) => {
 
     return (
         <div className='main__body'>
-            <div className='main__header'>
+            <div className='main__title'>
                 <h1>Главная</h1>
             </div>
             <StatisticContainer

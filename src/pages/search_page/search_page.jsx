@@ -4,7 +4,7 @@ import MySelector from "../../components/mySelector/mySelector";
 // import MyButton from "../../components/myButton/myButton";
 import classes from './search_page.module.css'
 import MyInputContainer from "../../components/myInputContainer/myInputContainer";
-import MyResultContainer from "../../components/myResultContainer/myResultContainer";
+import ResultContainer from "../../components/resultContainer/resultContainer";
 import json from '../../json_templates/search.json'
 
 
@@ -12,7 +12,7 @@ const SearchPage = () => {
     const [query, setQuery] = useState('')
 
 
-    const [result, setResult] = useState('')
+    const [result, setResult] = useState(false)
     const [sites, setSites] = useState([])
 
     useEffect( () => {
@@ -25,7 +25,6 @@ const SearchPage = () => {
     }, [])
 
     console.log(result)
-    console.log(sites)
 
     return (
         <div className={classes.search__body}>
@@ -37,7 +36,7 @@ const SearchPage = () => {
                     <MySelector text='Все сайты'/>
                 </div>
                 <MyInputContainer query={query} setQuery={setQuery}/>
-                <MyResultContainer sites={sites}/>
+                <ResultContainer sites={sites}/>
             </div>
 
 

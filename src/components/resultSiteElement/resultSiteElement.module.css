@@ -1,0 +1,35 @@
+.siteURL {
+    color: #989898;
+    font-size: 1.8vh;
+}
+
+.siteText {
+
+}
+
+.siteTitle {
+    margin-top: 0.6vh;
+    color: #6699EB;
+    font-weight: bold;
+}
+
+.siteSnippet {
+    margin-top: 0.3vh;
+    left:0;
+}
+
+
+.snippetContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.listElement {
+
+    margin-bottom: 2vh;
+
+}
+
+.siteRelevance {
+    font-style: italic;
+}

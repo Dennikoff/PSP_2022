@@ -1,11 +1,11 @@
 import React from 'react';
-import './style/profile_page.css'
+import classes from './profile_page.module.css'
 
 
 const ProfilePage = () => {
     return (
-        <div className='profile__body'>
-            <div className='profile__title'>
+        <div className={classes.profile__body}>
+            <div className={classes.profile__title}>
                 <h1>Профиль</h1>
             </div>
 

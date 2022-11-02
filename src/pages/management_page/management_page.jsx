@@ -1,11 +1,11 @@
 import React from 'react';
-import './style/management_page.css'
+import classes from './management_page.module.css'
 
 
 const ManagementPage = () => {
     return (
-        <div className='management__body'>
-            <div className='management__title'>
+        <div className={classes.management__body}>
+            <div className={classes.management__title}>
                 <h1>Управление</h1>
             </div>
 

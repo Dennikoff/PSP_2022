@@ -1,10 +1,10 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
-import MainPage from "../../pages/main_page";
-import ManagementPage from "../../pages/management_page";
+import MainPage from "../../pages/main_page/main_page";
+import ManagementPage from "../../pages/management_page/management_page";
 // import Search_page from "../../pages/search_page";
-import SearchPage from "../../pages/search_page";
-import ProfilePage from "../../pages/profile_page";
+import SearchPage from "../../pages/search_page/search_page";
+import ProfilePage from "../../pages/profile_page/profile_page";
 //import classes from './router.module.css'
 
 const MyRouter = ({statistic, fullStatistic}) => {

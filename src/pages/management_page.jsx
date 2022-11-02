@@ -3,8 +3,11 @@ import React from 'react';
 
 const ManagementPage = () => {
     return (
-        <div className='body'>
-            <h1>Управление</h1>
+        <div className='management__body'>
+            <div className="management__header">
+                <h1>Управление</h1>
+            </div>
+
         </div>
     );
 };

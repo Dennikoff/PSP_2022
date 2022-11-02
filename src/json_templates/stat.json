@@ -2,20 +2,29 @@
   "result": true,
   "statistics": {
     "total": {
-      "sites": 1,
-      "pages": 3562,
-      "lemmas": 7679,
+      "sites": 2,
+      "pages": 0,
+      "lemmas": 0,
       "indexing": false
     },
     "detailed": [
       {
-        "url": "https://www.playback.ru/",
+        "url": "https://www.lenta.ru",
+        "name": "Лента.ру",
+        "status": "INDEXING",
+        "statusTime": 1667340881000,
+        "error": "null",
+        "pages": 0,
+        "lemmas": 0
+      },
+      {
+        "url": "https://www.playback.ru",
         "name": "PlayBack",
         "status": "FAILED",
-        "statusTime": 1660345266000,
+        "statusTime": 1667340882000,
         "error": "null",
-        "pages": 3563,
-        "lemmas": 7679
+        "pages": 0,
+        "lemmas": 0
       }
     ]
   }

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import StatisticContainer from "../components/statistic_full_container/statisticContainer";
 import SiteStatisticList from "../components/site_statistic_list/site_statistic_list";
-import './style/main_page.css'
+import './style/management_page.css'
 
 const MainPage = ({siteStatistics, fullStatistic}) => {
 

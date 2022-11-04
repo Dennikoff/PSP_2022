@@ -1,19 +1,38 @@
 import React from 'react';
 import classes from './resultSiteElement.module.css'
 
+function returnSnippetArr(snippet){
+    let arr = []
+    while(snippet.indexOf('<') !== -1) {
+        arr.push(snippet.slice(0, snippet.indexOf('<')))
+        snippet = snippet.slice(snippet.indexOf('>')+1, snippet.length)
+    }
+    arr.push(snippet)
+    return arr
+}
+
 const ResultSiteElement = ({site}) => {
+    const snippetArr = returnSnippetArr(site.snippet)
     return (
         <div className={classes.listElement}>
             <div className={classes.siteText}>
-                <div className={classes.siteURL}>
-                    {site.site + site.uri}
-                </div>
+                <a className={classes.siteURL}
+                   href={site.site + site.uri}
+                   target='_blank'
+                >{site.site + site.uri}</a>
                 <div className={classes.siteTitle}>
                     {site.title}
                 </div>
                 <div className={classes.snippetContainer}>
                     <div className={classes.siteSnippet}>
-                        {site.snippet}
+                        {snippetArr.map((value, index)=>
+                            index % 2 === 1
+                                ?
+                                <span><b>{value}</b></span>
+                                :
+                                <span>{value}</span>
+
+                        )}
                     </div>
                     <div className={classes.siteRelevance}>
                         {Math.ceil(site.relevance * 100) / 100}

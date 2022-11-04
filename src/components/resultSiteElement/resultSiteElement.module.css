@@ -1,6 +1,11 @@
 .siteURL {
     color: #989898;
     font-size: 1.8vh;
+    text-decoration: none;
+}
+
+.siteURL a{
+
 }
 
 .siteText {

@@ -3,15 +3,19 @@ import classes from './site_statistic.module.css'
 import imageOk from '../../img/index_info_ok.png'
 import imageProcess from '../../img/index_info_process.png'
 import triangle from '../../img/triangle.png'
+import {CSSTransition, Transition, TransitionGroup} from "react-transition-group";
+import site_statistic_list from "../site_statistic_list/site_statistic_list";
+import './siteStatistic.css'
+
 
 function getDate(date) {
     let str = ''
-    if(date.getDate().toString().length < 2) {
+    if (date.getDate().toString().length < 2) {
         str = str + `0${date.getDate().toString()}.`
-    }else {
+    } else {
         str = str + date.getDate().toString() + '.'
     }
-    if(date.getMonth().toString().length < 2) {
+    if (date.getMonth().toString().length < 2) {
         str = str + `0${date.getMonth().toString()}.`
     } else {
         str = str + date.getMonth().toString() + '.'
@@ -22,17 +26,17 @@ function getDate(date) {
 
 function getTime(date) {
     let str = ''
-    if(date.getHours().toString().length < 2) {
+    if (date.getHours().toString().length < 2) {
         str = str + `0${date.getHours().toString()}:`
-    }else {
+    } else {
         str = str + date.getHours().toString() + ':'
     }
-    if(date.getMinutes().toString().length < 2) {
+    if (date.getMinutes().toString().length < 2) {
         str = str + `0${date.getMinutes().toString()}:`
     } else {
         str = str + date.getMinutes().toString() + ':'
     }
-    if(date.getSeconds().toString().length < 2) {
+    if (date.getSeconds().toString().length < 2) {
         str = str + `0${date.getSeconds().toString()}`
     } else {
         str = str + date.getSeconds().toString()
@@ -44,7 +48,7 @@ const SiteStatistic = ({statistic, isOpened, setIsOpened}) => {
     const statisticClasses = [classes.site_statistic_container]
     const triangleClasses = [classes.header_triangle]
 
-    if(statistic.isOpened) {
+    if (statistic.isOpened) {
         statisticClasses.push(classes.active)
         triangleClasses.push(classes.active)
     }
@@ -64,21 +68,32 @@ const SiteStatistic = ({statistic, isOpened, setIsOpened}) => {
                         }
                     </div>
                     <div className={classes.header_indexed_text}>
-                            {statistic.status
-                                ? <span>Проиндексирован</span>
-                                : <span>Индексация</span>
-                            }
+                        {statistic.status
+                            ? <span>Проиндексирован</span>
+                            : <span>Индексация</span>
+                        }
                     </div>
                 </div>
-                <div
-                    className={triangleClasses.join(' ')}
-                    onClick={() => {
-                        statistic.isOpened = !statistic.isOpened
-                        setIsOpened(!isOpened)
-                    }}
-                >
-                    <img src={triangle} alt=""/>
-                </div>
+                    <CSSTransition
+                        in={isOpened}
+                        timeout={500}
+                        classNames={{
+                            onEnter: classes.triangleEnter,
+                            onExit: classes.triangleExit,
+                            onEnterDone: classes.triangleEnterDone,
+                            onExitDone: classes.triangleExitDone,
+                        }}
+                    >
+                        <div
+                            className={classes.triangle}
+                            onClick={() => {
+                                statistic.isOpened = !statistic.isOpened
+                                setIsOpened(!isOpened)
+                            }}
+                        >
+                            <img src={triangle} alt=""/>
+                        </div>
+                    </CSSTransition>
             </div>
             <div className={classes.site_statistic_body}>
                 <div className={classes.site_statistic_box}>
@@ -120,6 +135,7 @@ const SiteStatistic = ({statistic, isOpened, setIsOpened}) => {
                 </div>
             </div>
         </div>
+
     );
 };
 

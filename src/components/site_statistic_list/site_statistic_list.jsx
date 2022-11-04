@@ -1,7 +1,6 @@
 import React from 'react';
 import SiteStatistic from "../site_statistic/site_statistic";
 import classes from './site_statistic_list.module.css'
-import "../site_statistic/siteStatistic.css"
 
 const SiteStatisticList = ({siteStatistics, isOpened, setIsOpened}) => {
     return (

@@ -3,25 +3,25 @@
   "statistics": {
     "total": {
       "sites": 2,
-      "pages": 0,
-      "lemmas": 0,
-      "indexing": false
+      "pages": 3540,
+      "lemmas": 7614,
+      "indexing": true
     },
     "detailed": [
       {
-        "url": "https://www.lenta.ru",
-        "name": "Лента.ру",
-        "status": "INDEXING",
-        "statusTime": 1667340881000,
-        "error": "null",
-        "pages": 0,
-        "lemmas": 0
-      },
-      {
         "url": "https://www.playback.ru",
         "name": "PlayBack",
-        "status": "FAILED",
-        "statusTime": 1667340882000,
+        "status": "INDEXED",
+        "statusTime": 1667544142000,
+        "error": "null",
+        "pages": 3540,
+        "lemmas": 7614
+      },
+      {
+        "url": "https://lenta.ru",
+        "name": "Лента.ру",
+        "status": "INDEXING",
+        "statusTime": 1667544282000,
         "error": "null",
         "pages": 0,
         "lemmas": 0

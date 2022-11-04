@@ -3,8 +3,6 @@ import classes from './site_statistic.module.css'
 import imageOk from '../../img/index_info_ok.png'
 import imageProcess from '../../img/index_info_process.png'
 import triangle from '../../img/triangle.png'
-import {CSSTransition, Transition, TransitionGroup} from "react-transition-group";
-import site_statistic_list from "../site_statistic_list/site_statistic_list";
 import './siteStatistic.css'
 
 
@@ -74,26 +72,15 @@ const SiteStatistic = ({statistic, isOpened, setIsOpened}) => {
                         }
                     </div>
                 </div>
-                    <CSSTransition
-                        in={isOpened}
-                        timeout={500}
-                        classNames={{
-                            onEnter: classes.triangleEnter,
-                            onExit: classes.triangleExit,
-                            onEnterDone: classes.triangleEnterDone,
-                            onExitDone: classes.triangleExitDone,
+                    <div
+                        className={triangleClasses.join(' ')}
+                        onClick={() => {
+                            statistic.isOpened = !statistic.isOpened
+                            setIsOpened(!isOpened)
                         }}
                     >
-                        <div
-                            className={classes.triangle}
-                            onClick={() => {
-                                statistic.isOpened = !statistic.isOpened
-                                setIsOpened(!isOpened)
-                            }}
-                        >
-                            <img src={triangle} alt=""/>
-                        </div>
-                    </CSSTransition>
+                        <img src={triangle} alt=""/>
+                    </div>
             </div>
             <div className={classes.site_statistic_body}>
                 <div className={classes.site_statistic_box}>

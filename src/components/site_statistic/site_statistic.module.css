@@ -9,11 +9,6 @@
 
 }
 
-.triangle {
-    margin-right: 15px;
-    rotate: 180deg;
-}
-
 @keyframes rotate-forward {
     0% {
         transform: rotate(0deg);
@@ -23,22 +18,6 @@
     }
 }
 
-
-.triangle-enter {
-    animation: rotate-forward .5s forwards;
-}
-
-.triangle-enter-done {
-    transform: rotate(180deg);
-}
-
-.triangle-exit {
-    animation: rotate-forward .5s reverse;
-}
-
-.triangle-exit-done {
-    transform: rotate(0deg)
-}
 
 .site_statistic_container.active {
     height: 40vh;
@@ -75,6 +54,14 @@
     margin-left: 1vw;
 }
 
+.header_triangle {
+    margin-right: 15px;
+    rotate: 180deg;
+}
+
+.header_triangle.active {
+    rotate: 0deg;
+}
 
 
 .site_statistic_body {

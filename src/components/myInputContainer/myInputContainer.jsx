@@ -5,6 +5,11 @@ import MyButton from "../myButton/myButton";
 import {startSearch} from "../../api/startSearch"
 
 const MyInputContainer = ({query, setQuery}) => {
+    function handleOkClick(query) {
+        query = startSearch(query)
+        console.log(query)
+    }
+
     return (
         <div className={classes.query_container}>
             <div className={classes.query_input}>
@@ -16,7 +21,7 @@ const MyInputContainer = ({query, setQuery}) => {
             </div>
             <div className={classes.query_button}>
                 <MyButton children='Поиск'
-                          onClick={() => startSearch(query)}
+                          onClick={() => handleOkClick(query)}
                 />
             </div>
         </div>

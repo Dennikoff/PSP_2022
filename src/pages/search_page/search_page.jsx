@@ -15,9 +15,6 @@ const SearchPage = () => {
     const [result, setResult] = useState(false)
     const [sites, setSites] = useState([])
 
-    if(result) {
-        console.log('kek')
-    }
 
     useEffect( () => {
         const siteArray = []

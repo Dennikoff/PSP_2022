@@ -18,7 +18,7 @@ const ResultSiteElement = ({site}) => {
             <div className={classes.siteText}>
                 <a className={classes.siteURL}
                    href={site.site + site.uri}
-                   target='_blank'
+                   target='_blank' rel="noreferrer"
                 >{site.site + site.uri}</a>
                 <div className={classes.siteTitle}>
                     {site.title}
@@ -28,9 +28,9 @@ const ResultSiteElement = ({site}) => {
                         {snippetArr.map((value, index)=>
                             index % 2 === 1
                                 ?
-                                <span><b>{value}</b></span>
+                                <span key={value}><b>{value}</b></span>
                                 :
-                                <span>{value}</span>
+                                <span key={value}>{value}</span>
 
                         )}
                     </div>

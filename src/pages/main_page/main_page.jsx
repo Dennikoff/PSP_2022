@@ -9,7 +9,7 @@ const MainPage = () => {
 
     const [siteStatistics, setSiteStatistics] = useState([])
     const [fullStatistic, setFullStatistics] = useState({})
-    const [jsonInfo, setJsonInfo] = useState(json) //make
+    const [jsonInfo, setJsonInfo] = useState(json) // MAKE SOME CHANGES TO RELOAD DATA
     const [isOpened, setIsOpened] = useState(false)
 
     useEffect(() => {

@@ -34,7 +34,7 @@ const SearchPage = () => {
                 <div className={classes.site_selector}>
                     <MySelector text='Все сайты'/>
                 </div>
-                <MyInputContainer query={query} setQuery={setQuery}/>
+                <MyInputContainer query={query} setQuery={setQuery} setSites={setSites}/>
                 <ResultContainer sites={sites}/>
             </div>
 

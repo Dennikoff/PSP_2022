@@ -10,22 +10,22 @@
 
 import axios from "axios";
 
-export async function startSearch(query) {
-    console.log(`now it only prints query: ${query}`)
+export async function startSearch(query, setSites) {
+    // axios.defaults.headers['Access-Control-Allow-Origin'] = '*'
     axios.get("http://localhost:8080/api/search", {
         params: {
             query
         }
     })
         .then(function (response) {
-            // handle success
-            console.log(response);
+            const data = response.data.data
+            console.log(data)
+            setSites(data)
         })
         .catch(function (error) {
-            // handle error
             console.log(error);
         })
         .finally(function () {
-            // always executed
+            //work anyway
         });
 }

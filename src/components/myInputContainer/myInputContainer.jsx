@@ -4,9 +4,10 @@ import MyInput from "../myInput/myInput";
 import MyButton from "../myButton/myButton";
 import {startSearch} from "../../api/startSearch"
 
-const MyInputContainer = ({query, setQuery}) => {
+const MyInputContainer = ({query, setQuery, setSites}) => {
     function handleOkClick(query) {
-        startSearch(query)
+        const response = startSearch(query, setSites)
+        console.log(response)
     }
 
     return (

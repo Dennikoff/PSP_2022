@@ -10,7 +10,7 @@
 
 import axios from "axios";
 
-export async function startSearch(query, setSites) {
+export async function startSearch(query) {
     // axios.defaults.headers['Access-Control-Allow-Origin'] = '*'
     return await axios.get("http://localhost:8080/api/search", {
         params: {

@@ -6,8 +6,7 @@ import {startSearch} from "../../api/startSearch"
 
 const MyInputContainer = ({query, setQuery}) => {
     function handleOkClick(query) {
-        query = startSearch(query)
-        console.log(query)
+        startSearch(query)
     }
 
     return (

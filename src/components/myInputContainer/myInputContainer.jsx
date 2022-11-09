@@ -2,11 +2,11 @@ import React from 'react';
 import classes from './myInputContainer.module.css';
 import MyInput from "../myInput/myInput";
 import MyButton from "../myButton/myButton";
-import {startSearch} from "../../api/startSearch"
+// import {startSearch} from "../../api/startSearch"
 
-const MyInputContainer = ({query, setQuery, fetch}) => {
-    function handleOkClick() {
-        fetch()
+const MyInputContainer = ({query, setQuery, fetch, isLoading}) => {
+    function handleOkClick(isLoading) {
+        isLoading ? alert("Поск уже запущен") : fetch() // TODO: make alert more beautiful
     }
 
     return (
@@ -20,7 +20,7 @@ const MyInputContainer = ({query, setQuery, fetch}) => {
             </div>
             <div className={classes.query_button}>
                 <MyButton children='Поиск'
-                          onClick={() => handleOkClick(query)}
+                          onClick={() => handleOkClick(isLoading)}
                 />
             </div>
         </div>

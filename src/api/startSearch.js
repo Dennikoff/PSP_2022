@@ -15,6 +15,8 @@ export async function startSearch(query) {
     return await axios.get("http://localhost:8080/api/search", {
         params: {
             query
+            // limit: 20,
+            // offset: 21
         }
     })
 

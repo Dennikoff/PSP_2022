@@ -2,6 +2,8 @@ import React from 'react';
 import classes from "./resultContainer.module.css";
 import ResultSiteList from "../resultSiteList/resultSiteList";
 import LoadingCircle from "../loadingCircle/loadingCircle";
+
+
 const ResultContainer = ({sites, isLoading}) => {
     return (
         <div className={classes.result_container}>

@@ -19,18 +19,18 @@ const SearchPage = () => {
 
 
 
-    useEffect( () => {
-        const siteArray = []
-        setResult(json['result'])
-        for(let result of json['data']){
-            siteArray.push(result)
-        }
-        setSites(siteArray)
-    }, [])
+    // useEffect( () => {
+    //     const siteArray = []
+    //     setResult(json['result'])
+    //     for(let result of json['data']){
+    //         siteArray.push(result)
+    //     }
+    //     setSites(siteArray)
+    // }, [])
 
     const [fetch, isLoading, isError] = useFetching(async () => {
-        const response = await startSearch(query, setSites)
-        console.log(response.data.data)
+        const response = await startSearch(query)
+        setSites(response.data.data)
     })
 
     return (

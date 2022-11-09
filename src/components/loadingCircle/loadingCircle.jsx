@@ -1,5 +1,4 @@
 import React from 'react';
-import './loadingCircle.css'
 import {MagnifyingGlass} from "react-loader-spinner";
 
 

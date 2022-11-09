@@ -3,6 +3,7 @@ import ResultSiteElement from "../resultSiteElement/resultSiteElement";
 import classes from './resultSiteList.module.css'
 
 const ResultSiteList = ({sites}) => {
+    console.log(sites)
     return (
         <div className={classes.resultList}>
             {sites.map((site) =>

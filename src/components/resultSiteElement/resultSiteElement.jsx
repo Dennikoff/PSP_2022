@@ -35,7 +35,7 @@ const ResultSiteElement = ({site}) => {
                         )}
                     </div>
                     <div className={classes.siteRelevance}>
-                        {Math.ceil(site.relevance * 100) / 100}
+                        {Math.ceil(site.relevance * 100) / 100} {/*TODO: make 1 -> 1.00*/}
                     </div>
                 </div>
             </div>

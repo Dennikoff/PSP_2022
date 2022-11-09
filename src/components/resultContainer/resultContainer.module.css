@@ -15,3 +15,9 @@
     border-radius: 2vh;
     overflow: auto;
 }
+
+.loadingCircle {
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from "./resultContainer.module.css";
 import ResultSiteList from "../resultSiteList/resultSiteList";
+import LoadingCircle from "../loadingCircle/loadingCircle";
 const ResultContainer = ({sites, isLoading}) => {
     return (
         <div className={classes.result_container}>
@@ -11,7 +12,9 @@ const ResultContainer = ({sites, isLoading}) => {
                 {
                     isLoading
                         ?
-                        <div>ЗАГРУЗКА</div>
+                        <div  className={classes.loadingCircle}>
+                            <LoadingCircle/>
+                        </div>
                         :
                         <ResultSiteList sites={sites}/>
                 }

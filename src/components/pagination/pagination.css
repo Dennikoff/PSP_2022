@@ -1,0 +1,21 @@
+.page__wrapper {
+    display: flex;
+    flex-direction: row;
+    /*width: 25vw;*/
+    overflow: auto;
+}
+
+.page {
+    text-align: center;
+    width: 40px;
+    padding: 7px;
+    margin-left: 10px;
+    border: 1px solid black;
+    user-select: none;
+
+}
+
+
+.page__current {
+    background-color: red;
+}

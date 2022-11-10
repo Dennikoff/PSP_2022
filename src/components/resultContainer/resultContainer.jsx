@@ -4,7 +4,7 @@ import ResultSiteList from "../resultSiteList/resultSiteList";
 import LoadingCircle from "../loadingCircle/loadingCircle";
 
 
-const ResultContainer = ({sites, isLoading}) => {
+const ResultContainer = ({sites, isLoading, result}) => {
     return (
         <div className={classes.result_container}>
             <h3 className={classes.result_title}>
@@ -18,7 +18,12 @@ const ResultContainer = ({sites, isLoading}) => {
                             <LoadingCircle/>
                         </div>
                         :
-                        <ResultSiteList sites={sites}/>
+                        sites.length == 0
+                            ?
+                            <h1>Списка нет</h1>
+                            :
+                            <ResultSiteList sites={sites} result={result}/>
+
                 }
             </div>
         </div>

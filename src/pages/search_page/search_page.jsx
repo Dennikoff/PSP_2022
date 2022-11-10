@@ -14,19 +14,25 @@ const SearchPage = () => {
     const [query, setQuery] = useState('')
 
 
-    const [result, setResult] = useState(false)
+    const [result, setResult] = useState({
+        result: false,
+        count: 10
+    })
     const [sites, setSites] = useState([])
 
 
 
-    // useEffect( () => {
-    //     const siteArray = []
-    //     setResult(json['result'])
-    //     for(let result of json['data']){
-    //         siteArray.push(result)
-    //     }
-    //     setSites(siteArray)
-    // }, [])
+    useEffect( () => {
+        const siteArray = []
+        setResult({
+            result: json['result'],
+            count: json['count']
+        })
+        for(let result of json['data']){
+            siteArray.push(result)
+        }
+        setSites(siteArray)
+    }, [])
 
     const [fetch, isLoading, isError] = useFetching(async () => {
         const response = await startSearch(query)
@@ -47,7 +53,8 @@ const SearchPage = () => {
                                   fetch={fetch}
                                   isLoading={isLoading}/>
                 <ResultContainer sites={sites}
-                                 isLoading={isLoading}/>
+                                 isLoading={isLoading}
+                                 result={result}/>
             </div>
         </div>);
 };

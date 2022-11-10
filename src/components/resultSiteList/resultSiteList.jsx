@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ResultSiteElement from "../resultSiteElement/resultSiteElement";
 import classes from './resultSiteList.module.css'
+import Pagination from "../pagination/pagination";
 
-const ResultSiteList = ({sites}) => {
+const ResultSiteList = ({sites, result}) => {
+    const [page, setPage] = useState()
+    const totalPage = Math.ceil(result.count / 20)
     return (
         <div className={classes.resultList}>
             {sites.map((site) =>
@@ -11,6 +14,7 @@ const ResultSiteList = ({sites}) => {
                     key={site.uri}
                 />
             )}
+            <Pagination page={page} setPage={setPage} totalPages={totalPage}/>
         </div>
     );
 };

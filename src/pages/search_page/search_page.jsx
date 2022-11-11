@@ -5,7 +5,6 @@ import MySelector from "../../components/mySelector/mySelector";
 import classes from './search_page.module.css'
 import MyInputContainer from "../../components/myInputContainer/myInputContainer";
 import ResultContainer from "../../components/resultContainer/resultContainer";
-import json from '../../json_templates/search.json'
 import {startSearch} from "../../api/startSearch";
 import {useFetching} from "../../hooks/useFetching";
 
@@ -21,7 +20,6 @@ const SearchPage = () => {
     })
     const [sites, setSites] = useState([])
     const [offset, setOffset] = useState(0)
-    const [startS, setStartS] = useState(false)
 
     // useEffect( () => {
     //     const siteArray = []
@@ -48,20 +46,11 @@ const SearchPage = () => {
     })
 
     useEffect(() => {
-        if(startS) {
-            setPage(1)
-        }
-    }, [startS])
-
-    useEffect(() => {
         setOffset((page - 1) * limit)
     }, [page])
 
     useEffect(() => {
-
-        if(result.result && offset >= 0) {
-            fetch()
-        }
+        fetch()
     }, [offset])
 
 
@@ -79,7 +68,6 @@ const SearchPage = () => {
                                   setQuery={setQuery}
                                   fetch={fetch}
                                   isLoading={isLoading}
-                                  setStartS={setStartS}
                 />
                 <ResultContainer sites={sites}
                                  isLoading={isLoading}

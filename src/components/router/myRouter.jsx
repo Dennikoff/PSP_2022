@@ -5,13 +5,10 @@ import ManagementPage from "../../pages/management_page/management_page";
 import SearchPage from "../../pages/search_page/search_page";
 import ProfilePage from "../../pages/profile_page/profile_page";
 
-const MyRouter = ({statistic, fullStatistic}) => {
+const MyRouter = () => {
     return (
         <Routes>
-            <Route path="/" element={<MainPage
-                siteStatistics={statistic}
-                fullStatistic={fullStatistic}
-            />}
+            <Route path="/" element={<MainPage/>}
             />
             <Route path="/management" element={<ManagementPage/>}/>
             <Route path="/search" element={<SearchPage/>}/>

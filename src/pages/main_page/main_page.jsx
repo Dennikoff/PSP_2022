@@ -4,30 +4,43 @@ import SiteStatisticList from "../../components/site_statistic_list/site_statist
 import classes from './main_page.module.css'
 import json from "../../json_templates/statistic.json";
 import {takeStatistic} from "../../api/takeStatistic";
+import {useFetching} from "../../hooks/useFetching";
+import {startSearch} from "../../api/startSearch";
 
 const MainPage = () => {
 
     const [siteStatistics, setSiteStatistics] = useState([])
-    const [fullStatistic, setFullStatistics] = useState({})
-    const [jsonInfo, setJsonInfo] = useState(json) // MAKE SOME CHANGES TO RELOAD DATA
+    const [fullStatistic, setFullStatistics] = useState({})   // MAKE SOME CHANGES TO RELOAD DATA
     const [isOpened, setIsOpened] = useState(false)
 
-    useEffect(() => {
-        takeStatistic(setJsonInfo)
-        },[])
-
-    useEffect(() => {
-        const fullStat = jsonInfo['statistics']['total']
-        const stat = []
-        for(let statistic of jsonInfo['statistics']['detailed']){
-
+    const [fetch, isLoading, isError] = useFetching(async () => {
+        const response = await takeStatistic()
+        setFullStatistics(response.data.statistics.total)
+        let stat = []
+        for(let statistic of response.data.statistics.detailed) {
             statistic.statusTime = new Date(statistic.statusTime)
             statistic.statusTime.format = 'DD.MM.YYYY'
             stat.push(statistic)
         }
-        setFullStatistics(fullStat)
         setSiteStatistics(stat)
-    },[jsonInfo])
+
+
+    })
+
+    useEffect(() => {
+        fetch()
+        // const response = await takeStatistic()
+        // console.log(response)
+        //
+        // const stat = []
+        // for(let statistic of response.data.statistics.detailed){
+        //     statistic.statusTime = new Date(statistic.statusTime)
+        //     statistic.statusTime.format = 'DD.MM.YYYY'
+        //     stat.push(statistic)
+        // }
+        // setFullStatistics(fullStat)
+        // setSiteStatistics(stat)
+        },[])
 
     return (
         <div className={classes.main__body}>

@@ -10,7 +10,7 @@ const SiteStatisticList = ({siteStatistics, isOpened, setIsOpened}) => {
                             isOpened={isOpened}
                             setIsOpened={setIsOpened}
                             statistic={stat}
-                            key={stat.uri}
+                            key={stat.url}
                         />
                 )}
         </div>

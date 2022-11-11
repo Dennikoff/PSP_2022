@@ -12,7 +12,7 @@ import {useFetching} from "../../hooks/useFetching";
 
 const SearchPage = () => {
     const [query, setQuery] = useState('')
-    const [page, setPage] = useState(0)
+    const [page, setPage] = useState(1)
     const limit = 20
 
     const [result, setResult] = useState({
@@ -37,17 +37,18 @@ const SearchPage = () => {
 
     const [fetch, isLoading, isError] = useFetching(async () => {
         const response = await startSearch(query, limit, offset)
+        console.log(response)
         setSites(response.data.data)
         setResult({
             result: response.data.result,
             count: response.data.count
         })
-        setStartS(false)
+
+
     })
 
     useEffect(() => {
         if(startS) {
-            setPage(0)
             setPage(1)
         }
     }, [startS])

@@ -12,32 +12,58 @@ import {useFetching} from "../../hooks/useFetching";
 
 const SearchPage = () => {
     const [query, setQuery] = useState('')
-
+    const [page, setPage] = useState(0)
+    const limit = 20
 
     const [result, setResult] = useState({
         result: false,
         count: 10
     })
     const [sites, setSites] = useState([])
+    const [offset, setOffset] = useState(0)
+    const [startS, setStartS] = useState(false)
 
-
-
-    useEffect( () => {
-        const siteArray = []
-        setResult({
-            result: json['result'],
-            count: json['count']
-        })
-        for(let result of json['data']){
-            siteArray.push(result)
-        }
-        setSites(siteArray)
-    }, [])
+    // useEffect( () => {
+    //     const siteArray = []
+    //     setResult({
+    //         result: json['result'],
+    //         count: json['count']
+    //     })
+    //     for(let result of json['data']){
+    //         siteArray.push(result)
+    //     }
+    //     setSites(siteArray)
+    // }, [])
 
     const [fetch, isLoading, isError] = useFetching(async () => {
-        const response = await startSearch(query)
+        const response = await startSearch(query, limit, offset)
         setSites(response.data.data)
+        setResult({
+            result: response.data.result,
+            count: response.data.count
+        })
+        setStartS(false)
     })
+
+    useEffect(() => {
+        if(startS) {
+            setPage(0)
+            setPage(1)
+        }
+    }, [startS])
+
+    useEffect(() => {
+        setOffset((page - 1) * limit)
+    }, [page])
+
+    useEffect(() => {
+
+        if(result.result && offset >= 0) {
+            fetch()
+        }
+    }, [offset])
+
+
 
     return (
         <div className={classes.search__body}>
@@ -51,10 +77,15 @@ const SearchPage = () => {
                 <MyInputContainer query={query}
                                   setQuery={setQuery}
                                   fetch={fetch}
-                                  isLoading={isLoading}/>
+                                  isLoading={isLoading}
+                                  setStartS={setStartS}
+                />
                 <ResultContainer sites={sites}
                                  isLoading={isLoading}
-                                 result={result}/>
+                                 result={result}
+                                 page={page}
+                                 setPage={setPage}
+                />
             </div>
         </div>);
 };

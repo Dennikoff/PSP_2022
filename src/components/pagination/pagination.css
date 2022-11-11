@@ -1,7 +1,7 @@
 .page__wrapper {
     display: flex;
     flex-direction: row;
-    /*width: 25vw;*/
+    width: 25vw;
     overflow: auto;
 }
 

@@ -4,9 +4,13 @@ import MyInput from "../myInput/myInput";
 import MyButton from "../myButton/myButton";
 // import {startSearch} from "../../api/startSearch"
 
-const MyInputContainer = ({query, setQuery, fetch, isLoading}) => {
+const MyInputContainer = ({query, setQuery, isLoading, setStartS}) => {
     function handleOkClick(isLoading) {
-        isLoading ? alert("Поск уже запущен") : fetch() // TODO: make alert more beautiful
+        if(isLoading) {
+            alert("Поск уже запущен") // TODO: make alert more beautiful
+        } else {
+            setStartS(true)
+        }
     }
 
     return (

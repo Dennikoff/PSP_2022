@@ -3,8 +3,8 @@ import ResultSiteElement from "../resultSiteElement/resultSiteElement";
 import classes from './resultSiteList.module.css'
 import Pagination from "../pagination/pagination";
 
-const ResultSiteList = ({sites, result}) => {
-    const [page, setPage] = useState()
+const ResultSiteList = ({sites, result, page, setPage}) => {
+
     const totalPage = Math.ceil(result.count / 20)
     return (
         <div className={classes.resultList}>
@@ -14,7 +14,10 @@ const ResultSiteList = ({sites, result}) => {
                     key={site.uri}
                 />
             )}
-            <Pagination page={page} setPage={setPage} totalPages={totalPage}/>
+            <Pagination page={page}
+                        setPage={setPage}
+                        totalPages={totalPage}
+            />
         </div>
     );
 };

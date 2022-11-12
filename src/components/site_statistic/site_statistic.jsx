@@ -65,7 +65,7 @@ const SiteStatistic = ({statistic, isOpened, setIsOpened}) => {
                         }
                     </div>
                     <div className={classes.header_indexed_text}>
-                        {statistic.status
+                        {statistic.status === "INDEXED"
                             ? <span>Проиндексирован</span>
                             : <span>Индексация</span>
                         }

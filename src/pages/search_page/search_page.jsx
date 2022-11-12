@@ -21,6 +21,8 @@ const SearchPage = () => {
     const [sites, setSites] = useState([])
     const [offset, setOffset] = useState(0)
 
+    const [startS, setStartS] = useState(false)
+
     // useEffect( () => {
     //     const siteArray = []
     //     setResult({
@@ -33,24 +35,35 @@ const SearchPage = () => {
     //     setSites(siteArray)
     // }, [])
 
-    const [fetch, isLoading, isError] = useFetching(async () => {
-        const response = await startSearch(query, limit, offset)
-        console.log(response)
+    const [fetch, isLoading, isError] = useFetching(async (flag) => {
+        let response
+        if(flag) {
+            response = await startSearch(query, limit, 0)
+        } else {
+            response = await startSearch(query, limit, offset)
+        }
         setSites(response.data.data)
         setResult({
             result: response.data.result,
             count: response.data.count
         })
-
-
+        setStartS(false)
     })
+
+    useEffect(() => {
+        if(startS) {
+            setPage(1)
+        }
+    }, [startS])
 
     useEffect(() => {
         setOffset((page - 1) * limit)
     }, [page])
 
     useEffect(() => {
-        fetch()
+        if(!startS) {
+            fetch()
+        }
     }, [offset])
 
 
@@ -68,6 +81,7 @@ const SearchPage = () => {
                                   setQuery={setQuery}
                                   fetch={fetch}
                                   isLoading={isLoading}
+                                  setStartS={setStartS}
                 />
                 <ResultContainer sites={sites}
                                  isLoading={isLoading}

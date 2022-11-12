@@ -5,7 +5,7 @@ import './pagination.css'
 const Pagination = ({setPage, page, totalPages}) => {
     const pagesArray = getPagesArray(totalPages)
     return (
-        <div className="page__wrapper">
+        <div className="page__wrapper"> {/*TODO: make pagination looks more beautiful*/}
             {pagesArray.map(p=>
                 <span
                     onClick={() => setPage(p)}

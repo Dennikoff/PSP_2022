@@ -7,6 +7,11 @@
     overflow: auto;
 }
 
+.site_body {
+    width: 60vw;
+}
+
+
 .management__title {
     margin-top: 10vh;
 }

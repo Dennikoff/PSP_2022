@@ -10,7 +10,11 @@ import {startSearch} from "../../api/startSearch";
 const MainPage = () => {
 
     const [siteStatistics, setSiteStatistics] = useState([])
-    const [fullStatistic, setFullStatistics] = useState({})   // MAKE SOME CHANGES TO RELOAD DATA
+    const [fullStatistic, setFullStatistics] = useState({
+        sites: 0,
+        lemmas: 0,
+        pages: 0
+    })   // MAKE SOME CHANGES TO RELOAD DATA
     const [isOpened, setIsOpened] = useState(false)
 
     const [fetch, isLoading, isError] = useFetching(async () => {

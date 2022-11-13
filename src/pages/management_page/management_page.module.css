@@ -34,3 +34,9 @@
 .management__title {
     margin-top: 10vh;
 }
+
+.input_button {
+    width: 20vw;
+    margin-top: 1vh;
+    height: 7vh;
+}

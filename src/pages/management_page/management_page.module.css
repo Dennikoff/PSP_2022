@@ -11,6 +11,25 @@
     width: 60vw;
 }
 
+.button_container{
+    width: 20vw;
+    margin-top: 10vh;
+    height: 7vh;
+
+}
+
+.input_container {
+    margin-top: 10vh;
+}
+
+.input_title {
+    font-weight: bold;
+}
+
+.input {
+    width: 45vw;
+    margin-top: 1vh;
+}
 
 .management__title {
     margin-top: 10vh;

@@ -51,6 +51,10 @@ const SearchPage = () => {
     })
 
     useEffect(() => {
+        console.log(isError) //TODO: something wrong with isError
+    }, [isError])
+
+    useEffect(() => {
         if(startS) {
             setPage(1)
         }
@@ -88,6 +92,7 @@ const SearchPage = () => {
                                  result={result}
                                  page={page}
                                  setPage={setPage}
+                                 isError={isError}
                 />
             </div>
         </div>);

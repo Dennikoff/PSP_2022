@@ -2,10 +2,8 @@ import React, {useEffect, useState} from 'react';
 import StatisticContainer from "../../components/statistic_full_container/statisticContainer";
 import SiteStatisticList from "../../components/site_statistic_list/site_statistic_list";
 import classes from './main_page.module.css'
-import json from "../../json_templates/statistic.json";
 import {takeStatistic} from "../../api/takeStatistic";
 import {useFetching} from "../../hooks/useFetching";
-import {startSearch} from "../../api/startSearch";
 
 const MainPage = () => {
 

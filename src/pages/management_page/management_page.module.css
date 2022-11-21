@@ -12,9 +12,10 @@
 }
 
 .button_container{
-    width: 20vw;
+    width: 15vw;
+    min-width: 200px;
     margin-top: 10vh;
-    height: 7vh;
+    height: 6vh;
 
 }
 
@@ -36,7 +37,8 @@
 }
 
 .input_button {
-    width: 20vw;
+    width: 15vw;
+    min-width: 100px;
     margin-top: 1vh;
-    height: 7vh;
+    height: 6vh;
 }

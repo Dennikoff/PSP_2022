@@ -7,6 +7,13 @@ import {startIndexing} from "../../api/startIndexing";
 
 const ManagementPage = () => {
     const [link, setLink] = useState('')
+    async function btnStartIndexing() {
+        const response = await startIndexing()
+        console.log(response)
+
+
+    }
+
     return (
         <div className={classes.management__body}>
             <div className={classes.management__title}>
@@ -16,7 +23,7 @@ const ManagementPage = () => {
             <div className={classes.site_body}>
                 <div className={classes.button_container}>
                     <MyButton children="Начать индексацию"
-                              onClick={() => {startIndexing()}}
+                              onClick={() => {btnStartIndexing()}}
                     />
                 </div>
                 <div className={classes.input_container}>

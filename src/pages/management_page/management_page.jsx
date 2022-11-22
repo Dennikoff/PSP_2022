@@ -10,7 +10,9 @@ const ManagementPage = () => {
     async function btnStartIndexing() {
         const response = await startIndexing()
         console.log(response)
+    }
 
+    function btnAdd(link) {
 
     }
 
@@ -39,7 +41,9 @@ const ManagementPage = () => {
                         />
                     </div>
                     <div className={classes.input_button}>
-                        <MyButton children="Добавить"/>
+                        <MyButton children="Добавить"
+                                  onCLick={() => {btnAdd(link)}}
+                        />
                     </div>
                 </div>
             </div>

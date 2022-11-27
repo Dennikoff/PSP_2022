@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './site_statistic.module.css'
 import imageOk from '../../img/index_info_ok.png'
-import imageProcess from '../../img/index_info_process.png'
+import imageProcess from '../../img/indexInfoProcess.png'
 import triangle from '../../img/triangle.png'
 
 

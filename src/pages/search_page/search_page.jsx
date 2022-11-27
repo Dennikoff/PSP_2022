@@ -36,18 +36,20 @@ const SearchPage = () => {
     // }, [])
 
     const [fetch, isLoading, isError] = useFetching(async (flag) => {
-        let response
-        if(flag) {
-            response = await startSearch(query, limit, 0)
-        } else {
-            response = await startSearch(query, limit, offset)
+        if(query) {
+            let response
+            if (flag) {
+                response = await startSearch(query, limit, 0)
+            } else {
+                response = await startSearch(query, limit, offset)
+            }
+            setSites(response.data.data)
+            setResult({
+                result: response.data.result,
+                count: response.data.count
+            })
+            setStartS(false)
         }
-        setSites(response.data.data)
-        setResult({
-            result: response.data.result,
-            count: response.data.count
-        })
-        setStartS(false)
     })
 
     useEffect(() => {

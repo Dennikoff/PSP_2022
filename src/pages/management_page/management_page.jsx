@@ -3,14 +3,19 @@ import classes from './management_page.module.css'
 import MyButton from "../../components/myButton/myButton";
 import MyInput from "../../components/myInput/myInput";
 import {startIndexing} from "../../api/startIndexing";
+import {useFetching} from "../../hooks/useFetching";
 
 
 const ManagementPage = () => {
     const [link, setLink] = useState('')
     async function btnStartIndexing() {
+        await startIndex()
+    }
+
+    const [startIndex, isIndexing, isError] = useFetching(async () => {
         const response = await startIndexing()
         console.log(response)
-    }
+    })
 
     function btnAdd(link) {
 
@@ -24,9 +29,21 @@ const ManagementPage = () => {
 
             <div className={classes.site_body}>
                 <div className={classes.button_container}>
-                    <MyButton children="Начать индексацию"
-                              onClick={() => {btnStartIndexing()}}
-                    />
+                    {isIndexing
+                        ?
+                        <MyButton children="Остановить индексацию"
+                                  onClick={async () => {
+                                      await btnStartIndexing()
+                                  }}
+                                  style={{"background-color": "red"}}
+                        />
+                        :
+                        <MyButton children="Начать индексацию"
+                                  onClick={async () => {
+                                      await btnStartIndexing()
+                                  }}
+                        />
+                    }
                 </div>
                 <div className={classes.input_container}>
                     <div className={classes.input_title}>
@@ -42,7 +59,7 @@ const ManagementPage = () => {
                     </div>
                     <div className={classes.input_button}>
                         <MyButton children="Добавить"
-                                  onCLick={() => {btnAdd(link)}}
+                                  onClick={() => {btnAdd(link)}}
                         />
                     </div>
                 </div>

@@ -1,0 +1,22 @@
+.myModal {
+    position: fixed;
+    top:0;
+    bottom:0;
+    right:0;
+    left:13vw;
+    display: none;
+    background-color: rgba(0,0,0,0.2);
+}
+
+.myModal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalContent {
+    width: 80%;
+    height: 85%;
+    border-radius: 2vw;
+    background-color: red;
+}

@@ -4,6 +4,8 @@ import MyButton from "../../components/myButton/myButton";
 import MyInput from "../../components/myInput/myInput";
 import {startIndexing} from "../../api/startIndexing";
 import {useFetching} from "../../hooks/useFetching";
+import {useStopFetching} from "../../hooks/useStopFetching";
+import {stopIndexing} from "../../api/stopIndexing";
 
 
 const ManagementPage = () => {
@@ -12,10 +14,19 @@ const ManagementPage = () => {
         await startIndex()
     }
 
-    const [startIndex, isIndexing, isError] = useFetching(async () => {
+    async function btnStopIndexing() {
+        await stopIndex()
+    }
+
+    const [startIndex, isIndexing, isErrorStart] = useFetching(async () => {
         const response = await startIndexing()
         console.log(response)
     })
+
+    const [stopIndex, isErrorStop] = useStopFetching(async () => {
+        const response = await stopIndexing()
+        console.log(response)
+    }, isIndexing)
 
     function btnAdd(link) {
 
@@ -33,9 +44,9 @@ const ManagementPage = () => {
                         ?
                         <MyButton children="Остановить индексацию"
                                   onClick={async () => {
-                                      await btnStartIndexing()
+                                      await btnStopIndexing()
                                   }}
-                                  style={{"background-color": "red"}}
+                                  style={{"backgroundColor": "red"}}
                         />
                         :
                         <MyButton children="Начать индексацию"

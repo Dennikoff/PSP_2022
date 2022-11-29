@@ -14,13 +14,13 @@
 .button_container{
     width: 15vw;
     min-width: 230px;
-    margin-top: 10vh;
+    margin-top: 5vh;
     height: 6vh;
 
 }
 
 .input_container {
-    margin-top: 10vh;
+    margin-top: 5vh;
 }
 
 .input_title {
@@ -30,6 +30,7 @@
 .input {
     width: 45vw;
     margin-top: 1vh;
+    color: black;
 }
 
 .management__title {

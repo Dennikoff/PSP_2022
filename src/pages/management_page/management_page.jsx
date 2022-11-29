@@ -10,6 +10,7 @@ import {stopIndexing} from "../../api/stopIndexing";
 
 const ManagementPage = () => {
     const [link, setLink] = useState('')
+    const [name, setName] = useState('')
     async function btnStartIndexing() {
         await startIndex()
     }
@@ -61,10 +62,16 @@ const ManagementPage = () => {
                         Добавить\Обновить ссылку
                     </div>
                     <div className={classes.input}>
-                        <MyInput placeholder="Ссылка"
+                        <MyInput placeholder="Ссылка*"
                                  value={link}
                                  onChange={(e) => {
                                      setLink(e.target.value)
+                                 }}
+                        />
+                        <MyInput placeholder="Имя"
+                                 value={name}
+                                 onChange={(e) => {
+                                     setName(e.target.value)
                                  }}
                         />
                     </div>

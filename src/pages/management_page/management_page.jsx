@@ -10,6 +10,9 @@ import MySelector from "../../components/mySelector/mySelector";
 
 
 const ManagementPage = () => {
+
+    const [flag, setFlag] = useState(0)
+
     const [sites, setSites] = useState([])
 
     const [link, setLink] = useState('')
@@ -64,8 +67,22 @@ const ManagementPage = () => {
     }
 
     useEffect(() => {
+        console.log(checkLink(link))
         if(link === '') {
-            setName('')
+            setFlag(0)
+        } else {
+            if(checkLink(link)) {
+                setFlag(1)
+            } else {
+                setFlag(-1)
+            }
+        }
+    }, [link])
+
+
+    useEffect(() => {
+        if (link === '') {
+            setFlag(0)
         }
     }, [link])
 
@@ -98,6 +115,7 @@ const ManagementPage = () => {
                                 name={name}
                                 setName={setName}
                                 btnAdd={btnAdd}
+                                flag={flag}
                 />
                 <MySelector text="Cайты" content={sites}/>
             </div>

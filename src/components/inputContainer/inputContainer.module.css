@@ -6,7 +6,7 @@
 }
 
 .input {
-    width: 45vw;
+    width: 50vw;
     margin-top: 1vh;
     color: black;
 }
@@ -17,4 +17,9 @@
 
 .inputContainer {
     margin-top: 5vh;
+}
+
+.linkInput {
+    display: flex;
+    align-items: center;
 }

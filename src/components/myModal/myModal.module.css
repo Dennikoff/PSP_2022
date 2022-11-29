@@ -16,6 +16,7 @@
 
 .modalList {
     margin: 2vh 1vw;
+    list-style: none;
 }
 
 .modalContent {
@@ -34,6 +35,8 @@
 
 .siteName {
     display: flex;
+    line-height: 20px;
+    height: 16px;
     margin-left: 3vw;
 }
 
@@ -44,8 +47,9 @@
 .separator {
     margin-left: 4vw;
     width: 90%;
+    height: 1px;
     border-radius: 2px;
-    border: 1px solid red;
+    background-color: #C3C3C3;
 }
 
 /*.separator:last-child {*/
@@ -60,5 +64,6 @@
 }
 
 .separatorContainer {
-    padding: 1vh 1vw;
+    /*padding: 1vh 1vw;*/
+    margin: 1vh 1vw;
 }

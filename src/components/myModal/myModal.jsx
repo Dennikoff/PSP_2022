@@ -1,52 +1,28 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import classes from './myModal.module.css'
 import notSelected from '../../img/siteNotSelected.png'
 import selected from '../../img/siteSelected.png'
 
 
-const MyModal = ({visible, setVisible}) => {
+const MyModal = ({visible, setVisible, content}) => {
     let rootClasses = [classes.myModal]
     if (visible) {
         rootClasses.push(classes.active)
     }
-    let content = [
-        {
-            name: "kek.com",
-            isSelected: true
-        },
-        {
-            name: "spek.ru",
-            isSelected: true
-        },
-        {
-            name: "reallongsiteeeeee.ru",
-            isSelected: true
-        },
-        {
-            name: "playback.com",
-            isSelected: true
-        },
-        {
-            name: "spek.ru",
-            isSelected: true
-        },
-        {
-            name: "reallongsiteeeeee112.ru",
-            isSelected: true
-        },
-        {
-            name: "playback123.com",
-            isSelected: true
-        }
-    ]
+    const [reload, setReload] = useState(false)
+
 
     return (
         <div className={rootClasses.join(' ')}
              onClick={() => setVisible(false)}>
-            <div className={classes.modalContent}>
+            <div className={classes.modalContent}
+                 onClick={(e) => {e.stopPropagation()}}
+            >
                 <ul className={classes.modalList}>
                     {content.map((cont, index) =>
-                        <div className={classes.siteAndSeparator}>
+                        <li className={classes.siteAndSeparator}
+                            key={cont.name}
+                        >
                             <div className={classes.siteContainer}>
                                 <img src={
                                     cont.isSelected
@@ -55,7 +31,15 @@ const MyModal = ({visible, setVisible}) => {
                                         :
                                         notSelected
                                 }
-                                     alt="error"/>
+                                     alt="error"
+                                     onClick={() => {
+                                         console.log(content[index].isSelected)
+                                         content[index].isSelected = !content[index].isSelected
+                                         setReload(!reload)
+                                         console.log(content[index].isSelected)
+                                     }
+                                }
+                                />
                                 <div className={classes.siteName}>
                                     <div>
                                         {cont.name}
@@ -79,7 +63,7 @@ const MyModal = ({visible, setVisible}) => {
                                 }
                             </div>
 
-                        </div>
+                        </li>
                     )}
                 </ul>
             </div>

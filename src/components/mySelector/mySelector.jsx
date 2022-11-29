@@ -4,6 +4,36 @@ import triangle from '../../img/triangle.png'
 import MyModal from "../myModal/myModal";
 
 const MySelector = ({text}) => {
+    let content = [
+        {
+            name: "kek.com",
+            isSelected: true
+        },
+        {
+            name: "spek.ru",
+            isSelected: true
+        },
+        {
+            name: "reallongsiteeeeee.ru",
+            isSelected: true
+        },
+        {
+            name: "playback.com",
+            isSelected: true
+        },
+        {
+            name: "spek1.ru",
+            isSelected: true
+        },
+        {
+            name: "reallongsiteeeeee112.ru",
+            isSelected: true
+        },
+        {
+            name: "playback123.com",
+            isSelected: true
+        }
+    ]
     const [modalVisible, setModalVisible] = useState(false)
     return (
         <div className={classes.mySelector}>
@@ -14,6 +44,7 @@ const MySelector = ({text}) => {
             />
             <MyModal visible={modalVisible}
                      setVisible={setModalVisible}
+                     content={content}
             />
         </div>
     );

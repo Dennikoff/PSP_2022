@@ -1,14 +1,17 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import classes from './management_page.module.css'
 import MyButton from "../../components/myButton/myButton";
-import MyInput from "../../components/myInput/myInput";
 import {startIndexing} from "../../api/startIndexing";
 import {useFetching} from "../../hooks/useFetching";
 import {useStopFetching} from "../../hooks/useStopFetching";
 import {stopIndexing} from "../../api/stopIndexing";
+import InputContainer from "../../components/inputContainer/inputContainer";
+import MySelector from "../../components/mySelector/mySelector";
 
 
 const ManagementPage = () => {
+    const [sites, setSites] = useState([])
+
     const [link, setLink] = useState('')
     const [name, setName] = useState('')
     async function btnStartIndexing() {
@@ -24,14 +27,47 @@ const ManagementPage = () => {
         console.log(response)
     })
 
+    const generateName = (link) => {
+        console.log("name")
+        let newName = link
+        newName = newName.slice(newName.indexOf('/') + 2, newName.lastIndexOf('.'))
+        return newName
+    }
+
+    const checkLink = (link) => {
+        let RegExp = /^((ftp|http|https):\/\/)?(www\.)?([A-Za-zА-Яа-я0-9]{1}[A-Za-zА-Яа-я0-9\-]*\.?)*\.{1}[A-Za-zА-Яа-я0-9-]{2,8}(\/([\w#!:.?+=&%@!\-\/])*)?/;
+        return RegExp.test(link)
+    }
+
     const [stopIndex, isErrorStop] = useStopFetching(async () => {
         const response = await stopIndexing()
         console.log(response)
     }, isIndexing)
 
-    function btnAdd(link) {
-
+    const btnAdd = () => {
+        const flag = checkLink(link)
+        if(!flag) {
+            alert('Неверная формат ссылки')
+            return
+        }
+        let newName = name
+        if(name === '') {
+            newName = generateName(link)
+            setName(newName)
+        }
+        const site = {
+            link,
+            name: newName,
+            isSelected: true
+        }
+        setSites([...sites, site])
     }
+
+    useEffect(() => {
+        if(link === '') {
+            setName('')
+        }
+    }, [link])
 
     return (
         <div className={classes.management__body}>
@@ -57,32 +93,14 @@ const ManagementPage = () => {
                         />
                     }
                 </div>
-                <div className={classes.input_container}>
-                    <div className={classes.input_title}>
-                        Добавить\Обновить ссылку
-                    </div>
-                    <div className={classes.input}>
-                        <MyInput placeholder="Ссылка*"
-                                 value={link}
-                                 onChange={(e) => {
-                                     setLink(e.target.value)
-                                 }}
-                        />
-                        <MyInput placeholder="Имя"
-                                 value={name}
-                                 onChange={(e) => {
-                                     setName(e.target.value)
-                                 }}
-                        />
-                    </div>
-                    <div className={classes.input_button}>
-                        <MyButton children="Добавить"
-                                  onClick={() => {btnAdd(link)}}
-                        />
-                    </div>
-                </div>
+                <InputContainer link={link}
+                                setLink={setLink}
+                                name={name}
+                                setName={setName}
+                                btnAdd={btnAdd}
+                />
+                <MySelector text="Cайты" content={sites}/>
             </div>
-
         </div>
     );
 };

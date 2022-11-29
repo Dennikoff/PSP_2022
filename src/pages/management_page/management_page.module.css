@@ -19,27 +19,11 @@
 
 }
 
-.input_container {
-    margin-top: 5vh;
-}
-
-.input_title {
-    font-weight: bold;
-}
-
-.input {
-    width: 45vw;
-    margin-top: 1vh;
-    color: black;
-}
-
 .management__title {
     margin-top: 10vh;
 }
 
-.input_button {
-    width: 15vw;
-    min-width: 100px;
-    margin-top: 1vh;
-    height: 6vh;
+
+.inputContainer {
+    margin-top: 5vh;
 }

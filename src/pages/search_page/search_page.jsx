@@ -12,7 +12,7 @@ import {useFetching} from "../../hooks/useFetching";
 const SearchPage = () => {
     const [query, setQuery] = useState('')
     const [page, setPage] = useState(1)
-    const limit = 20
+    const limit = 10
 
     const [result, setResult] = useState({
         result: false,
@@ -34,6 +34,37 @@ const SearchPage = () => {
     //     }
     //     setSites(siteArray)
     // }, [])
+
+    let content = [
+        {
+            name: "kek.com",
+            isSelected: true
+        },
+        {
+            name: "spek.ru",
+            isSelected: true
+        },
+        {
+            name: "reallongsiteeeeee.ru",
+            isSelected: true
+        },
+        {
+            name: "playback.com",
+            isSelected: true
+        },
+        {
+            name: "spek1.ru",
+            isSelected: true
+        },
+        {
+            name: "reallongsiteeeeee112.ru",
+            isSelected: true
+        },
+        {
+            name: "playback123.com",
+            isSelected: true
+        }
+    ]
 
     const [fetch, isLoading, isError] = useFetching(async (flag) => {
         if(query) {
@@ -81,7 +112,9 @@ const SearchPage = () => {
             </div>
             <div className={classes.site_body}>
                 <div className={classes.site_selector}>
-                    <MySelector text='Все сайты'/>
+                    <MySelector text='Все сайты'
+                                content={content}
+                    />
                 </div>
                 <MyInputContainer query={query}
                                   setQuery={setQuery}

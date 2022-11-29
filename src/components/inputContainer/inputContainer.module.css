@@ -1,0 +1,20 @@
+.input_button {
+    width: 15vw;
+    min-width: 100px;
+    margin-top: 1vh;
+    height: 6vh;
+}
+
+.input {
+    width: 45vw;
+    margin-top: 1vh;
+    color: black;
+}
+
+.input_title {
+    font-weight: bold;
+}
+
+.inputContainer {
+    margin-top: 5vh;
+}

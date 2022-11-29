@@ -33,11 +33,18 @@
     flex-direction: row;
 }
 
-.siteName {
+.sitePair {
     display: flex;
-    line-height: 20px;
-    height: 16px;
     margin-left: 3vw;
+    align-items: center;
+}
+
+.siteName {
+
+}
+
+.siteLink {
+    margin-left: 2vw;
 }
 
 .siteAndSeparator {

@@ -21,7 +21,7 @@ const MyModal = ({visible, setVisible, content}) => {
                 <ul className={classes.modalList}>
                     {content.map((cont, index) =>
                         <li className={classes.siteAndSeparator}
-                            key={cont.name}
+                            key={cont.link}
                         >
                             <div className={classes.siteContainer}>
                                 <img src={
@@ -40,9 +40,12 @@ const MyModal = ({visible, setVisible, content}) => {
                                      }
                                 }
                                 />
-                                <div className={classes.siteName}>
-                                    <div>
+                                <div className={classes.sitePair}>
+                                    <div className={classes.siteName}>
                                         {cont.name}
+                                    </div>
+                                    <div className={classes.siteLink}>
+                                        {cont.link}
                                     </div>
                                 </div>
                             </div>

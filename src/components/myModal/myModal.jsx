@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import classes from './myModal.module.css'
-import notSelected from '../../img/siteNotSelected.png'
-import selected from '../../img/siteSelected.png'
+import notSelected from '../../img/siteNotSelected.svg'
+import selected from '../../img/siteSelected.svg'
 
 
 const MyModal = ({visible, setVisible, content}) => {

@@ -39,7 +39,8 @@ const ManagementPage = () => {
 
     const checkLink = (link) => {
         let RegExp = /^((ftp|http|https):\/\/)?(www\.)?([A-Za-zА-Яа-я0-9]{1}[A-Za-zА-Яа-я0-9\-]*\.?)*\.{1}[A-Za-zА-Яа-я0-9-]{2,8}(\/([\w#!:.?+=&%@!\-\/])*)?/;
-        return RegExp.test(link)
+        let string = link.replace(RegExp, '')
+        return string === ""
     }
 
     const [stopIndex, isErrorStop] = useStopFetching(async () => {
@@ -67,7 +68,6 @@ const ManagementPage = () => {
     }
 
     useEffect(() => {
-        console.log(checkLink(link))
         if(link === '') {
             setFlag(0)
         } else {
@@ -82,7 +82,7 @@ const ManagementPage = () => {
 
     useEffect(() => {
         if (link === '') {
-            setFlag(0)
+            setName('')
         }
     }, [link])
 

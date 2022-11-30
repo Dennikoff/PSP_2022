@@ -1,7 +1,8 @@
 import React from 'react'
 import classes from './site_statistic.module.css'
 import imageOk from '../../img/indexInfoOk.svg'
-import imageProcess from '../../img/indexInfoProcess.png'
+import imageProcess from '../../img/indexInfoProcess.svg'
+import imageError from '../../img/indexInfoError.svg'
 import triangle from '../../img/triangle.svg'
 
 
@@ -50,8 +51,7 @@ const SiteStatistic = ({statistic, isOpened, setIsOpened}) => {
         triangleClasses.push(classes.active)
     }
 
-    return (
-        <div className={statisticClasses.join(' ')}>
+    return (<div className={statisticClasses.join(' ')}>
             <div className={classes.site_statistic_header}
                  onClick={() => {
                      statistic.isOpened = !statistic.isOpened
@@ -64,26 +64,22 @@ const SiteStatistic = ({statistic, isOpened, setIsOpened}) => {
 
                 <div className={classes.header_indexed}>
                     <div className={classes.header_indexed_icon}>
-                        {statistic.status
-                            ? <img src={imageOk} alt="Error"/>
-                            : <img src={imageProcess} alt="Error"/>
-                        }
+                        {statistic.status === "INDEXED" ?
+                            <img src={imageOk} alt="Error"/> : statistic.status === 'INDEXING' ?
+                                <img src={imageProcess} alt="Error"/> : <img src={imageError} alt="Error"/>}
                     </div>
                     <div className={classes.header_indexed_text}>
-                        {statistic.status === "INDEXED"
-                            ? <span>Проиндексирован</span>
-                            : statistic.status === 'INDEXING'
-                                ? <span>Индексация</span>
-                                : <span>Ошибка</span>
-                        }
+                        {statistic.status === "INDEXED" ?
+                            <span>Проиндексирован</span> : statistic.status === 'INDEXING' ? <span>Индексация</span> :
+                                <span>Ошибка</span>}
                     </div>
                 </div>
-                    <div
-                        className={triangleClasses.join(' ')}
-                    >
-                        <img src={triangle} alt="error"
-                             style={{"width": "2vw"}}/>
-                    </div>
+                <div
+                    className={triangleClasses.join(' ')}
+                >
+                    <img src={triangle} alt="error"
+                         style={{"width": "2vw"}}/>
+                </div>
             </div>
             <div className={classes.site_statistic_body}>
                 <div className={classes.site_statistic_box}>
@@ -115,14 +111,17 @@ const SiteStatistic = ({statistic, isOpened, setIsOpened}) => {
                         {statistic.lemmas}
                     </div>
                 </div>
-                <div className={classes.site_statistic_box}>
-                    <div className={classes.statistic_site_title}>
-                        Ошибка:
+                {
+                    statistic.error &&
+                    <div className={classes.site_statistic_box}>
+                        <div className={classes.statistic_site_title}>
+                            Ошибка:
+                        </div>
+                        <div className="error_number_last_seen">
+                            {statistic.error}
+                        </div>
                     </div>
-                    <div className="error_number_last_seen">
-                        {statistic.error}
-                    </div>
-                </div>
+                }
             </div>
         </div>
 

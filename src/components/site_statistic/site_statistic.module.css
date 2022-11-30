@@ -20,7 +20,7 @@
 
 
 .site_statistic_container.active {
-    height: 40vh;
+    height: auto;
 }
 
 .site_statistic_header {

@@ -18,15 +18,21 @@ const ManagementPage = () => {
     const [link, setLink] = useState('')
     const [name, setName] = useState('')
     async function btnStartIndexing() {
-        await startIndex()
+        const selectedSites = {}
+        for(let site of sites) {
+            if(site.isSelected) {
+                selectedSites[site.link] = site.name
+            }
+        }
+        await startIndex(selectedSites)
     }
 
     async function btnStopIndexing() {
         await stopIndex()
     }
 
-    const [startIndex, isIndexing, isErrorStart] = useFetching(async () => {
-        const response = await startIndexing()
+    const [startIndex, isIndexing, isErrorStart] = useFetching(async (data) => {
+        const response = await startIndexing(data)
         console.log(response)
     })
 

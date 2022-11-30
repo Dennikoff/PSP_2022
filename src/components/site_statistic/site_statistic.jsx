@@ -1,8 +1,8 @@
 import React from 'react'
 import classes from './site_statistic.module.css'
-import imageOk from '../../img/index_info_ok.png'
+import imageOk from '../../img/indexInfoOk.svg'
 import imageProcess from '../../img/indexInfoProcess.png'
-import triangle from '../../img/triangle.png'
+import triangle from '../../img/triangle.svg'
 
 
 function getDate(date) {
@@ -13,7 +13,7 @@ function getDate(date) {
         str = str + date.getDate().toString() + '.'
     }
     if (date.getMonth().toString().length < 2) {
-        str = str + `0${date.getMonth().toString()}.`
+        str = str + `0${date.getMonth().toString() + 1}.`
     } else {
         str = str + date.getMonth().toString() + '.'
     }
@@ -52,7 +52,12 @@ const SiteStatistic = ({statistic, isOpened, setIsOpened}) => {
 
     return (
         <div className={statisticClasses.join(' ')}>
-            <div className={classes.site_statistic_header}>
+            <div className={classes.site_statistic_header}
+                 onClick={() => {
+                     statistic.isOpened = !statistic.isOpened
+                     setIsOpened(!isOpened)
+                 }}
+            >
                 <span className={classes.header_name_uri}>
                     {`${statistic.name} - ${statistic.url}`}
                 </span>
@@ -67,18 +72,17 @@ const SiteStatistic = ({statistic, isOpened, setIsOpened}) => {
                     <div className={classes.header_indexed_text}>
                         {statistic.status === "INDEXED"
                             ? <span>Проиндексирован</span>
-                            : <span>Индексация</span>
+                            : statistic.status === 'INDEXING'
+                                ? <span>Индексация</span>
+                                : <span>Ошибка</span>
                         }
                     </div>
                 </div>
                     <div
                         className={triangleClasses.join(' ')}
-                        onClick={() => {
-                            statistic.isOpened = !statistic.isOpened
-                            setIsOpened(!isOpened)
-                        }}
                     >
-                        <img src={triangle} alt=""/>
+                        <img src={triangle} alt="error"
+                             style={{"width": "2vw"}}/>
                     </div>
             </div>
             <div className={classes.site_statistic_body}>

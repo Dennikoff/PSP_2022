@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import classes from './mySelector.module.css'
-import triangle from '../../img/triangle.png'
+import triangle from '../../img/triangle.svg'
 import MyModal from "../myModal/myModal";
 
 const MySelector = ({text, content}) => {

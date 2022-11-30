@@ -65,13 +65,17 @@ const SiteStatistic = ({statistic, isOpened, setIsOpened}) => {
                 <div className={classes.header_indexed}>
                     <div className={classes.header_indexed_icon}>
                         {statistic.status === "INDEXED" ?
-                            <img src={imageOk} alt="Error"/> : statistic.status === 'INDEXING' ?
-                                <img src={imageProcess} alt="Error"/> : <img src={imageError} alt="Error"/>}
+                            <img src={imageOk} alt="Error"/>
+                            : statistic.status === 'INDEXING'
+                                ? <img src={imageProcess} alt="Error"/>
+                                : <img src={imageError} alt="Error"/>}
                     </div>
                     <div className={classes.header_indexed_text}>
                         {statistic.status === "INDEXED" ?
-                            <span>Проиндексирован</span> : statistic.status === 'INDEXING' ? <span>Индексация</span> :
-                                <span>Ошибка</span>}
+                            <span>Проиндексирован</span>
+                            : statistic.status === 'INDEXING'
+                                ? <span>Индексация</span>
+                                : <span>Ошибка</span>}
                     </div>
                 </div>
                 <div

@@ -7,6 +7,9 @@ import {useStopFetching} from "../../hooks/useStopFetching";
 import {stopIndexing} from "../../api/stopIndexing";
 import InputContainer from "../../components/inputContainer/inputContainer";
 import MySelector from "../../components/mySelector/mySelector";
+import {useStartIndexing} from "../../hooks/useStartIndexing";
+import {addLink} from "../../api/addLink";
+import {getLinks} from "../../api/getLinks";
 
 
 const ManagementPage = () => {
@@ -31,10 +34,15 @@ const ManagementPage = () => {
         await stopIndex()
     }
 
-    const [startIndex, isIndexing, isErrorStart] = useFetching(async (data) => {
+    const [startIndex, isIndexing, setIsIndexing, isErrorStart] = useStartIndexing(async (data) => {
         const response = await startIndexing(data)
         console.log(response)
     })
+
+    const [stopIndex, isErrorStop] = useStopFetching(setIsIndexing,  async () => {
+        const response = await stopIndexing()
+        console.log(response)
+    }, isIndexing)
 
     const generateName = (link) => {
         console.log("name")
@@ -49,10 +57,7 @@ const ManagementPage = () => {
         return string === ""
     }
 
-    const [stopIndex, isErrorStop] = useStopFetching(async () => {
-        const response = await stopIndexing()
-        console.log(response)
-    }, isIndexing)
+
 
     const btnAdd = () => {
         const flag = checkLink(link)
@@ -70,11 +75,19 @@ const ManagementPage = () => {
             name: newName,
             isSelected: true
         }
+        let response
+        try {
+            response = addLink(link, newName)
+        } catch(error) {
+            console.log(error)
+        }
+        console.log(response)
         setSites([...sites, site])
     }
 
     useEffect(() => {
         if(link === '') {
+            setName('')
             setFlag(0)
         } else {
             if(checkLink(link)) {
@@ -87,10 +100,16 @@ const ManagementPage = () => {
 
 
     useEffect(() => {
-        if (link === '') {
-            setName('')
+        let response
+        try {
+            response = getLinks()
+        } catch(error) {
+            console.log("Error in use effect", error)
         }
-    }, [link])
+        console.log(response)
+    }, [])
+
+
 
     return (
         <div className={classes.management__body}>
@@ -123,7 +142,7 @@ const ManagementPage = () => {
                                 btnAdd={btnAdd}
                                 flag={flag}
                 />
-                <MySelector text="Cайты" content={sites}/>
+                <MySelector text="Добавленные сайты" content={sites}/>
             </div>
         </div>
     );

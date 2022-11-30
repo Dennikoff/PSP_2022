@@ -14,9 +14,9 @@ function getDate(date) {
         str = str + date.getDate().toString() + '.'
     }
     if (date.getMonth().toString().length < 2) {
-        str = str + `0${date.getMonth().toString() + 1}.`
+        str = str + `0${(date.getMonth() + 1).toString()}.`
     } else {
-        str = str + date.getMonth().toString() + '.'
+        str = str + (date.getMonth() + 1).toString() + '.'
     }
     str += date.getFullYear().toString()
     return str

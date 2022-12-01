@@ -4,6 +4,7 @@ import SiteStatisticList from "../../components/site_statistic_list/site_statist
 import classes from './main_page.module.css'
 import {takeStatistic} from "../../api/takeStatistic";
 import {useFetching} from "../../hooks/useFetching";
+import LoadingStatistic from "../../components/loadingBars/loadingStatistic";
 
 const MainPage = () => {
 
@@ -52,11 +53,14 @@ const MainPage = () => {
             <StatisticContainer
                 fullStatistic={fullStatistic}
             />
-            <SiteStatisticList
+            {isLoading
+                ? <SiteStatisticList
                 siteStatistics={siteStatistics}
                 isOpened={isOpened}
                 setIsOpened={setIsOpened}
             />
+                : <LoadingStatistic style={{"marginTop": "5vh"}}/>
+            }
         </div>
     );
 };

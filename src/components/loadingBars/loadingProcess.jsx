@@ -1,18 +1,17 @@
 import React from 'react';
-import {Oval} from "react-loader-spinner";
+import {ColorRing} from "react-loader-spinner";
 import './loadingProcess.css'
 
 const LoadingProcess = () => {
     return (
-        <Oval
-            height={40}
-            width={40}
-            color="#4fa94d"
-            wrapperClass="wrapper"
+        <ColorRing
             visible={true}
-            strokeWidth={3}
-            strokeWidthSecondary={3}
-
+            height="100%"
+            width="100%"
+            ariaLabel="blocks-loading"
+            wrapperStyle={{}}
+            wrapperClass="wrapper"
+            colors={['#3261BC','#3261BC','#3261BC','#3261BC','#3261BC']}
         />
     );
 };

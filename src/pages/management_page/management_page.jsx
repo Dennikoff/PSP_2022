@@ -47,7 +47,12 @@ const ManagementPage = () => {
     const generateName = (link) => {
         console.log("name")
         let newName = link
-        newName = newName.slice(newName.indexOf('/') + 2, newName.lastIndexOf('.'))
+        alert(newName.indexOf('//'))
+        if(newName.indexOf('//') !== -1) {
+            newName = newName.slice(newName.indexOf('/') + 2, newName.lastIndexOf('.'))
+        } else {
+            newName = newName.slice(0, newName.lastIndexOf('.'))
+        }
         return newName
     }
 

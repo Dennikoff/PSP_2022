@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from "./resultContainer.module.css";
 import ResultSiteList from "../resultSiteList/resultSiteList";
-import LoadingCircle from "../loadingCircle/loadingCircle";
+import LoadingSearch from "../loadingBars/loadingSearch";
 
 
 const ResultContainer = ({sites, isLoading, result, page, setPage, isError}) => {
@@ -15,7 +15,7 @@ const ResultContainer = ({sites, isLoading, result, page, setPage, isError}) => 
                     isLoading
                         ?
                         <div className={classes.loadingCircle}>
-                            <LoadingCircle/>
+                            <LoadingSearch/>
                         </div>
                         :
                         // isError

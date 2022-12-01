@@ -2,7 +2,7 @@ import React from 'react';
 import {MagnifyingGlass} from "react-loader-spinner";
 
 
-const LoadingCircle = () => {
+const LoadingSearch = () => {
     return (
         <MagnifyingGlass
             visible={true}
@@ -17,4 +17,4 @@ const LoadingCircle = () => {
     );
 };
 
-export default LoadingCircle;
+export default LoadingSearch;

@@ -11,6 +11,7 @@ const MySelector = ({text, content}) => {
             <img src={triangle}
                  alt="error"
                  onClick={() => {setModalVisible(true)}}
+                 style={{"width": "2vw"}}
             />
             <MyModal visible={modalVisible}
                      setVisible={setModalVisible}

@@ -47,7 +47,6 @@ const ManagementPage = () => {
     const generateName = (link) => {
         console.log("name")
         let newName = link
-        alert(newName.indexOf('//'))
         if(newName.indexOf('//') !== -1) {
             newName = newName.slice(newName.indexOf('/') + 2, newName.lastIndexOf('.'))
         } else {
@@ -64,10 +63,10 @@ const ManagementPage = () => {
 
 
 
-    const btnAdd = () => {
+    const btnAdd = async () => {
         const flag = checkLink(link)
         if(!flag) {
-            alert('Неверная формат ссылки')
+            alert('Неверный формат ссылки')
             return
         }
         let newName = name
@@ -82,9 +81,10 @@ const ManagementPage = () => {
         }
         let response
         try {
-            response = addLink(link, newName)
+            response = await addLink(link, newName)
         } catch(error) {
-            console.log(error)
+            alert(error["response"]["data"]["error"])
+            return
         }
         console.log(response)
         setSites([...sites, site])

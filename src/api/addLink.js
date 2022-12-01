@@ -9,10 +9,10 @@
 
 import axios from "axios";
 
-export async function addLink(link, name) {
+export async function addLink(url, name) {
     return await axios.post("http://localhost:8080/api/addLink", {
         params: {
-            link,
+            url,
             name
         }
     })

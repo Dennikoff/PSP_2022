@@ -103,15 +103,25 @@ const ManagementPage = () => {
         }
     }, [link])
 
-
-    useEffect(() => {
-        let response
-        try {
-            response = getLinks()
-        } catch(error) {
-            console.log("Error in use effect", error)
-        }
+    const [getLnk, isLoading, isError] = useFetching(async () => {
+        let response = await getLinks()
         console.log(response)
+        let links = response["data"]["links"]
+        let tempSites = []
+        for(let li of links) {
+            let newLink = {
+                name: li['name'],
+                link: li['link'],
+                isSelected: true
+            }
+            tempSites.push(newLink)
+
+        }
+        setSites(tempSites)
+    })
+
+    useEffect( () => {
+        getLnk()
     }, [])
 
 

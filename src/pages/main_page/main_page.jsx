@@ -20,7 +20,7 @@ const MainPage = () => {
         const response = await takeStatistic()
         setFullStatistics(response.data.statistics.total)
         let stat = []
-        for(let statistic of response.data.statistics.detailed) {
+        for (let statistic of response.data.statistics.detailed) {
             statistic.statusTime = new Date(statistic.statusTime)
             statistic.statusTime.format = 'DD.MM.YYYY'
             stat.push(statistic)
@@ -43,7 +43,7 @@ const MainPage = () => {
         // }
         // setFullStatistics(fullStat)
         // setSiteStatistics(stat)
-        },[])
+    }, [])
 
     return (
         <div className={classes.main__body}>
@@ -52,15 +52,23 @@ const MainPage = () => {
             </div>
             <StatisticContainer
                 fullStatistic={fullStatistic}
+                isLoading={isLoading}
             />
-            {isLoading
-                ? <SiteStatisticList
-                siteStatistics={siteStatistics}
-                isOpened={isOpened}
-                setIsOpened={setIsOpened}
-            />
-                : <LoadingStatistic style={{"marginTop": "5vh"}}/>
-            }
+            <SiteStatisticList
+                    siteStatistics={siteStatistics}
+                    isOpened={isOpened}
+                    setIsOpened={setIsOpened}
+                />
+            {/*{isLoading */}
+            {/*    ? <SiteStatisticList*/}
+            {/*        siteStatistics={siteStatistics}*/}
+            {/*        isOpened={isOpened}*/}
+            {/*        setIsOpened={setIsOpened}*/}
+            {/*    />*/}
+            {/*    : <div className={classes.loaderContainer}>*/}
+            {/*        <LoadingStatistic style={{"marginTop": "5vh"}}/>*/}
+            {/*    </div>*/}
+            {/*}*/}
         </div>
     );
 };

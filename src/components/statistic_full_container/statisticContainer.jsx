@@ -6,15 +6,15 @@ const StatisticContainer = ({fullStatistic, isLoading}) => {
     return (
         <div className={classes.main__statistics_container}>
             <Statistic
-                title='Сайтов'
+                title={['Сайт', 'Сайта', 'Сайтов']}
                 value={fullStatistic.sites}
                 isLoading={isLoading}/>
             <Statistic
-                title='Страниц'
+                title={['Страница', 'Страницы', 'Страниц']}
                 value={fullStatistic.pages}
                 isLoading={isLoading}/>
             <Statistic
-                title='Лемм'
+                title={['Лемма', 'Леммы', 'Лемм']}
                 value={fullStatistic.lemmas}
                 isLoading={isLoading}/>
         </div>

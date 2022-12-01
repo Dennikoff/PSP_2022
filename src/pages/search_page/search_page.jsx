@@ -37,31 +37,38 @@ const SearchPage = () => {
 
     let content = [
         {
-            name: "kek.com",
+            name: "link",
+            link: "kek.com",
             isSelected: true
         },
         {
-            name: "spek.ru",
+            name: "link",
+            link: "spek.ru",
             isSelected: true
         },
         {
-            name: "reallongsiteeeeee.ru",
+            name: "link",
+            link: "reallongsiteeeeee.ru",
             isSelected: true
         },
         {
-            name: "playback.com",
+            name: "link",
+            link: "playback.com",
             isSelected: true
         },
         {
-            name: "spek1.ru",
+            name: "link",
+            link: "spek1.ru",
             isSelected: true
         },
         {
-            name: "reallongsiteeeeee112.ru",
+            name: "link",
+            link: "reallongsiteeeeee112.ru",
             isSelected: true
         },
         {
-            name: "playback123.com",
+            name: "link",
+            link: "playback123.com",
             isSelected: true
         }
     ]

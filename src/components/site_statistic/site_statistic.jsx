@@ -4,6 +4,7 @@ import imageOk from '../../img/indexInfoOk.svg'
 import imageProcess from '../../img/indexInfoProcess.svg'
 import imageError from '../../img/indexInfoError.svg'
 import triangle from '../../img/triangle.svg'
+import LoadingProcess from "../loadingBars/loadingProcess";
 
 
 function getDate(date) {
@@ -67,7 +68,7 @@ const SiteStatistic = ({statistic, isOpened, setIsOpened}) => {
                         {statistic.status === "INDEXED" ?
                             <img src={imageOk} alt="Error"/>
                             : statistic.status === 'INDEXING'
-                                ? <img src={imageProcess} alt="Error"/>
+                                ? <LoadingProcess/>
                                 : <img src={imageError} alt="Error"/>}
                     </div>
                     <div className={classes.header_indexed_text}>

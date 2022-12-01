@@ -1,16 +1,18 @@
 import React from 'react';
-import {Circles} from "react-loader-spinner";
+import {Oval} from "react-loader-spinner";
+import './loadingProcess.css'
 
 const LoadingProcess = () => {
     return (
-        <Circles
-            height="80"
-            width="80"
+        <Oval
+            height={40}
+            width={40}
             color="#4fa94d"
-            ariaLabel="circles-loading"
-            wrapperStyle={{}}
-            wrapperClass=""
+            wrapperClass="wrapper"
             visible={true}
+            strokeWidth={3}
+            strokeWidthSecondary={3}
+
         />
     );
 };

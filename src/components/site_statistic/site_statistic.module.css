@@ -37,6 +37,11 @@
 
 }
 
+.header_indexed_icon {
+    width: 40px;
+    height: 40px;
+}
+
 .header_indexed {
     width: 12vw;
     margin: 0 10vh 0 auto;

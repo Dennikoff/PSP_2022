@@ -4,6 +4,7 @@ import SiteStatisticList from "../../components/site_statistic_list/site_statist
 import classes from './main_page.module.css'
 import {takeStatistic} from "../../api/takeStatistic";
 import {useFetching} from "../../hooks/useFetching";
+import {useFetchingWithTimeout} from "../../hooks/useFetchingWithTimeout";
 
 
 const MainPage = () => {
@@ -16,8 +17,13 @@ const MainPage = () => {
     })   // MAKE SOME CHANGES TO RELOAD DATA
     const [isOpened, setIsOpened] = useState(false)
 
-    const [fetch, isLoading, isError] = useFetching(async () => {
+    const [fetch, isLoading, setIsLoading, isError] = useFetchingWithTimeout(async () => {
+        let start = new Date()
         const response = await takeStatistic()
+        let end = new Date()
+        console.log((end - start)/1000)
+        let delay = 1000 - (end - start)
+        setTimeout(() => {
         setFullStatistics(response.data.statistics.total)
         let stat = []
         for (let statistic of response.data.statistics.detailed) {
@@ -26,6 +32,7 @@ const MainPage = () => {
             stat.push(statistic)
         }
         setSiteStatistics(stat)
+        setIsLoading(false)}, delay)
 
 
     })

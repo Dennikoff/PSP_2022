@@ -35,7 +35,7 @@ const MyModal = ({visible, setVisible, content, setContent}) => {
     })
 
     const buttonApplyTapped = async () => {
-        let newMas = []
+        let newMas = {}
         for(let cont of content){
             newMas[cont.link] = +cont.isSelected
         }

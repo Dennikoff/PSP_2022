@@ -22,11 +22,11 @@ const MainPage = () => {
         const response = await takeStatistic()
         let end = new Date()
         console.log((end - start)/1000)
-        let delay = 1000 - (end - start)
+        let delay = 600 - (end - start)
         setTimeout(() => {
-        setFullStatistics(response.data.statistics.total)
+        setFullStatistics(response["data"]["statistics"]["total"])
         let stat = []
-        for (let statistic of response.data.statistics.detailed) {
+        for (let statistic of response["data"]["statistics"]["detailed"]) {
             statistic.statusTime = new Date(statistic.statusTime)
             statistic.statusTime.format = 'DD.MM.YYYY'
             stat.push(statistic)

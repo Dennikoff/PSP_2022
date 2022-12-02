@@ -48,7 +48,6 @@ const ManagementPage = () => {
     }, isIndexing)
 
     const generateName = (link) => {
-        console.log("name")
         let newName = link
         if (newName.indexOf('//') !== -1) {
             newName = newName.slice(newName.indexOf('/') + 2, newName.lastIndexOf('.'))
@@ -88,7 +87,6 @@ const ManagementPage = () => {
             alert(error["response"]["data"]["error"])
             return
         }
-        console.log(response)
         setSites([...sites, site])
     }
 
@@ -113,8 +111,8 @@ const ManagementPage = () => {
         for (let li of links) {
             let newLink = {
                 name: li['name'],
-                link: li['link'],
-                isSelected: true
+                link: li['url'],
+                isSelected: li['isSelected']
             }
             tempSites.push(newLink)
 

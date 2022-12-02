@@ -33,10 +33,8 @@ const MyModal = ({visible, setVisible, content}) => {
                                 }
                                      alt="error"
                                      onClick={() => {
-                                         console.log(content[index].isSelected)
                                          content[index].isSelected = !content[index].isSelected
                                          setReload(!reload)
-                                         console.log(content[index].isSelected)
                                      }
                                 }
                                 />

@@ -15,19 +15,22 @@ import {getLinks} from "../../api/getLinks";
 const ManagementPage = () => {
 
     const [flag, setFlag] = useState(0)
-
     const [sites, setSites] = useState([])
-
     const [link, setLink] = useState('')
     const [name, setName] = useState('')
+
     async function btnStartIndexing() {
         const selectedSites = {}
-        for(let site of sites) {
-            if(site.isSelected) {
+        for (let site of sites) {
+            if (site.isSelected) {
                 selectedSites[site.link] = site.name
             }
         }
-        await startIndex(selectedSites)
+        if (Object.keys(selectedSites).length !== 0) {
+            await startIndex(selectedSites)
+        } else {
+            alert("Не выбрана ни одна ссылка")
+        }
     }
 
     async function btnStopIndexing() {
@@ -39,7 +42,7 @@ const ManagementPage = () => {
         console.log(response)
     })
 
-    const [stopIndex, isErrorStop] = useStopFetching(setIsIndexing,  async () => {
+    const [stopIndex, isErrorStop] = useStopFetching(setIsIndexing, async () => {
         const response = await stopIndexing()
         console.log(response)
     }, isIndexing)
@@ -47,7 +50,7 @@ const ManagementPage = () => {
     const generateName = (link) => {
         console.log("name")
         let newName = link
-        if(newName.indexOf('//') !== -1) {
+        if (newName.indexOf('//') !== -1) {
             newName = newName.slice(newName.indexOf('/') + 2, newName.lastIndexOf('.'))
         } else {
             newName = newName.slice(0, newName.lastIndexOf('.'))
@@ -62,15 +65,14 @@ const ManagementPage = () => {
     }
 
 
-
     const btnAdd = async () => {
         const flag = checkLink(link)
-        if(!flag) {
+        if (!flag) {
             alert('Неверный формат ссылки')
             return
         }
         let newName = name
-        if(name === '') {
+        if (name === '') {
             newName = generateName(link)
             setName(newName)
         }
@@ -82,7 +84,7 @@ const ManagementPage = () => {
         let response
         try {
             response = await addLink(link, newName)
-        } catch(error) {
+        } catch (error) {
             alert(error["response"]["data"]["error"])
             return
         }
@@ -91,11 +93,11 @@ const ManagementPage = () => {
     }
 
     useEffect(() => {
-        if(link === '') {
+        if (link === '') {
             setName('')
             setFlag(0)
         } else {
-            if(checkLink(link)) {
+            if (checkLink(link)) {
                 setFlag(1)
             } else {
                 setFlag(-1)
@@ -108,7 +110,7 @@ const ManagementPage = () => {
         console.log(response)
         let links = response["data"]["links"]
         let tempSites = []
-        for(let li of links) {
+        for (let li of links) {
             let newLink = {
                 name: li['name'],
                 link: li['link'],
@@ -120,10 +122,9 @@ const ManagementPage = () => {
         setSites(tempSites)
     })
 
-    useEffect( () => {
+    useEffect(() => {
         getLnk()
     }, [])
-
 
 
     return (

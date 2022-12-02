@@ -4,6 +4,7 @@ import MyButton from "../myButton/myButton";
 import classes from './inputContainer.module.css'
 import xmark from '../../img/xmark.svg'
 import vmark from '../../img/vmark.svg'
+import {Tooltip} from "antd";
 
 
 const InputContainer = ({link, setLink, name, setName, btnAdd, flag}) => {
@@ -26,22 +27,26 @@ const InputContainer = ({link, setLink, name, setName, btnAdd, flag}) => {
                     {
                         flag === -1
                             ?
-                            <img src={xmark}
-                                 alt="error"
-                                 style={{
-                                     "marginLeft": "1vw",
-                                     "height": "3vh"
-                                 }}
-                            />
-                            : flag === 1
-                                ?
-                                <img src={vmark}
+                            <Tooltip title="Некорректная ссылка">
+                                <img src={xmark}
                                      alt="error"
                                      style={{
                                          "marginLeft": "1vw",
                                          "height": "3vh"
                                      }}
                                 />
+                            </Tooltip>
+                            : flag === 1
+                                ?
+                                <Tooltip title="Корректная ссылка">
+                                    <img src={vmark}
+                                         alt="error"
+                                         style={{
+                                             "marginLeft": "1vw",
+                                             "height": "3vh"
+                                         }}
+                                    />
+                                </Tooltip>
                                 :
                                 <div>
 

@@ -3,7 +3,7 @@ import classes from './mySelector.module.css'
 import triangle from '../../img/triangle.svg'
 import MyModal from "../myModal/myModal";
 
-const MySelector = ({text, content}) => {
+const MySelector = ({text, content, setContent}) => {
     const [modalVisible, setModalVisible] = useState(false)
     return (
         <div className={classes.mySelector}>
@@ -16,6 +16,7 @@ const MySelector = ({text, content}) => {
             <MyModal visible={modalVisible}
                      setVisible={setModalVisible}
                      content={content}
+                     setContent={setContent}
             />
         </div>
     );

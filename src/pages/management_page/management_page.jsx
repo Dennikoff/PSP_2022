@@ -82,7 +82,7 @@ const ManagementPage = () => {
         }
         let response
         try {
-            response = await addLink(link, newName)
+            response = await addLink(link, newName, true)
         } catch (error) {
             alert(error["response"]["data"]["error"])
             return
@@ -103,7 +103,7 @@ const ManagementPage = () => {
         }
     }, [link])
 
-    const [getLnk, isLoading, isError] = useFetching(async () => {
+    const [getLnk, isLoading, isError] = useFetching(async (flag) => {
         let response = await getLinks()
         console.log(response)
         let links = response["data"]["links"]
@@ -121,7 +121,7 @@ const ManagementPage = () => {
     })
 
     useEffect(() => {
-        getLnk()
+        (async() => await getLnk(false))()
     }, [])
 
 
@@ -156,7 +156,10 @@ const ManagementPage = () => {
                                 btnAdd={btnAdd}
                                 flag={flag}
                 />
-                <MySelector text="Добавленные сайты" content={sites}/>
+                <MySelector text="Добавленные сайты"
+                            content={sites}
+                            setContent={setSites}
+                />
             </div>
         </div>
     );

@@ -20,6 +20,9 @@
 }
 
 .modalContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 80%;
     height: 85%;
     border-radius: 2vw;
@@ -59,9 +62,24 @@
     background-color: #C3C3C3;
 }
 
-/*.separator:last-child {*/
-/*    display: none;*/
-/*}*/
+.nameButtonContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.deleteButtonContainer {
+    margin-right: 4vh;
+    height: 3vh;
+    width: 10px;
+}
+
+.deleteButton:active {
+    translate: 2px 2px;
+    height: 4vh;
+}
+
 
 .noneSeparator {
     margin-left: 4vw;
@@ -73,4 +91,11 @@
 .separatorContainer {
     /*padding: 1vh 1vw;*/
     margin: 1vh 1vw;
+}
+
+.applyButton {
+    height: 7vh;
+    width: 13vw;
+    margin: 0 0 1vh 1vw;
+    text-align: center;
 }

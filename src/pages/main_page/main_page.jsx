@@ -6,7 +6,7 @@ import {takeStatistic} from "../../api/takeStatistic";
 import {useFetching} from "../../hooks/useFetching";
 import {useFetchingWithTimeout} from "../../hooks/useFetchingWithTimeout";
 
-
+let flag = true
 const MainPage = () => {
 
     const [siteStatistics, setSiteStatistics] = useState([])
@@ -21,24 +21,41 @@ const MainPage = () => {
         let start = new Date()
         const response = await takeStatistic()
         let end = new Date()
-        console.log((end - start)/1000)
         let delay = 600 - (end - start)
-        setTimeout(() => {
-        setFullStatistics(response["data"]["statistics"]["total"])
-        let stat = []
-        for (let statistic of response["data"]["statistics"]["detailed"]) {
-            statistic.statusTime = new Date(statistic.statusTime)
-            statistic.statusTime.format = 'DD.MM.YYYY'
-            stat.push(statistic)
+        if(delay > 0) {
+            setTimeout(() => {
+                setFullStatistics(response["data"]["statistics"]["total"])
+                let stat = []
+                for (let statistic of response["data"]["statistics"]["detailed"]) {
+                    statistic.statusTime = new Date(statistic.statusTime)
+                    statistic.statusTime.format = 'DD.MM.YYYY'
+                    stat.push(statistic)
+                }
+                setSiteStatistics(stat)
+                setIsLoading(false)
+            }, delay)
+        } else {
+            setFullStatistics(response["data"]["statistics"]["total"])
+            let stat = []
+            for (let statistic of response["data"]["statistics"]["detailed"]) {
+                statistic.statusTime = new Date(statistic.statusTime)
+                statistic.statusTime.format = 'DD.MM.YYYY'
+                stat.push(statistic)
+            }
+            setSiteStatistics(stat)
+            setIsLoading(false)
         }
-        setSiteStatistics(stat)
-        setIsLoading(false)}, delay)
-
 
     })
 
     useEffect(() => {
-        fetch()
+        if(flag) {
+            flag = false
+            let timerId = setInterval(() => {
+                fetch()
+                console.log("fetching data")
+            }, 10000);
+        }
         // const response = await takeStatistic()
         // console.log(response)
         //
@@ -79,5 +96,4 @@ const MainPage = () => {
         </div>
     );
 };
-
 export default MainPage;

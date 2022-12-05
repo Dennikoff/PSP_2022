@@ -10,6 +10,8 @@ import MySelector from "../../components/mySelector/mySelector";
 import {useStartIndexing} from "../../hooks/useStartIndexing";
 import {addLink} from "../../api/addLink";
 import {getLinks} from "../../api/getLinks";
+import {useFetchingWithTimeout} from "../../hooks/useFetchingWithTimeout";
+import {takeStatistic} from "../../api/takeStatistic";
 
 
 const ManagementPage = () => {
@@ -104,11 +106,18 @@ const ManagementPage = () => {
         }
     }, [link])
 
-    const [getLnk, isLoading, isError] = useFetching(async (flag) => {
+    let compareFunction = (a, b) => {
+        if(a.name > b.name) {
+            return 1
+        } else {
+            return -1
+        }
+    }
+
+    const [getLnk, _, isError] = useFetching(async (flag) => {
         let response = await getLinks()
         let links = response["data"]["links"]
         let tempSites = []
-
         for (let li of links) {
             let newLink = {
                 name: li['name'],
@@ -116,13 +125,24 @@ const ManagementPage = () => {
                 isSelected: Boolean(li['isSelected'])
             }
             tempSites.push(newLink)
-
         }
+        tempSites.sort(compareFunction)
         setSites(tempSites)
+    })
+
+    const [fetch, isLoading] = useFetching(async (setIsIndexing) => {
+        let start = new Date()
+        const response = await takeStatistic()
+        if(response["data"]["statistics"]["total"]["indexing"]) {
+            console.log("IM HERE")
+            setIsIndexing(true)
+        }
+
     })
 
     useEffect(() => {
         (async() => await getLnk(false))()
+        fetch(setIsIndexing)
     }, [])
 
 

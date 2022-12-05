@@ -65,24 +65,24 @@ const ManagementPage = () => {
 
 
     const btnAdd = async () => {
-        const flag = checkLink(link)
-        if (!flag) {
+        let temp_link = link.trim()
+        if (!checkLink(temp_link)) {
             alert('Неверный формат ссылки')
             return
         }
         let newName = name
         if (name === '') {
-            newName = generateName(link)
+            newName = generateName(temp_link)
             setName(newName)
         }
         const site = {
-            link,
+            link: temp_link,
             name: newName,
             isSelected: true
         }
         let response
         try {
-            response = await addLink(link, newName, true)
+            response = await addLink(temp_link, newName, 1)
         } catch (error) {
             alert(error["response"]["data"]["error"])
             return
@@ -91,11 +91,12 @@ const ManagementPage = () => {
     }
 
     useEffect(() => {
-        if (link === '') {
+        let temp_link = link.trim()
+        if (temp_link === '') {
             setName('')
             setFlag(0)
         } else {
-            if (checkLink(link)) {
+            if (checkLink(temp_link)) {
                 setFlag(1)
             } else {
                 setFlag(-1)
@@ -105,14 +106,14 @@ const ManagementPage = () => {
 
     const [getLnk, isLoading, isError] = useFetching(async (flag) => {
         let response = await getLinks()
-        console.log(response)
         let links = response["data"]["links"]
         let tempSites = []
+
         for (let li of links) {
             let newLink = {
                 name: li['name'],
                 link: li['url'],
-                isSelected: li['isSelected']
+                isSelected: Boolean(li['isSelected'])
             }
             tempSites.push(newLink)
 

@@ -65,8 +65,10 @@ const MyModal = ({visible, setVisible, content, setContent}) => {
                                     }
                                          alt="error"
                                          onClick={() => {
-                                             content[index].isSelected = !content[index].isSelected
-                                             setReload(!reload)
+                                             let tempCont = content[index]
+                                             tempCont.isSelected = !tempCont.isSelected
+                                             setContent([...content.slice(0, index), tempCont, ...content.slice(index + 1)])
+                                             buttonApplyTapped()
                                          }
                                          }
                                     />
@@ -107,11 +109,11 @@ const MyModal = ({visible, setVisible, content, setContent}) => {
                             </li>
                         )}
                     </ul>
-                    <div className={classes.applyButton}>
-                        <MyButton children="Подтвердить"
-                                  style={{"textAlign": "center"}}
-                                  onClick={() => {buttonApplyTapped()}}/>
-                    </div>
+                    {/*<div className={classes.applyButton}>*/}
+                    {/*    <MyButton children="Подтвердить"*/}
+                    {/*              style={{"textAlign": "center"}}*/}
+                    {/*              onClick={() => {buttonApplyTapped()}}/>*/}
+                    {/*</div>*/}
                 </div>
             </div>
     );

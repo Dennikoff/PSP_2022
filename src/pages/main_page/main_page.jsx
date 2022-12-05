@@ -6,9 +6,8 @@ import {takeStatistic} from "../../api/takeStatistic";
 import {useFetching} from "../../hooks/useFetching";
 import {useFetchingWithTimeout} from "../../hooks/useFetchingWithTimeout";
 
-let flag = true
-const MainPage = () => {
 
+const MainPage = () => {
     const [siteStatistics, setSiteStatistics] = useState([])
     const [fullStatistic, setFullStatistics] = useState({
         sites: 0,
@@ -49,24 +48,8 @@ const MainPage = () => {
     })
 
     useEffect(() => {
-        if(flag) {
-            flag = false
-            let timerId = setInterval(() => {
-                fetch()
-                console.log("fetching data")
-            }, 10000);
-        }
-        // const response = await takeStatistic()
-        // console.log(response)
-        //
-        // const stat = []
-        // for(let statistic of response.data.statistics.detailed){
-        //     statistic.statusTime = new Date(statistic.statusTime)
-        //     statistic.statusTime.format = 'DD.MM.YYYY'
-        //     stat.push(statistic)
-        // }
-        // setFullStatistics(fullStat)
-        // setSiteStatistics(stat)
+        fetch()
+
     }, [])
 
     return (

@@ -1,19 +1,18 @@
 import React, {useEffect, useState} from 'react';
-// import MyInput from "../../components/myInput/myInput";
-import MySelector from "../../components/mySelector/mySelector";
-// import MyButton from "../../components/myButton/myButton";
+import MySelectorManagement from "../../components/mySelectorManagement/mySelectorManagement";
 import classes from './search_page.module.css'
 import MyInputContainer from "../../components/myInputContainer/myInputContainer";
 import ResultContainer from "../../components/resultContainer/resultContainer";
 import {startSearch} from "../../api/startSearch";
 import {useFetching} from "../../hooks/useFetching";
+import {takeStatistic} from "../../api/takeStatistic";
 
 
 const SearchPage = () => {
+    const limit = 10
     const [query, setQuery] = useState('')
     const [page, setPage] = useState(1)
-    const limit = 10
-
+    const [content, setContent] = useState([])
     const [result, setResult] = useState({
         result: false,
         count: 10
@@ -35,51 +34,38 @@ const SearchPage = () => {
     //     setSites(siteArray)
     // }, [])
 
-    let content = [
-        {
-            name: "link",
-            link: "kek.com",
-            isSelected: true
-        },
-        {
-            name: "link",
-            link: "spek.ru",
-            isSelected: true
-        },
-        {
-            name: "link",
-            link: "reallongsiteeeeee.ru",
-            isSelected: true
-        },
-        {
-            name: "link",
-            link: "playback.com",
-            isSelected: true
-        },
-        {
-            name: "link",
-            link: "spek1.ru",
-            isSelected: true
-        },
-        {
-            name: "link",
-            link: "reallongsiteeeeee112.ru",
-            isSelected: true
-        },
-        {
-            name: "link",
-            link: "playback123.com",
-            isSelected: true
+    const [takeStat, isLoadingStat, isErrorStat] = useFetching(async () => {
+        const response = await takeStatistic()
+        let tempArray = []
+        for(let site of response["data"]["statistics"]["detailed"]) {
+            if(site["status"] === "INDEXED") {
+                tempArray.push({
+                    link: site["url"],
+                    name: site["name"],
+                    isSelected: true
+                })
+            }
         }
-    ]
+        setContent(tempArray)
+    })
+
+    useEffect(() => {
+        takeStat()
+    }, [])
 
     const [fetch, isLoading, isError] = useFetching(async (flag) => {
         if(query) {
+            let querySiteMas = []
+            for(let cont of content) {
+                if(cont.isSelected) {
+                    querySiteMas.push(cont.link)
+                }
+            }
             let response
             if (flag) {
-                response = await startSearch(query, limit, 0)
+                response = await startSearch(query, limit, 0, querySiteMas)
             } else {
-                response = await startSearch(query, limit, offset)
+                response = await startSearch(query, limit, offset, querySiteMas)
             }
             setSites(response.data.data)
             setResult({
@@ -119,8 +105,9 @@ const SearchPage = () => {
             </div>
             <div className={classes.site_body}>
                 <div className={classes.site_selector}>
-                    <MySelector text='Все сайты'
-                                content={content}
+                    <MySelectorManagement text='Все сайты'
+                                          content={content}
+                                          setContent={setContent}
                     />
                 </div>
                 <MyInputContainer query={query}
@@ -128,6 +115,7 @@ const SearchPage = () => {
                                   fetch={fetch}
                                   isLoading={isLoading}
                                   setStartS={setStartS}
+                                  content={content}
                 />
                 <ResultContainer sites={sites}
                                  isLoading={isLoading}

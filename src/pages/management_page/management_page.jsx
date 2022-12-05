@@ -6,7 +6,7 @@ import {useFetching} from "../../hooks/useFetching";
 import {useStopFetching} from "../../hooks/useStopFetching";
 import {stopIndexing} from "../../api/stopIndexing";
 import InputContainer from "../../components/inputContainer/inputContainer";
-import MySelector from "../../components/mySelector/mySelector";
+import MySelectorManagement from "../../components/mySelectorManagement/mySelectorManagement";
 import {useStartIndexing} from "../../hooks/useStartIndexing";
 import {addLink} from "../../api/addLink";
 import {getLinks} from "../../api/getLinks";
@@ -131,10 +131,8 @@ const ManagementPage = () => {
     })
 
     const [fetch, isLoading] = useFetching(async (setIsIndexing) => {
-        let start = new Date()
         const response = await takeStatistic()
         if(response["data"]["statistics"]["total"]["indexing"]) {
-            console.log("IM HERE")
             setIsIndexing(true)
         }
 
@@ -177,9 +175,9 @@ const ManagementPage = () => {
                                 btnAdd={btnAdd}
                                 flag={flag}
                 />
-                <MySelector text="Добавленные сайты"
-                            content={sites}
-                            setContent={setSites}
+                <MySelectorManagement text="Добавленные сайты"
+                                      content={sites}
+                                      setContent={setSites}
                 />
             </div>
         </div>

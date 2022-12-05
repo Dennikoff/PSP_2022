@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import classes from './myModal.module.css'
+import classes from './myModalManagement.module.css'
 import notSelected from '../../img/siteNotSelected.svg'
 import selected from '../../img/siteSelected.svg'
 import trashBin from '../../img/trashBin.svg'
@@ -9,7 +9,7 @@ import MyButton from "../myButton/myButton";
 import {updateLinks} from "../../api/updateLinks";
 
 
-const MyModal = ({visible, setVisible, content, setContent}) => {
+const MyModalManagement = ({visible, setVisible, content, setContent}) => {
     let rootClasses = [classes.myModal]
     if (visible) {
         rootClasses.push(classes.active)
@@ -119,4 +119,4 @@ const MyModal = ({visible, setVisible, content, setContent}) => {
     );
 };
 
-export default MyModal;
+export default MyModalManagement;

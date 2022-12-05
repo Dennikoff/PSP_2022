@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import classes from './mySelector.module.css'
+import classes from './mySelectorSearch.module.css'
 import triangle from '../../img/triangle.svg'
-import MyModal from "../myModal/myModal";
+import MyModalSearch from "../myModalSearch/myModalSearch";
 
-const MySelector = ({text, content, setContent}) => {
+const MySelectorSearch = ({text, content, setContent}) => {
     const [modalVisible, setModalVisible] = useState(false)
     return (
         <div className={classes.mySelector}>
@@ -13,13 +13,13 @@ const MySelector = ({text, content, setContent}) => {
                  onClick={() => {setModalVisible(true)}}
                  style={{"width": "2vw"}}
             />
-            <MyModal visible={modalVisible}
-                     setVisible={setModalVisible}
-                     content={content}
-                     setContent={setContent}
+            <MyModalSearch visible={modalVisible}
+                               setVisible={setModalVisible}
+                               content={content}
+                               setContent={setContent}
             />
         </div>
     );
 };
 
-export default MySelector;
+export default MySelectorSearch;

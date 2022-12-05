@@ -10,10 +10,14 @@
 
 import axios from "axios";
 
-export async function startSearch(query, limit, offset) {
+export async function startSearch(query, limit, offset, querySitesMas) {
+    console.log(JSON.stringify(querySitesMas))
+    let json = JSON.stringify(querySitesMas)
     // axios.defaults.headers['Access-Control-Allow-Origin'] = '*'
-    return await axios.get("http://localhost:8080/api/search", {
-        params: {
+    return await axios.post("http://localhost:8080/api/search",{
+        sites: json
+    },{
+         params:{
             query,
             limit,
             offset

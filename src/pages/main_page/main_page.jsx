@@ -6,7 +6,7 @@ import {takeStatistic} from "../../api/takeStatistic";
 import {useFetching} from "../../hooks/useFetching";
 import {useFetchingWithTimeout} from "../../hooks/useFetchingWithTimeout";
 
-
+let isOpenedArr = []
 const MainPage = () => {
     const [siteStatistics, setSiteStatistics] = useState([])
     const [fullStatistic, setFullStatistics] = useState({
@@ -21,6 +21,7 @@ const MainPage = () => {
         const response = await takeStatistic()
         let end = new Date()
         let delay = 600 - (end - start)
+        isOpenedArr = []
         if(delay > 0) {
             setTimeout(() => {
                 setFullStatistics(response["data"]["statistics"]["total"])
@@ -28,6 +29,8 @@ const MainPage = () => {
                 for (let statistic of response["data"]["statistics"]["detailed"]) {
                     statistic.statusTime = new Date(statistic.statusTime)
                     statistic.statusTime.format = 'DD.MM.YYYY'
+                    statistic.isOpened = false
+                    isOpenedArr.push(false)
                     stat.push(statistic)
                 }
                 setSiteStatistics(stat)
@@ -39,17 +42,38 @@ const MainPage = () => {
             for (let statistic of response["data"]["statistics"]["detailed"]) {
                 statistic.statusTime = new Date(statistic.statusTime)
                 statistic.statusTime.format = 'DD.MM.YYYY'
+                statistic.isOpened = false
+                isOpenedArr.push(false)
                 stat.push(statistic)
             }
             setSiteStatistics(stat)
             setIsLoading(false)
         }
-
+    })
+    const [fetchWithoutLoading, isLoadingTimeout, isErrorTimeout] = useFetching(async () => {
+        const response = await takeStatistic()
+        setFullStatistics(response["data"]["statistics"]["total"])
+        let stat = []
+        let index = 0
+        for (let statistic of response["data"]["statistics"]["detailed"]) {
+            statistic.statusTime = new Date(statistic.statusTime)
+            statistic.statusTime.format = 'DD.MM.YYYY'
+            statistic.isOpened = isOpenedArr[index]
+            index++
+            stat.push(statistic)
+        }
+        setSiteStatistics(stat)
     })
 
     useEffect(() => {
         fetch()
-
+        let interval = setInterval(() => {
+            fetchWithoutLoading()
+            console.log("Statistic update")
+        }, 10000)
+        return () => {
+            clearInterval(interval)
+        }
     }, [])
 
     return (
@@ -62,6 +86,7 @@ const MainPage = () => {
                 isLoading={isLoading}
             />
             <SiteStatisticList
+                    isOpenedArr={isOpenedArr}
                     siteStatistics={siteStatistics}
                     isOpened={isOpened}
                     setIsOpened={setIsOpened}

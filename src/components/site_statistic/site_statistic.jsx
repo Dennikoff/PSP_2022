@@ -43,7 +43,7 @@ function getTime(date) {
     return str
 }
 
-const SiteStatistic = ({statistic, isOpened, setIsOpened}) => {
+const SiteStatistic = ({isOpenedArr, index, statistic, isOpened, setIsOpened}) => {
     const statisticClasses = [classes.site_statistic_container]
     const triangleClasses = [classes.header_triangle]
 
@@ -57,6 +57,7 @@ const SiteStatistic = ({statistic, isOpened, setIsOpened}) => {
                  onClick={() => {
                      statistic.isOpened = !statistic.isOpened
                      setIsOpened(!isOpened)
+                     isOpenedArr[index] = !isOpenedArr[index]
                  }}
             >
                 <span className={classes.header_name_uri}>

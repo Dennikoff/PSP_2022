@@ -7,7 +7,7 @@ import selected from "../../img/siteSelected.svg";
 import notSelected from "../../img/siteNotSelected.svg";
 import trashBin from "../../img/trashBin.svg";
 
-const SiteListManagement = ({text, content, setContent}) => {
+const SiteListManagement = ({content, setContent}) => {
     const [deleteLnk] = useFetching(async (url) => {
         await deleteLink(url)
     })
@@ -91,17 +91,6 @@ const SiteListManagement = ({text, content, setContent}) => {
                     </li>
                 )}
             </ul>
-            {/*{text}*/}
-            {/*<img src={triangle}*/}
-            {/*     alt="error"*/}
-            {/*     onClick={() => {setModalVisible(true)}}*/}
-            {/*     style={{"width": "2vw"}}*/}
-            {/*/>*/}
-            {/*<MyModalManagement visible={modalVisible}*/}
-            {/*                   setVisible={setModalVisible}*/}
-            {/*                   content={content}*/}
-            {/*                   setContent={setContent}*/}
-            {/*/>*/}
         </div>
     );
 };

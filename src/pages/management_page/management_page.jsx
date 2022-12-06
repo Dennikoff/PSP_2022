@@ -13,6 +13,7 @@ import {getLinks} from "../../api/getLinks";
 import {useFetchingWithTimeout} from "../../hooks/useFetchingWithTimeout";
 import {takeStatistic} from "../../api/takeStatistic";
 
+let Reg = /^((ftp|http|https):\/\/)?(www\.)?([A-Za-zА-Яа-я0-9]{1}[A-Za-zА-Яа-я0-9\-]*\.?)*\.{1}[A-Za-zА-Яа-я0-9-]{2,8}(\/([\w#!:.?+=&%@!\-\/])*)?/;
 
 const ManagementPage = () => {
 
@@ -60,9 +61,12 @@ const ManagementPage = () => {
     }
 
     const checkLink = (link) => {
-        let RegExp = /^((ftp|http|https):\/\/)?(www\.)?([A-Za-zА-Яа-я0-9]{1}[A-Za-zА-Яа-я0-9\-]*\.?)*\.{1}[A-Za-zА-Яа-я0-9-]{2,8}(\/([\w#!:.?+=&%@!\-\/])*)?/;
-        let string = link.replace(RegExp, '')
-        return string === ""
+        if(Reg.test(link)) {
+            let string = link.replace(Reg, '')
+            return string === ""
+        } else {
+            return false
+        }
     }
 
 
@@ -175,9 +179,8 @@ const ManagementPage = () => {
                                 btnAdd={btnAdd}
                                 flag={flag}
                 />
-                <SiteListManagement text="Добавленные сайты"
-                                      content={sites}
-                                      setContent={setSites}
+                <SiteListManagement content={sites}
+                                    setContent={setSites}
                 />
             </div>
         </div>

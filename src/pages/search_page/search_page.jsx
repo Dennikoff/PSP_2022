@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import MySelectorManagement from "../../components/mySelectorManagement/mySelectorManagement";
+import SiteListManagement from "../../components/mySelectorManagement/siteListManagement";
 import classes from './search_page.module.css'
 import MyInputContainer from "../../components/myInputContainer/myInputContainer";
 import ResultContainer from "../../components/resultContainer/resultContainer";
 import {startSearch} from "../../api/startSearch";
 import {useFetching} from "../../hooks/useFetching";
 import {takeStatistic} from "../../api/takeStatistic";
+import MySelectorSearch from "../../components/mySelectorSearch/mySelectorSearch";
 
 
 const SearchPage = () => {
@@ -105,9 +106,9 @@ const SearchPage = () => {
             </div>
             <div className={classes.site_body}>
                 <div className={classes.site_selector}>
-                    <MySelectorManagement text='Все сайты'
-                                          content={content}
-                                          setContent={setContent}
+                    <MySelectorSearch text='Все сайты'
+                                        content={content}
+                                        setContent={setContent}
                     />
                 </div>
                 <MyInputContainer query={query}

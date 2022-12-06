@@ -6,7 +6,7 @@ import {useFetching} from "../../hooks/useFetching";
 import {useStopFetching} from "../../hooks/useStopFetching";
 import {stopIndexing} from "../../api/stopIndexing";
 import InputContainer from "../../components/inputContainer/inputContainer";
-import MySelectorManagement from "../../components/mySelectorManagement/mySelectorManagement";
+import SiteListManagement from "../../components/mySelectorManagement/siteListManagement";
 import {useStartIndexing} from "../../hooks/useStartIndexing";
 import {addLink} from "../../api/addLink";
 import {getLinks} from "../../api/getLinks";
@@ -175,7 +175,7 @@ const ManagementPage = () => {
                                 btnAdd={btnAdd}
                                 flag={flag}
                 />
-                <MySelectorManagement text="Добавленные сайты"
+                <SiteListManagement text="Добавленные сайты"
                                       content={sites}
                                       setContent={setSites}
                 />

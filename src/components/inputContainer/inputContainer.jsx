@@ -19,7 +19,7 @@ const InputContainer = ({link, setLink, name, setName, btnAdd, flag}) => {
                 <div className={classes.linkInput}>
                     <MyInput placeholder="Ссылка*"
                              value={link}
-                             style={{"width": "40vw"}}
+                             style={{"width": "60vw"}}
                              onChange={(e) => {
                                  setLink(e.target.value)
                              }}
@@ -55,7 +55,7 @@ const InputContainer = ({link, setLink, name, setName, btnAdd, flag}) => {
                 </div>
                 <MyInput placeholder="Имя"
                          value={name}
-                         style={{"width": "40vw"}}
+                         style={{"width": "60vw"}}
                          onChange={(e) => {
                              setName(e.target.value)
                          }}

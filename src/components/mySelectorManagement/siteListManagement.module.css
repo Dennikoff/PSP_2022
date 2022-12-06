@@ -1,3 +1,15 @@
+.mySelector {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 60vw;
+    height: auto;
+    border-radius: 1.3vw;
+    margin-top: 2vh;
+    background-color: #F3F3F3;
+    border: 2px solid #CCC9C9;
+}
+
 .myModal {
     position: fixed;
     top:0;
@@ -17,18 +29,6 @@
 .modalList {
     margin: 2vh 1vw;
     list-style: none;
-}
-
-.modalContent {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 80%;
-    height: 85%;
-    border-radius: 2vw;
-    margin: 2vw 1vw;
-    background-color: #F3F3F3;
-    border: 2px solid #CCC9C9;
 }
 
 .siteContainer {

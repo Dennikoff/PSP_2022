@@ -66,10 +66,9 @@ const MainPage = () => {
     })
 
     useEffect(() => {
-        fetch()
+        (async () => await fetch())()
         let interval = setInterval(() => {
-            fetchWithoutLoading()
-            console.log("Statistic update")
+            (async () => await fetchWithoutLoading("placeholder"))()
         }, 10000)
         return () => {
             clearInterval(interval)

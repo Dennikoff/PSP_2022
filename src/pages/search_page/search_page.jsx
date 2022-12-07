@@ -23,18 +23,6 @@ const SearchPage = () => {
 
     const [startS, setStartS] = useState(false)
 
-    // useEffect( () => {
-    //     const siteArray = []
-    //     setResult({
-    //         result: json['result'],
-    //         count: json['count']
-    //     })
-    //     for(let result of json['data']){
-    //         siteArray.push(result)
-    //     }
-    //     setSites(siteArray)
-    // }, [])
-
     const [takeStat, isLoadingStat, isErrorStat] = useFetching(async () => {
         const response = await takeStatistic()
         let tempArray = []

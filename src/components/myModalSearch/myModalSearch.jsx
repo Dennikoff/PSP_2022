@@ -27,7 +27,10 @@ const MyModalSearch = ({visible, setVisible, content, setContent}) => {
     const [allSitesSelected, setAllSitesSelected] = useState(false)
 
     return (
-        <div className={rootClasses.join(' ')}>
+        <div className={rootClasses.join(' ')}
+             onClick={(e) => {
+                 e.stopPropagation()
+             }}>
             <div className={classes.modalHeader}>
                 <div className={classes.siteAndSeparator}>
                     <div className={classes.headerContainer}>
@@ -51,8 +54,9 @@ const MyModalSearch = ({visible, setVisible, content, setContent}) => {
                             <div className={classes.headerText}>
                                 Все сайты
                             </div>
-                            <img src={triangle} alt=""
-                                 //onClick={setVisible(false)}
+                            <img src={triangle} alt="error"
+                                 className={classes.triangle}
+                                 onClick={() => setVisible(false)}
                             />
                         </div>
                     </div>
@@ -65,9 +69,7 @@ const MyModalSearch = ({visible, setVisible, content, setContent}) => {
                 </div>
             </div>
             <div className={classes.modalContent}
-                 onClick={(e) => {
-                     e.stopPropagation()
-                 }}
+
             >
                 <ul className={classes.modalList}>
                     {content.map((cont, index) =>
@@ -87,7 +89,6 @@ const MyModalSearch = ({visible, setVisible, content, setContent}) => {
                                          let tempCont = content[index]
                                          tempCont.isSelected = !tempCont.isSelected
                                          setContent([...content.slice(0, index), tempCont, ...content.slice(index + 1)])
-                                         buttonApplyTapped()
                                      }}
                                 />
                                 <div className={classes.nameButtonContainer}>

@@ -92,7 +92,9 @@ const SiteStatistic = ({isOpenedArr, index, statistic, isOpened, setIsOpened}) =
                     className={triangleClasses.join(' ')}
                 >
                     <img src={triangle} alt="error"
-                         style={{"width": "2vw"}}/>
+                         style={{"width": "2vw"}}
+                         className={classes.tria}
+                    />
                 </div>
             </div>
             {statistic.error

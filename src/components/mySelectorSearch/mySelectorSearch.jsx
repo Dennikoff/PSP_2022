@@ -6,16 +6,16 @@ import MyModalSearch from "../myModalSearch/myModalSearch";
 const MySelectorSearch = ({text, content, setContent}) => {
     const [modalVisible, setModalVisible] = useState(false)
     return (
-        <div className={classes.mySelector}>
+        <div className={classes.mySelector}
+             onClick={() => {
+                 setModalVisible(true)
+             }}>
             <div className={classes.headerContainer}>
                 <div>
                     {text}
                 </div>
                 <img src={triangle}
                      alt="error"
-                     onClick={() => {
-                         setModalVisible(!modalVisible)
-                     }}
                      style={{"width": "2vw"}}
                 />
             </div>

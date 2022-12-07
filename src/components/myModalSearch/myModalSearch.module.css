@@ -4,14 +4,15 @@
     width: 60vw;
     overflow: hidden;
     border-radius: 1.3vw;
-    background-color: #e7e7e7;
+    background-color: #f3f3f3;
     border: 2px solid #CCC9C9;
     display: none;
-    translate: 0 -6px;
+    translate: 0 -7px;
 }
 
 .headerContainer{
-    margin: 2vh 1vw;
+    margin-inline: 1vw;
+    margin-top: 1vh;
     display: flex;
 
 }
@@ -27,7 +28,7 @@
 }
 
 .headerText {
-    margin-left: 3vw;
+    margin-left: 2vw;
 }
 
 .myModal.active {
@@ -37,7 +38,7 @@
 }
 
 .modalList {
-    margin: 2vh 1vw;
+    margin-inline: 1vw;
     list-style: none;
 }
 
@@ -47,6 +48,11 @@
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
+}
+
+.triangle {
+    width: 2vw;
+    rotate: 180deg;
 }
 
 .siteContainer {

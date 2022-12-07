@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import classes from './siteListManagement.module.css'
 import {useFetching} from "../../hooks/useFetching";
 import {deleteLink} from "../../api/deleteLink";
@@ -8,6 +8,7 @@ import notSelected from "../../img/siteNotSelected.svg";
 import trashBin from "../../img/trashBin.svg";
 
 const SiteListManagement = ({content, setContent}) => {
+    const [allSitesSelected, setAllSitesSelected] = useState(false)
     const [deleteLnk] = useFetching(async (url) => {
         await deleteLink(url)
     })
@@ -25,7 +26,6 @@ const SiteListManagement = ({content, setContent}) => {
     const [updtLinks] = useFetching(async (mas) => {
         await updateLinks(mas)
     })
-
     const buttonApplyTapped = async () => {
         let newMas = {}
         for(let cont of content){
@@ -33,9 +33,72 @@ const SiteListManagement = ({content, setContent}) => {
         }
         await updtLinks(newMas)
     }
+
+    function handleAllSitesSelected(flag) {
+        if(flag) {
+            let tempContentArr = []
+            for(let index = 0; index < content.length; index++) {
+                let tempContent = content[index]
+                tempContent.isSelected = true
+                tempContentArr.push(tempContent)
+            }
+            setContent(tempContentArr)
+        } else {
+            let tempContentArr = []
+            for(let index = 0; index < content.length; index++) {
+                let tempContent = content[index]
+                tempContent.isSelected = false
+                tempContentArr.push(tempContent)
+            }
+            setContent(tempContentArr)
+        }
+    }
+
+    useEffect(() => {
+        let flag = true
+        for(let cont of content) {
+            if(!cont.isSelected) {
+                flag = false
+                break
+            }
+        }
+        setAllSitesSelected(flag)
+    }, [content])
+
     return (
         <div className={classes.mySelector}>
             <ul className={classes.modalList}>
+                <li className={classes.siteAndSeparator}>
+                    <div className={classes.siteContainer}>
+                        <img src={
+                            allSitesSelected
+                                ?
+                                selected
+                                :
+                                notSelected
+                        }
+                             alt="error"
+                             onClick={() => {
+                                 handleAllSitesSelected(!allSitesSelected)
+                                 setAllSitesSelected(!allSitesSelected)
+                             }
+                             }
+                             className={classes.sitePicker}
+                        />
+                        <div className={classes.nameButtonContainer}>
+                            <div className={classes.sitePair}>
+                                <div className={classes.siteName}>
+                                    Все сайты
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className={classes.separatorContainer}>
+                        <div className={classes.separator}></div>
+                    </div>
+
+                </li>
                 {content.map((cont, index) =>
                     <li className={classes.siteAndSeparator}
                         key={cont.link}
@@ -53,7 +116,7 @@ const SiteListManagement = ({content, setContent}) => {
                                      let tempCont = content[index]
                                      tempCont.isSelected = !tempCont.isSelected
                                      setContent([...content.slice(0, index), tempCont, ...content.slice(index + 1)])
-                                     buttonApplyTapped()
+                                     //buttonApplyTapped()
                                  }
                                  }
                                  className={classes.sitePicker}

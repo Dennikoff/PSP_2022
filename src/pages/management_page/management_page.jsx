@@ -6,7 +6,7 @@ import {useFetching} from "../../hooks/useFetching";
 import {useStopFetching} from "../../hooks/useStopFetching";
 import {stopIndexing} from "../../api/stopIndexing";
 import InputContainer from "../../components/inputContainer/inputContainer";
-import SiteListManagement from "../../components/mySelectorManagement/siteListManagement";
+import SiteListManagement from "../../components/siteListManagement/siteListManagement";
 import {useStartIndexing} from "../../hooks/useStartIndexing";
 import {addLink} from "../../api/addLink";
 import {getLinks} from "../../api/getLinks";

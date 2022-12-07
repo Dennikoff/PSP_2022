@@ -1,17 +1,39 @@
 .myModal {
     position: fixed;
-    top:0;
-    bottom:0;
-    right:0;
-    left:13vw;
+    height: 0;
+    width: 60vw;
+    overflow: hidden;
+    border-radius: 1.3vw;
+    background-color: #e7e7e7;
+    border: 2px solid #CCC9C9;
     display: none;
-    background-color: rgba(0,0,0,0.05);
+    translate: 0 -6px;
+}
+
+.headerContainer{
+    margin: 2vh 1vw;
+    display: flex;
+
+}
+
+.headerTextImgContainer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.modalHeader {
+    height: 5vh;
+}
+
+.headerText {
+    margin-left: 3vw;
 }
 
 .myModal.active {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    height: auto;
 }
 
 .modalList {
@@ -20,15 +42,11 @@
 }
 
 .modalContent {
+    margin-top: 1vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 80%;
-    height: 85%;
-    border-radius: 2vw;
-    margin: 2vw 1vw;
-    background-color: #F3F3F3;
-    border: 2px solid #CCC9C9;
+    width: 100%;
 }
 
 .siteContainer {
@@ -38,7 +56,7 @@
 
 .sitePair {
     display: flex;
-    margin-left: 3vw;
+    margin-left: 2vw;
     align-items: center;
 }
 
@@ -55,7 +73,7 @@
 }
 
 .separator {
-    margin-left: 4vw;
+    margin-left: 3vw;
     width: 90%;
     height: 1px;
     border-radius: 2px;

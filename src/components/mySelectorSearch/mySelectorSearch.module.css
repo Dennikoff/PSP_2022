@@ -1,5 +1,6 @@
 .mySelector {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     width: 100%;
@@ -8,5 +9,13 @@
     border: 1px solid #CCC9C9;
     color: #7E7E7E;
     border-radius: 1.3vw;
+}
+
+.headerContainer {
+    padding-left: 0.5vw;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
 }
 

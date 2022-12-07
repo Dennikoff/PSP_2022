@@ -53,9 +53,10 @@ const SiteListManagement = ({content, setContent}) => {
                                      let tempCont = content[index]
                                      tempCont.isSelected = !tempCont.isSelected
                                      setContent([...content.slice(0, index), tempCont, ...content.slice(index + 1)])
-                                     (async () => await buttonApplyTapped())()
+                                     buttonApplyTapped()
                                  }
                                  }
+                                 className={classes.sitePicker}
                             />
                             <div className={classes.nameButtonContainer}>
                                 <div className={classes.sitePair}>

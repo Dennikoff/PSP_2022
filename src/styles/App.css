@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "NotoSans-Regular";
 }
 
 .App {
@@ -18,5 +19,18 @@
 }
 
 
+@font-face {
+  font-family: "NotoSans-Regular";
+  src: url("../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "NotoSans-Bold";
+  src: url("../fonts/NotoSans-Bold.ttf") format("truetype");
+  font-style: auto;
+  font-weight: bold;
+}
 
 

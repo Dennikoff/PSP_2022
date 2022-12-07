@@ -1,0 +1,25 @@
+.site_statistic_box {
+    display: grid;
+    grid-template-columns: 25vw auto;
+}
+.statistic_site_title {
+    font-weight: bold;
+}
+
+.date_time {
+    display: flex;
+    justify-content: left;
+}
+
+.last_seen_time {
+    margin-left: 2vw;
+}
+
+.siteStatisticBodyNoError {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-inline: 5vh;
+    height: 20vh;
+    margin-block: 1.5vh;
+}

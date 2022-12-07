@@ -34,11 +34,24 @@
 .siteContainer {
     display: flex;
     flex-direction: row;
+    height: 5vh;
+    overflow: auto;
+}
+
+.sitePicker {
+    width: 2vw;
+    cursor: pointer;
+}
+
+.siteContainer::-webkit-scrollbar {
+    width: 0;
+    height: 0;//TODO: скроллбар убрать или подвинуть
+    /*background-color: red;*/
 }
 
 .sitePair {
     display: flex;
-    margin-left: 3vw;
+    margin-left: 2vw;
     align-items: center;
 }
 
@@ -55,7 +68,7 @@
 }
 
 .separator {
-    margin-left: 4vw;
+    margin-left: 3vw;
     width: 90%;
     height: 1px;
     border-radius: 2px;
@@ -75,6 +88,10 @@
     width: 10px;
 }
 
+.deleteButton {
+    cursor: pointer;
+}
+
 .deleteButton:active {
     translate: 2px 2px;
     height: 4vh;
@@ -82,7 +99,7 @@
 
 
 .noneSeparator {
-    margin-left: 4vw;
+    margin-left: 3vw;
     margin-top: 1vh;
     width: 90%;
     border-radius: 2px;

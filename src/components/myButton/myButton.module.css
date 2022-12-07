@@ -9,6 +9,7 @@
     color: white;
     border: 0;
     text-align: center;
+    cursor: pointer;
 }
 
 .button:hover {

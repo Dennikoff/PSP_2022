@@ -7,16 +7,22 @@ const MySelectorSearch = ({text, content, setContent}) => {
     const [modalVisible, setModalVisible] = useState(false)
     return (
         <div className={classes.mySelector}>
-            {text}
-            <img src={triangle}
-                 alt="error"
-                 onClick={() => {setModalVisible(true)}}
-                 style={{"width": "2vw"}}
-            />
+            <div className={classes.headerContainer}>
+                <div>
+                    {text}
+                </div>
+                <img src={triangle}
+                     alt="error"
+                     onClick={() => {
+                         setModalVisible(!modalVisible)
+                     }}
+                     style={{"width": "2vw"}}
+                />
+            </div>
             <MyModalSearch visible={modalVisible}
-                               setVisible={setModalVisible}
-                               content={content}
-                               setContent={setContent}
+                           setVisible={setModalVisible}
+                           content={content}
+                           setContent={setContent}
             />
         </div>
     );

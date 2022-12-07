@@ -5,7 +5,7 @@
     justify-content: right;
 }
 
-.link__container {
+.linkContainer {
     width: 90%;
     display: flex;
     flex-direction: column;
@@ -14,7 +14,7 @@
     text-align: center;
 }
 
-.nav__link {
+.navLink {
     font-size: 1.7vw;
     width: 100%;
     border: 1px solid #C3C3C3;
@@ -26,14 +26,19 @@
     color:black;
 }
 
-.nav__link:active {
+.navLink:active {
     background-color: #d2d2d2;
 }
 
-.nav__link:after {
+.navLink:after {
     background-color: #80fffd;
 }
 
-.link__container:last-child {
+
+.linkContainer:last-child {
     border-bottom: 1px solid #C3C3C3;
+}
+
+.navLink:hover {
+    background-color: #d7d7d7;
 }

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import SiteListManagement from "../../components/mySelectorManagement/siteListManagement";
+import SiteListManagement from "../../components/siteListManagement/siteListManagement";
 import classes from './search_page.module.css'
 import MyInputContainer from "../../components/myInputContainer/myInputContainer";
 import ResultContainer from "../../components/resultContainer/resultContainer";

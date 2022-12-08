@@ -6,6 +6,7 @@ import {updateLinks} from "../../api/updateLinks";
 import selected from "../../img/siteSelected.svg";
 import notSelected from "../../img/siteNotSelected.svg";
 import trashBin from "../../img/trashBin.svg";
+import {updateLink} from "../../api/updateLink";
 
 const SiteListManagement = ({content, setContent}) => {
     const [allSitesSelected, setAllSitesSelected] = useState(false)
@@ -26,7 +27,19 @@ const SiteListManagement = ({content, setContent}) => {
     const [updtLinks] = useFetching(async (mas) => {
         await updateLinks(mas)
     })
-    const buttonApplyTapped = async () => {
+
+    const [updtLink] = useFetching(async (mas) => {
+        const [url, isSelected] = mas
+        console.log(url, +isSelected)
+        await updateLink(url, +isSelected)
+    })
+
+    async function changeLinkIsSelected(url, isSelected) {
+        let mas = [url, isSelected]
+        await updtLink(mas)
+    }
+
+    const changeAllLinksIsSelected = async () => {
         let newMas = {}
         for(let cont of content){
             newMas[cont.link] = +cont.isSelected
@@ -52,6 +65,7 @@ const SiteListManagement = ({content, setContent}) => {
             }
             setContent(tempContentArr)
         }
+        changeAllLinksIsSelected()
     }
 
     useEffect(() => {
@@ -114,9 +128,10 @@ const SiteListManagement = ({content, setContent}) => {
                                  alt="error"
                                  onClick={() => {
                                      let tempCont = content[index]
+                                     console.log(tempCont)
                                      tempCont.isSelected = !tempCont.isSelected
                                      setContent([...content.slice(0, index), tempCont, ...content.slice(index + 1)])
-                                     //buttonApplyTapped()
+                                     changeLinkIsSelected(tempCont.link, tempCont.isSelected)
                                  }
                                  }
                                  className={classes.sitePicker}

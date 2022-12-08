@@ -3,7 +3,7 @@ import classes from "./resultContainer.module.css";
 import ResultSiteList from "../resultSiteList/resultSiteList";
 import LoadingSearch from "../loadingBars/loadingSearch";
 
-
+//http://localhost:8080/api/updateLink?url=https://www.playback.ru&isSelected=1
 const ResultContainer = ({sites, isLoading, result, page, setPage, isError}) => {
     return (
         <div className={classes.result_container}>
@@ -24,10 +24,7 @@ const ResultContainer = ({sites, isLoading, result, page, setPage, isError}) => 
                         //         {console.log(isError)}
                         //     </div>
                         //     :
-                            sites.length === 0
-                                ?
-                                <h1>Списка нет</h1>
-                                :
+                            sites.length > 0 &&
                                 <ResultSiteList sites={sites}
                                                 result={result}
                                                 page={page}

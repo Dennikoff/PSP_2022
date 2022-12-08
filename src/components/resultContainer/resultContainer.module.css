@@ -21,3 +21,9 @@
     justify-content: center;
     margin-top: 5vh;
 }
+
+.placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -179,9 +179,11 @@ const ManagementPage = () => {
                                 btnAdd={btnAdd}
                                 flag={flag}
                 />
+                {sites.length > 0 &&
                 <SiteListManagement content={sites}
                                     setContent={setSites}
                 />
+                }
             </div>
         </div>
     );

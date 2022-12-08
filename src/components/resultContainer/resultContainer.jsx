@@ -18,22 +18,22 @@ const ResultContainer = ({sites, isLoading, result, page, setPage, isError, flag
                             <LoadingSearch/>
                         </div>
                         :
-                        // isError
-                        //     ?
-                        //     <div>
-                        //         {console.log(isError)}
-                        //     </div>
-                        //     :
-                        !flag
-                            ?
-                            sites.length > 0 &&
-                            <ResultSiteList sites={sites}
-                                            result={result}
-                                            page={page}
-                                            setPage={setPage}
-                            />
-                            :
-                            <h1 className={classes.placeholder}>Ничего не найдено</h1>
+                    // isError
+                    //     ?
+                    //     <div>
+                    //         {console.log(isError)}
+                    //     </div>
+                    //     :
+                        sites.length > 0
+                        ?
+                        <ResultSiteList sites={sites}
+                        result={result}
+                        page={page}
+                        setPage={setPage}
+                        />
+                        :
+
+                        flag && <h1 className={classes.placeholder}>Ничего не найдено</h1>
                 }
             </div>
         </div>

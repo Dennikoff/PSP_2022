@@ -32,7 +32,6 @@ const ResultContainer = ({sites, isLoading, result, page, setPage, isError, flag
                         setPage={setPage}
                         />
                         :
-
                         flag && <h1 className={classes.placeholder}>Ничего не найдено</h1>
                 }
             </div>

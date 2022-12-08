@@ -8,8 +8,9 @@ import {useFetching} from "../../hooks/useFetching";
 import {takeStatistic} from "../../api/takeStatistic";
 import MySelectorSearch from "../../components/mySelectorSearch/mySelectorSearch";
 
-
+let flagOfSearch
 const SearchPage = () => {
+
     const limit = 10
     const [query, setQuery] = useState('')
     const [page, setPage] = useState(1)
@@ -85,6 +86,12 @@ const SearchPage = () => {
         }
     }, [offset])
 
+    useEffect(() => {
+        if(startS) {
+            flagOfSearch = true
+        }
+        return () => flagOfSearch = false
+    },[startS])
 
 
     return (
@@ -112,6 +119,7 @@ const SearchPage = () => {
                                  page={page}
                                  setPage={setPage}
                                  isError={isError}
+                                 flag={flagOfSearch}
                 />
             </div>
         </div>);

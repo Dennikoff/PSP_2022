@@ -3,8 +3,8 @@ import classes from "./resultContainer.module.css";
 import ResultSiteList from "../resultSiteList/resultSiteList";
 import LoadingSearch from "../loadingBars/loadingSearch";
 
-//http://localhost:8080/api/updateLink?url=https://www.playback.ru&isSelected=1
-const ResultContainer = ({sites, isLoading, result, page, setPage, isError}) => {
+
+const ResultContainer = ({sites, isLoading, result, page, setPage, isError, flag}) => {
     return (
         <div className={classes.result_container}>
             <h3 className={classes.result_title}>
@@ -24,13 +24,16 @@ const ResultContainer = ({sites, isLoading, result, page, setPage, isError}) => 
                         //         {console.log(isError)}
                         //     </div>
                         //     :
+                        !flag
+                            ?
                             sites.length > 0 &&
-                                <ResultSiteList sites={sites}
-                                                result={result}
-                                                page={page}
-                                                setPage={setPage}
-                                />
-
+                            <ResultSiteList sites={sites}
+                                            result={result}
+                                            page={page}
+                                            setPage={setPage}
+                            />
+                            :
+                            <h1 className={classes.placeholder}>Ничего не найдено</h1>
                 }
             </div>
         </div>

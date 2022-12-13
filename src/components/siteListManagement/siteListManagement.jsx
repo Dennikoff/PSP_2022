@@ -40,37 +40,27 @@ const SiteListManagement = ({content, setContent}) => {
 
     const changeAllLinksIsSelected = async () => {
         let newMas = {}
-        for(let cont of content){
+        for (let cont of content) {
             newMas[cont.link] = +cont.isSelected
         }
         await updtLinks(newMas)
     }
 
     function handleAllSitesSelected(flag) {
-        if(flag) {
-            let tempContentArr = []
-            for(let index = 0; index < content.length; index++) {
-                let tempContent = content[index]
-                tempContent.isSelected = true
-                tempContentArr.push(tempContent)
-            }
-            setContent(tempContentArr)
-        } else {
-            let tempContentArr = []
-            for(let index = 0; index < content.length; index++) {
-                let tempContent = content[index]
-                tempContent.isSelected = false
-                tempContentArr.push(tempContent)
-            }
-            setContent(tempContentArr)
+        let tempContentArr = []
+        for (let index = 0; index < content.length; index++) {
+            let tempContent = content[index]
+            tempContent.isSelected = flag
+            tempContentArr.push(tempContent)
         }
+        setContent(tempContentArr)
         changeAllLinksIsSelected()
     }
 
     useEffect(() => {
         let flag = true
-        for(let cont of content) {
-            if(!cont.isSelected) {
+        for (let cont of content) {
+            if (!cont.isSelected) {
                 flag = false
                 break
             }

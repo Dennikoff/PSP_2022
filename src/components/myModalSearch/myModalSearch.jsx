@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import classes from './myModalSearch.module.css'
 import notSelected from '../../img/siteNotSelected.svg'
 import selected from '../../img/siteSelected.svg'
@@ -8,23 +8,34 @@ import {updateLinks} from "../../api/updateLinks";
 
 
 const MyModalSearch = ({visible, setVisible, content, setContent}) => {
+
+    const [allSitesSelected, setAllSitesSelected] = useState(false)
+
     let rootClasses = [classes.myModal]
     if (visible) {
         rootClasses.push(classes.active)
     }
 
-    const [updtLinks] = useFetching(async (mas) => {
-        await updateLinks(mas)
-    })
-
-    const buttonApplyTapped = async () => {
-        let newMas = {}
+    useEffect(() => {
+        let flag = true
         for (let cont of content) {
-            newMas[cont.link] = +cont.isSelected
+            if (!cont.isSelected) {
+                flag = false
+                break
+            }
         }
-        await updtLinks(newMas)
+        setAllSitesSelected(flag)
+    }, [content])
+
+    function handleAllSitesSelected(flag) {
+        let tempContentArr = []
+        for (let index = 0; index < content.length; index++) {
+            let tempContent = content[index]
+            tempContent.isSelected = flag
+            tempContentArr.push(tempContent)
+        }
+        setContent(tempContentArr)
     }
-    const [allSitesSelected, setAllSitesSelected] = useState(false)
 
     return (
         <div className={rootClasses.join(' ')}
@@ -43,6 +54,7 @@ const MyModalSearch = ({visible, setVisible, content, setContent}) => {
                         }
                              alt="error"
                              onClick={() => {
+                                 handleAllSitesSelected(!allSitesSelected)
                                  setAllSitesSelected(!allSitesSelected)
                                  // let tempCont = content[index]
                                  // tempCont.isSelected = !tempCont.isSelected

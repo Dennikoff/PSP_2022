@@ -20,7 +20,7 @@ const MainPage = () => {
         let start = new Date()
         const response = await takeStatistic()
         let end = new Date()
-        let delay = 600 - (end - start)
+        let delay = 300 - (end - start)
         isOpenedArr = []
         if(delay > 0) {
             setTimeout(() => {

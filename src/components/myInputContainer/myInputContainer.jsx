@@ -20,6 +20,11 @@ const MyInputContainer = ({query, setQuery, fetch, isLoading, setStartS, content
                 <MyInput type='text'
                          value={query}
                          onChange={(e) => setQuery(e.target.value)}
+                         onKeyDown={(e) => {
+                             if(e.keyCode === 13) {
+                                 handleOkClick(isLoading)
+                             }
+                         }}
                          placeholder='Запрос'
                 />
             </div>

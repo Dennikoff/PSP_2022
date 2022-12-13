@@ -30,7 +30,6 @@ const SiteListManagement = ({content, setContent}) => {
 
     const [updtLink] = useFetching(async (mas) => {
         const [url, isSelected] = mas
-        console.log(url, +isSelected)
         await updateLink(url, +isSelected)
     })
 

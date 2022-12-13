@@ -33,4 +33,9 @@
   font-weight: bold;
 }
 
+::selection {
+  background-color: #a4a4a4;
+  color: #fff;
+}
+
 

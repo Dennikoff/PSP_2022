@@ -13,7 +13,7 @@ import {getLinks} from "../../api/getLinks";
 import {useFetchingWithTimeout} from "../../hooks/useFetchingWithTimeout";
 import {takeStatistic} from "../../api/takeStatistic";
 
-let Reg = /^((ftp|http|https):\/\/)?(www\.)?([A-Za-zА-Яа-я0-9]{1}[A-Za-zА-Яа-я0-9\-]*\.?)*\.{1}[A-Za-zА-Яа-я0-9-]{2,8}(\/([\w#!:.?+=&%@!\-\/])*)?/;
+let Reg = /^((ftp|http|https):\/\/)?(www\.)?([A-Za-zА-Яа-я0-9]{1}[A-Za-zА-Яа-я0-9.]*)\.{1}[A-Za-zА-Яа-я0-9-]{2,8}$/;
 
 const ManagementPage = () => {
 
@@ -62,6 +62,9 @@ const ManagementPage = () => {
 
     const checkLink = (link) => {
         if(Reg.test(link)) {
+            if(link.includes("..")){
+                return false
+            }
             let string = link.replace(Reg, '')
             return string === ""
         } else {
@@ -172,7 +175,9 @@ const ManagementPage = () => {
                         />
                     }
                 </div>
-                <InputContainer link={link}
+                <InputContainer generateName={generateName}
+                                checkLink={checkLink}
+                                link={link}
                                 setLink={setLink}
                                 name={name}
                                 setName={setName}

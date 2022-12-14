@@ -15,7 +15,7 @@ const SiteListManagement = ({content, setContent}) => {
     })
 
     const deleteButtonClicked = async (index) => {
-        let url = content[index].link
+        let url = content[index].url
         setContent(content.filter((_, ind) => {
             return index !== ind
         }))
@@ -41,7 +41,7 @@ const SiteListManagement = ({content, setContent}) => {
     const changeAllLinksIsSelected = async () => {
         let newMas = {}
         for (let cont of content) {
-            newMas[cont.link] = +cont.isSelected
+            newMas[cont.url] = +cont.isSelected
         }
         await updtLinks(newMas)
     }
@@ -120,7 +120,7 @@ const SiteListManagement = ({content, setContent}) => {
                                      console.log(tempCont)
                                      tempCont.isSelected = !tempCont.isSelected
                                      setContent([...content.slice(0, index), tempCont, ...content.slice(index + 1)])
-                                     changeLinkIsSelected(tempCont.link, tempCont.isSelected)
+                                     changeLinkIsSelected(tempCont.url, tempCont.isSelected)
                                  }
                                  }
                                  className={classes.sitePicker}

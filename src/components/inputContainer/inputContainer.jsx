@@ -65,12 +65,15 @@ const InputContainer = ({generateName, checkLink, link, setLink, name, setName, 
                                 </div>
                     }
                 </div>
+                <div className={classes.inputAndButton}>
                 <MyInput placeholder="Имя"
                          id={"nameInput"}
                          value={name}
-                         style={{"width": "60vw"}}
+                         style={{"width": "42vw"}}
                          onChange={(e) => {
-                             setName(e.target.value)
+                             if(e.target.value.length < 26) {
+                                 setName(e.target.value)
+                             }
                          }}
                          onKeyDown={(e) => {
                              if (e.key === 'Enter') {
@@ -79,14 +82,16 @@ const InputContainer = ({generateName, checkLink, link, setLink, name, setName, 
                          }}
                          onFocus={(e) => e.target.select()}
                 />
+                    <div className={classes.input_button}>
+                        <MyButton children="Добавить"
+                                  onClick={() => {
+                                      btnAdd(link)
+                                  }}
+                        />
+                    </div>
+                </div>
             </div>
-            <div className={classes.input_button}>
-                <MyButton children="Добавить"
-                          onClick={() => {
-                              btnAdd(link)
-                          }}
-                />
-            </div>
+
         </div>
     );
 };

@@ -57,7 +57,7 @@ const ManagementPage = () => {
         } else {
             newName = newName.slice(0, newName.lastIndexOf('.'))
         }
-        return newName
+        return newName.slice(0, 25)
     }
 
     const checkLink = (link) => {
@@ -85,7 +85,7 @@ const ManagementPage = () => {
             setName(newName)
         }
         const site = {
-            link: temp_link,
+            url: temp_link,
             name: newName,
             isSelected: true
         }

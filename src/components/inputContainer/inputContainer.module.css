@@ -1,7 +1,6 @@
 .input_button {
     width: 15vw;
     min-width: 100px;
-    margin-top: 1vh;
     height: 6vh;
 }
 
@@ -9,6 +8,12 @@
     width: 60vw;
     margin-top: 1vh;
     color: black;
+}
+
+.inputAndButton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .input_title {

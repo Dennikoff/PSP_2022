@@ -4,7 +4,7 @@ import MyInput from "../myInput/myInput";
 import MyButton from "../myButton/myButton";
 // import {startSearch} from "../../api/startSearch"
 
-const MyInputContainer = ({query, setQuery, fetch, isLoading, setStartS, content}) => {
+const MyInputContainer = ({query, setQuery, fetch, isLoading, setStartS}) => {
     function handleOkClick(isLoading) {
         if(isLoading) {
             alert("Поск уже запущен") // TODO: make alert more beautiful

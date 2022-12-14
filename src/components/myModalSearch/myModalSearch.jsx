@@ -86,7 +86,7 @@ const MyModalSearch = ({visible, setVisible, content, setContent}) => {
                 <ul className={classes.modalList}>
                     {content.map((cont, index) =>
                         <li className={classes.siteAndSeparator}
-                            key={cont.link}
+                            key={cont.url}
                         >
                             <div className={classes.siteContainer}>
                                 <img src={
@@ -109,7 +109,7 @@ const MyModalSearch = ({visible, setVisible, content, setContent}) => {
                                             {cont.name}
                                         </div>
                                         <div className={classes.siteLink}>
-                                            {cont.link}
+                                            {cont.url}
                                         </div>
                                     </div>
                                 </div>

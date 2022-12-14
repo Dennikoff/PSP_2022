@@ -8,8 +8,14 @@ import {useFetching} from "../../hooks/useFetching";
 import {takeStatistic} from "../../api/takeStatistic";
 import MySelectorSearch from "../../components/mySelectorSearch/mySelectorSearch";
 
-let flagOfSearch
+let flagOfSearch = false
 const SearchPage = () => {
+
+    let headerClass = classes.headerBodyCenter
+
+    if(flagOfSearch) {
+        headerClass = classes.headerBody
+    }
 
     const limit = 10
     const [query, setQuery] = useState('')
@@ -27,10 +33,10 @@ const SearchPage = () => {
     const [takeStat, isLoadingStat, isErrorStat] = useFetching(async () => {
         const response = await takeStatistic()
         let tempArray = []
-        for(let site of response["data"]["statistics"]["detailed"]) {
-            if(site["status"] === "INDEXED") {
+        for (let site of response["data"]["statistics"]["detailed"]) {
+            if (site["status"] === "INDEXED") {
                 tempArray.push({
-                    link: site["url"],
+                    url: site["url"],
                     name: site["name"],
                     isSelected: true
                 })
@@ -44,10 +50,10 @@ const SearchPage = () => {
     }, [])
 
     const [fetch, isLoading, isError] = useFetching(async (flag) => {
-        if(query) {
+        if (query) {
             let querySiteMas = []
-            for(let cont of content) {
-                if(cont.isSelected) {
+            for (let cont of content) {
+                if (cont.isSelected) {
                     querySiteMas.push(cont.link)
                 }
             }
@@ -71,7 +77,7 @@ const SearchPage = () => {
     }, [isError])
 
     useEffect(() => {
-        if(startS) {
+        if (startS) {
             setPage(1)
         }
     }, [startS])
@@ -81,46 +87,51 @@ const SearchPage = () => {
     }, [page])
 
     useEffect(() => {
-        if(!startS) {
+        if (!startS) {
             fetch()
         }
     }, [offset])
 
     useEffect(() => {
-        if(startS) {
+        if (startS) {
             flagOfSearch = true
         }
         return () => flagOfSearch = false
-    },[startS])
+    }, [startS])
 
 
     return (
-        <div className={classes.search__body}>
-            <div className={classes.search__title}>
-                <h1>Поиск</h1>
-            </div>
-            <div className={classes.site_body}>
-                <div className={classes.site_selector}>
-                    <MySelectorSearch text='Все сайты'
-                                        content={content}
-                                        setContent={setContent}
+        <div className={classes.searchBody}>
+            <div className={classes.searchHeader}>
+                <div className={classes.search__title}>
+                    <h1>Поиск</h1>
+                </div>
+                <div className={headerClass}>
+                    <div className={classes.site_selector}>
+                        <MySelectorSearch text='Выбрать сайты'
+                                          content={content}
+                                          setContent={setContent}
+                        />
+                    </div>
+                    <MyInputContainer query={query}
+                                      setQuery={setQuery}
+                                      fetch={fetch}
+                                      isLoading={isLoading}
+                                      setStartS={setStartS}
                     />
                 </div>
-                <MyInputContainer query={query}
-                                  setQuery={setQuery}
-                                  fetch={fetch}
-                                  isLoading={isLoading}
-                                  setStartS={setStartS}
-                                  content={content}
-                />
-                <ResultContainer sites={sites}
-                                 isLoading={isLoading}
-                                 result={result}
-                                 page={page}
-                                 setPage={setPage}
-                                 isError={isError}
-                                 flag={flagOfSearch}
-                />
+            </div>
+            <div className={classes.site_body}>
+                {flagOfSearch &&
+                    <ResultContainer sites={sites}
+                                     isLoading={isLoading}
+                                     result={result}
+                                     page={page}
+                                     setPage={setPage}
+                                     isError={isError}
+                                     flag={flagOfSearch}
+                    />
+                }
             </div>
         </div>);
 };

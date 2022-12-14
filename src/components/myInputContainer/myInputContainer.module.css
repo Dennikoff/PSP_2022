@@ -1,12 +1,14 @@
 .query_button {
     height: 120%;
     margin-left: 3vw;
-    padding: 5px;
+    padding: 5px 0;
 }
 
 .query_input {
     width: 50vw;
 }
+
+
 
 .query_container {
     display: flex;

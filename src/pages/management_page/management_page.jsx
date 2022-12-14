@@ -128,7 +128,7 @@ const ManagementPage = () => {
         for (let li of links) {
             let newLink = {
                 name: li['name'],
-                link: li['url'],
+                url: li['url'],
                 isSelected: Boolean(li['isSelected'])
             }
             tempSites.push(newLink)

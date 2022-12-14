@@ -104,7 +104,7 @@ const SiteListManagement = ({content, setContent}) => {
                 </li>
                 {content.map((cont, index) =>
                     <li className={classes.siteAndSeparator}
-                        key={cont.link}
+                        key={cont.url}
                     >
                         <div className={classes.siteContainer}>
                             <img src={
@@ -131,7 +131,7 @@ const SiteListManagement = ({content, setContent}) => {
                                         {cont.name}
                                     </div>
                                     <div className={classes.siteLink}>
-                                        {cont.link}
+                                        {cont.url}
                                     </div>
                                 </div>
                                 <div className={classes.deleteButtonContainer}>

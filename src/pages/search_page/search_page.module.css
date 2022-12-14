@@ -1,18 +1,33 @@
-.search__body {
+.searchBody {
     border-left: 1px solid #C3C3C3;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow: auto;
+    overflow: hidden;
+}
+
+.headerBodyCenter{
+    transition: all .2s ease-in-out;
+    margin-top: 19vh;
 }
 
 .search__title {
+    display: flex;
     margin-top: 10vh;
+    align-items: center;
+    justify-content: center;
 }
 
+.searchHeader {
+    align-items: center;
+    justify-content: center;
+}
 
-
+.headerBody {
+    transition: all .2s ease-in-out;
+    width: 60vw;
+}
 
 .site_body {
     width: 60vw;

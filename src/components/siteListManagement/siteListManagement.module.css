@@ -35,8 +35,6 @@
     display: flex;
     flex-direction: row;
     height: 30px;
-    overflow-x: auto;
-    overflow-y: clip;
 }
 
 .sitePicker {
@@ -46,14 +44,22 @@
 
 .siteContainer::-webkit-scrollbar {
     width: 0;
-    height: 0;//TODO: скроллбар убрать или подвинуть
+    height: 0;
     /*background-color: red;*/
 }
 
 .sitePair {
+    max-width: 48vw;
     display: flex;
     margin-left: 2vw;
     align-items: center;
+    overflow-x: auto;
+}
+
+.sitePair::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    /*background-color: red;*/
 }
 
 .siteName {

@@ -90,16 +90,18 @@ const MainPage = () => {
 
     return (
         <div className={classes.main__body}>
-            <div className={classes.main__title}>
-                <h1>Главная</h1>
-            </div>
             {visible &&
                 <MainErrorWindow/>
             }
-            <StatisticContainer
-                fullStatistic={fullStatistic}
-                isLoading={isLoading}
-            />
+            <div className={classes.header}>
+                <div className={classes.main__title}>
+                    <h1>Главная</h1>
+                </div>
+                <StatisticContainer
+                    fullStatistic={fullStatistic}
+                    isLoading={isLoading}
+                />
+            </div>
             <SiteStatisticList
                     isOpenedArr={isOpenedArr}
                     siteStatistics={siteStatistics}

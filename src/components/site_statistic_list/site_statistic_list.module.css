@@ -1,7 +1,6 @@
 .statistic_site_list {
     height: 60vh;
     margin-top: 2vh;
-    overflow: auto;
 }
 
 .statistic_site_list::-webkit-scrollbar {

@@ -1,44 +1,37 @@
 .navbar {
-    width: 15vw;
+    width: 25vw;
     display: flex;
     align-items: center;
-    justify-content: right;
+    justify-content: center;
 }
 
 .linkContainer {
-    width: 90%;
+    background-color: #C3C3C3;
+    width: 80%;
     display: flex;
     flex-direction: column;
-    background-color: #F3F3F3;
     align-items: center;
     text-align: center;
+    border-radius: 1.7vw;
+    border: 2px solid #5D606C;
+    overflow: hidden;
 }
 
 .navLink {
     font-size: 1.7vw;
+    border-top: 2px solid #5D606C;
     width: 100%;
-    border: 1px solid #C3C3C3;
-    border-bottom: 0;
-    border-right: 0;
+    position: relative;
     padding: 10px 10px;
     margin-right: 0;
     text-decoration: none;
     color:black;
 }
 
-.navLink:active {
-    background-color: #d2d2d2;
-}
-
-.navLink:after {
-    background-color: #80fffd;
-}
-
-
-.linkContainer:last-child {
-    border-bottom: 1px solid #C3C3C3;
+.navLink:first-child {
+    border-top: 0;
 }
 
 .navLink:hover {
-    background-color: #d7d7d7;
+    background-color: #A1A1A3;
 }

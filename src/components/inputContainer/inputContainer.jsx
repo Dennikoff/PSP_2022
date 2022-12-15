@@ -18,7 +18,7 @@ const InputContainer = ({generateName, checkLink, link, setLink, name, setName, 
             </div>
             <div className={classes.input}>
                 <div className={classes.linkInput}>
-                    <MyInput placeholder="Ссылка*"
+                    <MyInput placeholder="Ссылка *"
                              value={link}
                              style={{"width": "60vw"}}
                              onChange={(e) => {

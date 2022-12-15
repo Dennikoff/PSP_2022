@@ -6,8 +6,8 @@
     height: auto;
     border-radius: 1.3vw;
     margin-top: 2vh;
-    background-color: #F3F3F3;
-    border: 2px solid #CCC9C9;
+    background-color: #C3C3C3;
+    border: 2px solid #5D606C;
 }
 
 .myModal {
@@ -63,7 +63,7 @@
 }
 
 .siteName {
-
+    font-weight: bold;
 }
 
 .siteLink {
@@ -79,7 +79,7 @@
     width: 90%;
     height: 1px;
     border-radius: 2px;
-    background-color: #C3C3C3;
+    background-color: #5D606C;
 }
 
 .nameButtonContainer {

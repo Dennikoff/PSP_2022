@@ -1,5 +1,4 @@
 .searchBody {
-    border-left: 1px solid #C3C3C3;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -9,7 +8,8 @@
 
 .headerBodyCenter{
     transition: all .2s ease-in-out;
-    margin-top: 19vh;
+    width: 60vw;
+    margin-top: 22vh;
 }
 
 .search__title {

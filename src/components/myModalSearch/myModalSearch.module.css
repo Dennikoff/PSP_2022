@@ -4,10 +4,11 @@
     width: 60vw;
     overflow: hidden;
     border-radius: 1.3vw;
-    background-color: #f3f3f3;
-    border: 2px solid #CCC9C9;
+    background-color: #C3C3C3;
+    border: 2px solid #5D606C;
     display: none;
     translate: 0 -7px;
+    color: black;
 }
 
 .headerContainer{
@@ -67,7 +68,7 @@
 }
 
 .siteName {
-
+    font-weight: bold;
 }
 
 .siteLink {
@@ -83,7 +84,7 @@
     width: 90%;
     height: 1px;
     border-radius: 2px;
-    background-color: #C3C3C3;
+    background-color: #5D606C;
 }
 
 .nameButtonContainer {

@@ -25,7 +25,7 @@ const MyInputContainer = ({query, setQuery, fetch, isLoading, setStartS}) => {
                                  handleOkClick(isLoading)
                              }
                          }}
-                         placeholder='Запрос'
+                         placeholder='Поисковый запрос'
                 />
             </div>
             <div className={classes.query_button}>

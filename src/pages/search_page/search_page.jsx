@@ -7,6 +7,9 @@ import {startSearch} from "../../api/startSearch";
 import {useFetching} from "../../hooks/useFetching";
 import {takeStatistic} from "../../api/takeStatistic";
 import MySelectorSearch from "../../components/mySelectorSearch/mySelectorSearch";
+import {storage, store} from "../../storage/storage";
+
+let counter = 0
 
 let flagOfSearch = false
 const SearchPage = () => {
@@ -44,9 +47,15 @@ const SearchPage = () => {
         }
         setContent(tempArray)
     })
-
     useEffect(() => {
-        takeStat()
+        (async () => await takeStat())()
+        console.log("some cont")
+        console.log(content)
+        return () => {
+            console.log("im here")
+            console.log(content)
+            storage.set('content', content)
+        }
     }, [])
 
     const [fetch, isLoading, isError] = useFetching(async (flag) => {
@@ -73,7 +82,7 @@ const SearchPage = () => {
     })
 
     useEffect(() => {
-        console.log(isError) //TODO: something wrong with isError
+        //TODO: something wrong with isError
     }, [isError])
 
     useEffect(() => {

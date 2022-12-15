@@ -89,9 +89,8 @@ const ManagementPage = () => {
             name: newName,
             isSelected: true
         }
-        let response
         try {
-            response = await addLink(temp_link, newName, 1)
+            await addLink(temp_link, newName, 1)
         } catch (error) {
             alert(error["response"]["data"]["error"])
             return

@@ -5,9 +5,11 @@ import classes from './main_page.module.css'
 import {takeStatistic} from "../../api/takeStatistic";
 import {useFetching} from "../../hooks/useFetching";
 import {useFetchingWithTimeout} from "../../hooks/useFetchingWithTimeout";
+import MainErrorWindow from "../../components/mainErrorWindow/mainErrorWindow";
 
 let isOpenedArr = []
 const MainPage = () => {
+    const [visible, setVisible] = useState(false)
     const [siteStatistics, setSiteStatistics] = useState([])
     const [fullStatistic, setFullStatistics] = useState({
         sites: 0,
@@ -66,6 +68,17 @@ const MainPage = () => {
     })
 
     useEffect(() => {
+        console.log('flag 1')
+        if(isErrorTimeout !== '') {
+            console.log('flag 2')
+            setVisible(true)
+        } else {
+            console.log('flag 3')
+            setVisible(false)
+        }
+    }, [isErrorTimeout])
+
+    useEffect(() => {
         (async () => await fetch())()
         let interval = setInterval(() => {
             (async () => await fetchWithoutLoading("placeholder"))()
@@ -80,6 +93,9 @@ const MainPage = () => {
             <div className={classes.main__title}>
                 <h1>Главная</h1>
             </div>
+            {visible &&
+                <MainErrorWindow/>
+            }
             <StatisticContainer
                 fullStatistic={fullStatistic}
                 isLoading={isLoading}

@@ -8,6 +8,7 @@ export function useFetching(callback) {
         try {
             setIsLoading(true)
             await callback(flag)
+            setError('')
         } catch(error) {
             setError(error)
         } finally {

@@ -4,7 +4,7 @@ import ResultSiteList from "../resultSiteList/resultSiteList";
 import LoadingSearch from "../loadingBars/loadingSearch";
 
 
-const ResultContainer = ({sites, isLoading, result, page, setPage, isError, flag}) => {
+const ResultContainer = ({sites, isLoading, result, page, setPage, isError, flag, limit}) => {
     return (
         <div className={classes.result_container}>
             <h3 className={classes.result_title}>
@@ -27,9 +27,10 @@ const ResultContainer = ({sites, isLoading, result, page, setPage, isError, flag
                         sites.length > 0
                         ?
                         <ResultSiteList sites={sites}
-                        result={result}
-                        page={page}
-                        setPage={setPage}
+                                        result={result}
+                                        page={page}
+                                        setPage={setPage}
+                                        limit={limit}
                         />
                         :
                         flag && <h1 className={classes.placeholder}>Ничего не найдено</h1>

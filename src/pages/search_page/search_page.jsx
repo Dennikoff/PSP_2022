@@ -63,7 +63,7 @@ const SearchPage = () => {
             let querySiteMas = []
             for (let cont of content) {
                 if (cont.isSelected) {
-                    querySiteMas.push(cont.link)
+                    querySiteMas.push(cont.url)
                 }
             }
             let response
@@ -139,6 +139,7 @@ const SearchPage = () => {
                                      setPage={setPage}
                                      isError={isError}
                                      flag={flagOfSearch}
+                                     limit={limit}
                     />
                 }
             </div>

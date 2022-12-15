@@ -3,9 +3,9 @@ import ResultSiteElement from "../resultSiteElement/resultSiteElement";
 import classes from './resultSiteList.module.css'
 import Pagination from "../pagination/pagination";
 
-const ResultSiteList = ({sites, result, page, setPage}) => {
+const ResultSiteList = ({sites, result, page, setPage, limit}) => {
 
-    const totalPage = Math.ceil(result.count / 20)
+    const totalPage = Math.ceil(result.count / limit)
     return (
         <div className={classes.resultList}>
             {sites.map((site) =>

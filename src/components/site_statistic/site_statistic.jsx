@@ -7,7 +7,7 @@ import triangle from '../../img/triangle.svg'
 import LoadingProcess from "../loadingBars/loadingProcess";
 import SiteStatisticBodyNoError from "./siteStatisticBodyNoError/siteStatisticBodyNoError";
 import SiteStatisticBodyError from "./siteStatisticBodyError/siteStatisticBodyError";
-
+import trashBin from '../../img/trashBin.svg'
 
 
 
@@ -50,6 +50,11 @@ const SiteStatistic = ({isOpenedArr, index, statistic, isOpened, setIsOpened}) =
         }
         return str
     }
+
+    function deleteButtonClicked() {
+
+    }
+
     if (statistic.isOpened) {
         statisticClasses.push(classes.active)
         triangleClasses.push(classes.active)
@@ -88,12 +93,15 @@ const SiteStatistic = ({isOpenedArr, index, statistic, isOpened, setIsOpened}) =
                                 : <span>Ошибка</span>}
                     </div>
                 </div>
-                <div
-                    className={triangleClasses.join(' ')}
-                >
+                <div className={classes.deleteButton}>
+                    <img src={trashBin} alt="error"
+                         style={{"width": "2vw"}}
+                         onClick={() => deleteButtonClicked()}
+                    />
+                </div>
+                <div className={triangleClasses.join(' ')}>
                     <img src={triangle} alt="error"
                          style={{"width": "2vw"}}
-                         className={classes.tria}
                     />
                 </div>
             </div>

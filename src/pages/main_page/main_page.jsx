@@ -74,6 +74,9 @@ const MainPage = () => {
             setVisible(true)
         } else {
             console.log('flag 3')
+            if(visible) {
+                window.location.reload()
+            }
             setVisible(false)
         }
     }, [isErrorTimeout])

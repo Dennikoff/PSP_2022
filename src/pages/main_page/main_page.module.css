@@ -7,6 +7,11 @@
     overflow: auto;
 }
 
+.main__body::-webkit-scrollbar {
+    width: 0;   //TODO: скроллбар убрать или подвинуть
+    /*background-color: red;*/
+}
+
 .header {
     width: 100%;
     background-color: #F3F3F3;

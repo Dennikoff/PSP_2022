@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import SiteListManagement from "../../components/siteListManagement/siteListManagement";
 import classes from './search_page.module.css'
 import MyInputContainer from "../../components/myInputContainer/myInputContainer";
 import ResultContainer from "../../components/resultContainer/resultContainer";
@@ -7,9 +6,7 @@ import {startSearch} from "../../api/startSearch";
 import {useFetching} from "../../hooks/useFetching";
 import {takeStatistic} from "../../api/takeStatistic";
 import MySelectorSearch from "../../components/mySelectorSearch/mySelectorSearch";
-import {storage, store} from "../../storage/storage";
-
-let counter = 0
+import {storage} from "../../storage/storage";
 
 let flagOfSearch = false
 const SearchPage = () => {

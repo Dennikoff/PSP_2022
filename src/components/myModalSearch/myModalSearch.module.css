@@ -44,7 +44,6 @@
 }
 
 .modalContent {
-    margin-top: 1vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -52,8 +51,8 @@
 }
 
 .triangle {
-    width: 2vw;
     rotate: 180deg;
+    width: 2vw;
 }
 
 .siteContainer {

@@ -11,13 +11,15 @@ const MySelectorSearch = ({text, content, setContent}) => {
                  setModalVisible(true)
              }}>
             <div className={classes.headerContainer}>
-                <div>
+                <div className={classes.text}>
                     {text}
                 </div>
-                <img src={triangle}
-                     alt="error"
-                     style={{"width": "2vw"}}
-                />
+                <div className={classes.triangle}>
+                    <img src={triangle}
+                         alt="error"
+                         style={{"width": "2vw"}}
+                    />
+                </div>
             </div>
             <MyModalSearch visible={modalVisible}
                            setVisible={setModalVisible}

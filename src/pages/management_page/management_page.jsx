@@ -61,8 +61,8 @@ const ManagementPage = () => {
     }
 
     const checkLink = (link) => {
-        if(Reg.test(link)) {
-            if(link.includes("..")){
+        if (Reg.test(link)) {
+            if (link.includes("..")) {
                 return false
             }
             let string = link.replace(Reg, '')
@@ -113,7 +113,7 @@ const ManagementPage = () => {
     }, [link])
 
     let compareFunction = (a, b) => {
-        if(a.name > b.name) {
+        if (a.name > b.name) {
             return 1
         } else {
             return -1
@@ -138,14 +138,14 @@ const ManagementPage = () => {
 
     const [fetch, isLoading] = useFetching(async (setIsIndexing) => {
         const response = await takeStatistic()
-        if(response["data"]["statistics"]["total"]["indexing"]) {
+        if (response["data"]["statistics"]["total"]["indexing"]) {
             setIsIndexing(true)
         }
 
     })
 
     useEffect(() => {
-        (async() => await getLnk(false))()
+        (async () => await getLnk(false))()
         fetch(setIsIndexing)
     }, [])
 
@@ -156,8 +156,8 @@ const ManagementPage = () => {
                 <h1>Управление</h1>
             </div>
 
-            <div className={classes.site_body}>
-                <div className={classes.button_container}>
+            <div className={classes.siteBody}>
+                <div className={classes.buttonContainer}>
                     {isIndexing
                         ?
                         <MyButton children="Остановить индексацию"
@@ -174,19 +174,21 @@ const ManagementPage = () => {
                         />
                     }
                 </div>
-                <InputContainer generateName={generateName}
-                                checkLink={checkLink}
-                                link={link}
-                                setLink={setLink}
-                                name={name}
-                                setName={setName}
-                                btnAdd={btnAdd}
-                                flag={flag}
-                />
+                <div className={classes.inputContainer}>
+                    <InputContainer generateName={generateName}
+                                    checkLink={checkLink}
+                                    link={link}
+                                    setLink={setLink}
+                                    name={name}
+                                    setName={setName}
+                                    btnAdd={btnAdd}
+                                    flag={flag}
+                    />
+                </div>
                 {sites.length > 0 &&
-                <SiteListManagement content={sites}
-                                    setContent={setSites}
-                />
+                    <SiteListManagement content={sites}
+                                        setContent={setSites}
+                    />
                 }
             </div>
         </div>

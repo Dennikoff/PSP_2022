@@ -13,7 +13,7 @@ const SearchPage = () => {
 
     let headerClass = classes.headerBodyCenter
 
-    if(flagOfSearch) {
+    if (flagOfSearch) {
         headerClass = classes.headerBody
     }
 
@@ -127,7 +127,7 @@ const SearchPage = () => {
                     />
                 </div>
             </div>
-            <div className={classes.site_body}>
+            <div className={classes.siteBody}>
                 {flagOfSearch &&
                     <ResultContainer sites={sites}
                                      isLoading={isLoading}

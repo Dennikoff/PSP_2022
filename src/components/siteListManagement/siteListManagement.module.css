@@ -63,10 +63,12 @@
 }
 
 .siteName {
+    font-size: 1.1vw;
     font-weight: bold;
 }
 
 .siteLink {
+    font-size: 1.1vw;
     margin-left: 2vw;
 }
 

@@ -25,6 +25,8 @@
 }
 
 .main__title {
+    font-size: 1.5vw;
+    height: 65px;
     margin-top: 10vh;
 }
 

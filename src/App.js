@@ -9,7 +9,7 @@ import React, {useEffect, useState} from 'react'
 
 
 function App() {
-    const [theme, setTheme] = useState(false)
+    const [theme, setTheme] = useState(true)
     const context = {
         theme: theme,
         toggleTheme: () => setTheme(!theme)

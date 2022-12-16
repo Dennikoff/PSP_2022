@@ -34,6 +34,17 @@
     color: var(--color-font)
 }
 
+.themToggle {
+    padding: 4px;
+    border: 2px solid var(--color-border);
+    background-color: var(--color-element-background);
+    border-radius: 12px;
+    position: absolute;
+    bottom: 5vh;
+    left: 5vw;
+    cursor: pointer;
+}
+
 .navLink:first-child {
     border-top: 0;
 }
@@ -41,3 +52,4 @@
 .navLink:hover {
     background-color: var(--color-button-active);
 }
+

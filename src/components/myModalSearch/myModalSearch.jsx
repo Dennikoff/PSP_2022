@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import classes from './myModalSearch.module.css'
 import selectedBlack from "../../img/siteSelectedBlack.svg";
 import selectedWhite from "../../img/siteSelectedWhite.svg";
@@ -7,12 +7,14 @@ import notSelectedWhite from "../../img/siteNotSelectedWhite.svg";
 import triangle from '../../img/triangle.svg'
 import {useFetching} from "../../hooks/useFetching";
 import {updateLinks} from "../../api/updateLinks";
+import {ThemeContext} from '../../context/ThemContext'
 
-let selected
-let notSelected
+
 const MyModalSearch = ({visible, setVisible, content, setContent}) => {
+    const [selected, setSelected] = useState()
+    const [notSelected, setNotSelected] = useState()
 
-    const flag = false
+    const context = useContext(ThemeContext)
 
     const [allSitesSelected, setAllSitesSelected] = useState(false)
 
@@ -43,9 +45,9 @@ const MyModalSearch = ({visible, setVisible, content, setContent}) => {
     }
 
     useEffect(() => {
-        notSelected = flag ? notSelectedBlack : notSelectedWhite
-        selected = flag ? selectedBlack : selectedWhite
-    }, [])
+        setNotSelected(context.theme ? notSelectedBlack : notSelectedWhite)
+        setSelected(context.theme ? selectedBlack : selectedWhite)
+    }, [context])
 
     return (
         <div className={rootClasses.join(' ')}

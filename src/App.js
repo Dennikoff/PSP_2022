@@ -2,25 +2,35 @@ import './styles/App.css';
 import {BrowserRouter} from "react-router-dom";
 import Navbar from "./components/navbar/navbar";
 import MyRouter from "./components/router/myRouter";
-import {ThemContext} from "./index";
-import React, {useEffect} from 'react'
+import {ThemeContext} from './context/ThemContext'
+import React, {useEffect, useState} from 'react'
 
 
 
 
 function App() {
-    let flag = React.useContext(ThemContext)
+    const [theme, setTheme] = useState(false)
+    const context = {
+        theme: theme,
+        toggleTheme: () => setTheme(!theme)
+    }
+
     useEffect(() => {
-        if(flag) {
+        if(theme) {
             import('./styles/lightTheme.css')
+            console.log('I am here 1')
         } else {
             import('./styles/darkTheme.css')
+            console.log('I am here 2')
         }
-    }, [flag])
+        console.log('I am here 3')
+    }, [theme])
     return (
         <BrowserRouter>
+        <ThemeContext.Provider value={context}>
             <Navbar/>
             <MyRouter/>
+        </ThemeContext.Provider>
         </BrowserRouter>
     )
 }

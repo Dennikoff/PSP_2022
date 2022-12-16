@@ -10,11 +10,12 @@ import notSelectedWhite from "../../img/siteNotSelectedWhite.svg";
 import trashBin from "../../img/trashBin.svg";
 import {updateLink} from "../../api/updateLink";
 import {logDOM} from "@testing-library/react";
+import {ThemContext} from "../../index";
 
 let selected
 let notSelected
 const SiteListManagement = ({content, setContent}) => {
-    let flag = true
+    let flag = React.useContext(ThemContext)
     const [allSitesSelected, setAllSitesSelected] = useState(false)
     const [deleteLnk] = useFetching(async (url) => {
         await deleteLink(url)
@@ -75,6 +76,7 @@ const SiteListManagement = ({content, setContent}) => {
     }, [content])
 
     useEffect(() => {
+
         notSelected = flag ? notSelectedBlack : notSelectedWhite
         selected = flag ? selectedBlack : selectedWhite
     }, [])

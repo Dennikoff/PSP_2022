@@ -22,15 +22,19 @@
 @font-face {
   font-family: "NotoSans-Regular";
   src: url("../fonts/NotoSans-Regular.ttf") format("truetype");
-  font-style: normal;
-  font-weight: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "NotoSans-Medium";
+  src: url("../fonts/NotoSans-Medium.ttf") format("truetype");
+  font-weight: 500;
 }
 
 @font-face {
   font-family: "NotoSans-Bold";
   src: url("../fonts/NotoSans-Bold.ttf") format("truetype");
-  font-style: auto;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 ::selection {

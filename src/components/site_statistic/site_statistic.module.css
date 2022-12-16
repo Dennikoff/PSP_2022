@@ -30,15 +30,21 @@
 
 .site_statistic_header {
     background-color: #C3C3C3;
-    height: 9vh;
+    height: 8.5vh;
     display: flex;
     flex-direction: row;
     align-items: center;
     padding-left: 5vh;
 }
 
-.header_name {
-    font-family: "NotoSans-Bold";
+.headerName {
+    font-size: 1.1vw;
+    font-weight: 700;
+}
+
+.headerUrl {
+    font-size: 1.1vw;
+    font-weight: 500;
 }
 
 .header_indexed_icon {
@@ -56,6 +62,7 @@
 
 
 .header_indexed_text {
+    font-size: 1.1vw;
     margin-left: 1vw;
 }
 

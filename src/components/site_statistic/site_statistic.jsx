@@ -69,10 +69,10 @@ const SiteStatistic = ({isOpenedArr, index, statistic, isOpened, setIsOpened}) =
                      isOpenedArr[index] = !isOpenedArr[index]
                  }}
             >
-                <span className={classes.header_name}>
+                <span className={classes.headerName}>
                     {statistic.name}
                 </span>
-                <span>
+                <span className={classes.headerUrl}>
                     &nbsp;&mdash;&nbsp;{`${statistic.url}`}
                 </span>
 

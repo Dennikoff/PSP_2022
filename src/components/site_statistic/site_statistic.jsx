@@ -96,7 +96,10 @@ const SiteStatistic = ({isOpenedArr, index, statistic, isOpened, setIsOpened}) =
                 <div className={classes.deleteButton}>
                     <img src={trashBin} alt="error"
                          style={{"width": "2vw"}}
-                         onClick={() => deleteButtonClicked()}
+                         onClick={(e) => {
+                             e.stopPropagation()
+                             deleteButtonClicked()
+                         }}
                     />
                 </div>
                 <div className={triangleClasses.join(' ')}>

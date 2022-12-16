@@ -1,13 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import classes from './myModalSearch.module.css'
-import notSelected from '../../img/siteNotSelected.svg'
-import selected from '../../img/siteSelected.svg'
+import selectedBlack from "../../img/siteSelectedBlack.svg";
+import selectedWhite from "../../img/siteSelectedWhite.svg";
+import notSelectedBlack from "../../img/siteNotSelectedBlack.svg";
+import notSelectedWhite from "../../img/siteNotSelectedWhite.svg";
 import triangle from '../../img/triangle.svg'
 import {useFetching} from "../../hooks/useFetching";
 import {updateLinks} from "../../api/updateLinks";
 
-
+let selected
+let notSelected
 const MyModalSearch = ({visible, setVisible, content, setContent}) => {
+
+    const flag = false
 
     const [allSitesSelected, setAllSitesSelected] = useState(false)
 
@@ -37,6 +42,11 @@ const MyModalSearch = ({visible, setVisible, content, setContent}) => {
         setContent(tempContentArr)
     }
 
+    useEffect(() => {
+        notSelected = flag ? notSelectedBlack : notSelectedWhite
+        selected = flag ? selectedBlack : selectedWhite
+    }, [])
+
     return (
         <div className={rootClasses.join(' ')}
              onClick={(e) => {
@@ -61,6 +71,7 @@ const MyModalSearch = ({visible, setVisible, content, setContent}) => {
                                  // setContent([...content.slice(0, index), tempCont, ...content.slice(index + 1)])
                                  // buttonApplyTapped()
                              }}
+                             className={classes.sitePicker}
                         />
                         <div className={classes.headerTextImgContainer}>
                             <div className={classes.headerText}>
@@ -102,17 +113,17 @@ const MyModalSearch = ({visible, setVisible, content, setContent}) => {
                                          tempCont.isSelected = !tempCont.isSelected
                                          setContent([...content.slice(0, index), tempCont, ...content.slice(index + 1)])
                                      }}
+                                     className={classes.sitePicker}
                                 />
-                                <div className={classes.nameButtonContainer}>
-                                    <div className={classes.sitePair}>
-                                        <div className={classes.siteName}>
-                                            {cont.name}
-                                        </div>
-                                        <div className={classes.siteLink}>
-                                            {cont.url}
-                                        </div>
+                                <div className={classes.sitePair}>
+                                    <div className={classes.siteName}>
+                                        {cont.name}
+                                    </div>
+                                    <div className={classes.siteLink}>
+                                        {cont.url}
                                     </div>
                                 </div>
+
                             </div>
                             <div className={classes.separatorContainer}>
                                 {

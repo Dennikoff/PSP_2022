@@ -7,17 +7,18 @@
 
 .App {
   text-align: center;
-  /*color: var(--color-grey)*/
+  color: var(--color-font)
 }
 
 :root {
   --color-grey: grey;
+  color: var(--color-font)
 }
 
 
 
 #root {
-  background-color: #E8E8E8;
+  background-color: var(--color-background);
   height: 100vh;
   display: flex;
   flex-direction: row;
@@ -43,8 +44,8 @@
 }
 
 ::selection {
-  background-color: #a4a4a4;
-  color: #fff;
+  background-color: var(--color-selection);
+  color: var(--color-font);
 }
 
 

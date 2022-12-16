@@ -11,8 +11,8 @@
 .result_sites_container {
     margin-top: 1vh;
     height: 50vh;
-    border: 2px solid #5D606C;
-    background-color: #C3C3C3;
+    border: 2px solid var(--color-border);
+    background-color: var(--color-element-background);
     border-radius: 2vh;
     overflow: auto;
 }

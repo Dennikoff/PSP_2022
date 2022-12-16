@@ -20,7 +20,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 2vw;
-    background-color: #F3F3F3;
+    background-color: var(--color-background);
 }
 
 .header {

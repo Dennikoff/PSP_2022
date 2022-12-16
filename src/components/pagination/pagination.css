@@ -10,12 +10,12 @@
     width: 40px;
     padding: 7px;
     margin-left: 10px;
-    border: 1px solid black;
+    border: 1px solid var(--color-border);
     user-select: none;
 
 }
 
 
 .page__current {
-    background-color: red;
+    background-color: grey;
 }

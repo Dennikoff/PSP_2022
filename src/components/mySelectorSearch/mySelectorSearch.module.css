@@ -6,15 +6,15 @@
     width: 100%;
     padding: 5px 10px;
     margin: 5px 0;
-    border: 2px solid #5D606C;
-    background-color: #C3C3C3;
-    color: #7E7E7E;
+    border: 2px solid var(--color-border);
+    background-color: var(--color-element-background);
+    color: var(--color-font);
     border-radius: 1.3vw;
     height: 4.5vh;
 }
 
 .text {
-
+    color: var(--color-font);
 }
 
 .headerContainer {

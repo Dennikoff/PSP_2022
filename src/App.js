@@ -2,7 +2,7 @@ import './styles/App.css';
 import {BrowserRouter} from "react-router-dom";
 import Navbar from "./components/navbar/navbar";
 import MyRouter from "./components/router/myRouter";
-
+import './styles/darkTheme.css'
 function App() {
 
     return (

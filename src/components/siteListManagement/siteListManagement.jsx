@@ -3,12 +3,18 @@ import classes from './siteListManagement.module.css'
 import {useFetching} from "../../hooks/useFetching";
 import {deleteLink} from "../../api/deleteLink";
 import {updateLinks} from "../../api/updateLinks";
-import selected from "../../img/siteSelected.svg";
-import notSelected from "../../img/siteNotSelected.svg";
+import selectedBlack from "../../img/siteSelectedBlack.svg";
+import selectedWhite from "../../img/siteSelectedWhite.svg";
+import notSelectedBlack from "../../img/siteNotSelectedBlack.svg";
+import notSelectedWhite from "../../img/siteNotSelectedWhite.svg";
 import trashBin from "../../img/trashBin.svg";
 import {updateLink} from "../../api/updateLink";
+import {logDOM} from "@testing-library/react";
 
+let selected
+let notSelected
 const SiteListManagement = ({content, setContent}) => {
+    let flag = true
     const [allSitesSelected, setAllSitesSelected] = useState(false)
     const [deleteLnk] = useFetching(async (url) => {
         await deleteLink(url)
@@ -67,6 +73,11 @@ const SiteListManagement = ({content, setContent}) => {
         }
         setAllSitesSelected(flag)
     }, [content])
+
+    useEffect(() => {
+        notSelected = flag ? notSelectedBlack : notSelectedWhite
+        selected = flag ? selectedBlack : selectedWhite
+    }, [])
 
     return (
         <div className={classes.mySelector}>

@@ -7,7 +7,7 @@ import notSelectedWhite from "../../img/siteNotSelectedWhite.svg";
 import triangle from '../../img/triangle.svg'
 import {useFetching} from "../../hooks/useFetching";
 import {updateLinks} from "../../api/updateLinks";
-import {ThemeContext} from '../../context/ThemContext'
+import {ThemeContext} from '../../context/themContext'
 
 
 const MyModalSearch = ({visible, setVisible, content, setContent}) => {

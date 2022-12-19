@@ -46,8 +46,6 @@ const SearchPage = () => {
     })
     useEffect(() => {
         (async () => await takeStat())()
-        console.log("some cont")
-        console.log(content)
         return () => {
             console.log("im here")
             console.log(content)

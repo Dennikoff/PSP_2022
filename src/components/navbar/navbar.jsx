@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {Link} from "react-router-dom";
 import classes from './navbar.module.css'
 import Toggle from 'react-toggle'
-import {ThemeContext} from "../../context/ThemContext";
+import {ThemeContext} from "../../context/themContext";
 const Navbar = () => {
     const context = useContext(ThemeContext)
     return (

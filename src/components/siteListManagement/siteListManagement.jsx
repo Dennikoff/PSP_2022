@@ -9,8 +9,7 @@ import notSelectedBlack from "../../img/siteNotSelectedBlack.svg";
 import notSelectedWhite from "../../img/siteNotSelectedWhite.svg";
 import trashBin from "../../img/trashBin.svg";
 import {updateLink} from "../../api/updateLink";
-import {logDOM} from "@testing-library/react";
-import {ThemeContext} from '../../context/ThemContext'
+import {ThemeContext} from '../../context/themContext'
 
 
 const SiteListManagement = ({content, setContent}) => {

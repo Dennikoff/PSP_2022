@@ -1,20 +1,24 @@
-import React from 'react';
-import {Route, Routes} from "react-router-dom";
-import MainPage from "../../pages/main_page/main_page";
-import ManagementPage from "../../pages/management_page/management_page";
-import SearchPage from "../../pages/search_page/search_page";
-import ProfilePage from "../../pages/profile_page/profile_page";
+import React, {useContext} from 'react';
+import {useRoutes} from "react-router-dom";
+import classes from './router.module.css'
+import {AuthContext} from "../../context/authContext";
+import {privateRoutes, publicRoutes} from "../../rotes/rotes";
 
 const MyRouter = () => {
+    const authContext = useContext(AuthContext)
+    const pubRoutes = useRoutes(publicRoutes)
+    const priRoutes = useRoutes(privateRoutes)
     return (
-        <Routes>
-            <Route path="/" element={<MainPage/>}
-            />
-            <Route path="/management" element={<ManagementPage/>}/>
-            <Route path="/search" element={<SearchPage/>}/>
-            <Route path="/profile" element={<ProfilePage/>}/>
-        </Routes>
-    );
+        <div className={classes.routes}>
+            {
+                !authContext.isAuth
+                    ?
+                    priRoutes
+                    :
+                    pubRoutes
+            }
+        </div>
+    )
 };
 
 export default MyRouter;

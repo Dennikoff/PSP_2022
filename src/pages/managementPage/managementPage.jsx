@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import classes from './management_page.module.css'
+import classes from './managementPage.module.css'
 import MyButton from "../../components/myButton/myButton";
 import {startIndexing} from "../../api/startIndexing";
 import {useFetching} from "../../hooks/useFetching";

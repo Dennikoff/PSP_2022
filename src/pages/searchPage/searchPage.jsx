@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import classes from './search_page.module.css'
+import classes from './searchPage.module.css'
 import MyInputContainer from "../../components/myInputContainer/myInputContainer";
 import ResultContainer from "../../components/resultContainer/resultContainer";
 import {startSearch} from "../../api/startSearch";

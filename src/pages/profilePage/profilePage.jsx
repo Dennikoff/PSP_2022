@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './profile_page.module.css'
+import classes from './profilePage.module.css'
 
 
 const ProfilePage = () => {

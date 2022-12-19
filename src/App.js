@@ -20,12 +20,11 @@ const getTheme = () => {
 }
 
 function App() {
-    const [theme, setTheme] = useState(getTheme())
+    const theme = getTheme()
     const context = {
         theme: theme,
         toggleTheme: () => {
             storage.set('theme', !theme)
-            setTheme(!theme);
             window.location.reload()
         }
     }
@@ -33,13 +32,10 @@ function App() {
     useEffect(() => {
         if(theme) {
             import('./styles/lightTheme.css')
-            console.log('I am here 1')
         } else {
             import('./styles/darkTheme.css')
-            console.log('I am here 2')
         }
-        console.log('I am here 3')
-    }, [theme])
+    }, [])
     return (
         <BrowserRouter>
         <ThemeContext.Provider value={context}>

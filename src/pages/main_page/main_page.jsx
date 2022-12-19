@@ -68,16 +68,12 @@ const MainPage = () => {
     })
 
     useEffect(() => {
-        console.log('flag 1')
         if(isErrorTimeout !== '') {
-            console.log('flag 2')
             setVisible(true)
         } else {
-            console.log('flag 3')
             if(visible) {
                 window.location.reload()
             }
-            setVisible(false)
         }
     }, [isErrorTimeout])
 

@@ -99,10 +99,11 @@
 
 .deleteButton {
     cursor: pointer;
+    height: 4vh;
 }
 
 .deleteButton:active {
-    translate: 2px 2px;
+    translate: 4px 4px;
     height: 3vh;
 }
 

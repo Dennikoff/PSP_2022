@@ -7,7 +7,8 @@ import selectedBlack from "../../img/siteSelectedBlack.svg";
 import selectedWhite from "../../img/siteSelectedWhite.svg";
 import notSelectedBlack from "../../img/siteNotSelectedBlack.svg";
 import notSelectedWhite from "../../img/siteNotSelectedWhite.svg";
-import trashBin from "../../img/trashBin.svg";
+import trashBinBlack from "../../img/trashBinBlack.svg";
+import trashBinWhite from "../../img/trashBinWhite.svg";
 import {updateLink} from "../../api/updateLink";
 import {ThemeContext} from '../../context/themContext'
 
@@ -15,6 +16,7 @@ import {ThemeContext} from '../../context/themContext'
 const SiteListManagement = ({content, setContent}) => {
     const [selected, setSelected] = useState()
     const [notSelected, setNotSelected] = useState()
+    const [trashBin, setTrashBin] = useState()
     let context = React.useContext(ThemeContext)
     const [allSitesSelected, setAllSitesSelected] = useState(false)
     const [deleteLnk] = useFetching(async (url) => {
@@ -78,6 +80,7 @@ const SiteListManagement = ({content, setContent}) => {
     useEffect(() => {
         setNotSelected(context.theme ? notSelectedBlack : notSelectedWhite)
         setSelected(context.theme ? selectedBlack : selectedWhite)
+        setTrashBin(context.theme ? trashBinBlack : trashBinWhite)
     }, [context])
 
     return (

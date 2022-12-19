@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import classes from './site_statistic.module.css'
 import imageOk from '../../img/indexInfoOk.svg'
 import imageProcess from '../../img/indexInfoProcess.svg'
@@ -7,13 +7,17 @@ import triangle from '../../img/triangle.svg'
 import LoadingProcess from "../loadingBars/loadingProcess";
 import SiteStatisticBodyNoError from "./siteStatisticBodyNoError/siteStatisticBodyNoError";
 import SiteStatisticBodyError from "./siteStatisticBodyError/siteStatisticBodyError";
-import trashBin from '../../img/trashBin.svg'
+import trashBinBlack from "../../img/trashBinBlack.svg";
+import trashBinWhite from "../../img/trashBinWhite.svg";
+import {ThemeContext} from "../../context/themContext";
 
 
 
 const SiteStatistic = ({isOpenedArr, index, statistic, isOpened, setIsOpened}) => {
     const statisticClasses = [classes.site_statistic_container]
     const triangleClasses = [classes.header_triangle]
+    const [trashBin, setTrashBin] = useState()
+    let context = React.useContext(ThemeContext)
 
     function getDate(date) {
         let str = ''
@@ -59,6 +63,10 @@ const SiteStatistic = ({isOpenedArr, index, statistic, isOpened, setIsOpened}) =
         statisticClasses.push(classes.active)
         triangleClasses.push(classes.active)
     }
+
+    useEffect(() => {
+        setTrashBin(context.theme ? trashBinBlack : trashBinWhite)
+    }, [context])
 
     return (
         <div className={statisticClasses.join(' ')}>

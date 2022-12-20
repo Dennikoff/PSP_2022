@@ -26,7 +26,7 @@ const ManagementPage = () => {
         const selectedSites = {}
         for (let site of sites) {
             if (site.isSelected) {
-                selectedSites[site.link] = site.name
+                selectedSites[site.url] = site.name
             }
         }
         if (Object.keys(selectedSites).length !== 0) {

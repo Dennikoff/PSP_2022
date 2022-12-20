@@ -1,0 +1,29 @@
+.loginBody {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputButtonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonApply {
+    margin-top: 5vh;
+    width: 15vw;
+    min-width: 100px;
+    height: 6vh;
+}
+
+.loginInput {
+    width: 25vw;
+}
+
+.passwordInput {
+    width: 25vw;
+}

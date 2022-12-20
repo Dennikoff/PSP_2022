@@ -107,16 +107,6 @@ const MainPage = () => {
                     isOpened={isOpened}
                     setIsOpened={setIsOpened}
                 />
-            {/*{isLoading */}
-            {/*    ? <SiteStatisticList*/}
-            {/*        siteStatistics={siteStatistics}*/}
-            {/*        isOpened={isOpened}*/}
-            {/*        setIsOpened={setIsOpened}*/}
-            {/*    />*/}
-            {/*    : <div className={classes.loaderContainer}>*/}
-            {/*        <LoadingStatistic style={{"marginTop": "5vh"}}/>*/}
-            {/*    </div>*/}
-            {/*}*/}
         </div>
     );
 };

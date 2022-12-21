@@ -81,7 +81,7 @@ const MainPage = () => {
         (async () => await fetch())()
         let interval = setInterval(() => {
             (async () => await fetchWithoutLoading("placeholder"))()
-        }, 10000)
+        }, 60000)
         return () => {
             clearInterval(interval)
         }

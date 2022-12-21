@@ -26,7 +26,7 @@ const ManagementPage = () => {
         const selectedSites = {}
         for (let site of sites) {
             if (site.isSelected) {
-                selectedSites[site.link] = site.name
+                selectedSites[site.url] = site.name
             }
         }
         if (Object.keys(selectedSites).length !== 0) {
@@ -61,6 +61,7 @@ const ManagementPage = () => {
     }
 
     const checkLink = (link) => {
+        let Reg = /^((ftp|http|https):\/\/)?(www\.)?([A-Za-zА-Яа-я0-9]{1}[A-Za-zА-Яа-я0-9.]*)\.{1}[A-Za-zА-Яа-я0-9-]{2,8}$/;
         if (Reg.test(link)) {
             if (link.includes("..")) {
                 return false

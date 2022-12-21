@@ -1,6 +1,7 @@
 import axios from "axios";
 import {storage} from "../storage/storage";
 import {getNewToken} from "./auth/getNewToken";
+import {refreshToken} from "../utils/refreshToken";
 
 export async function takeStatistic() {
     const tokens = storage.get('tokens')
@@ -9,10 +10,7 @@ export async function takeStatistic() {
     }).catch(
         async (error) => {
             if(error.response.status === 401){
-                const response = await getNewToken(tokens[1])
-                console.log(response.data.accessToken)
-                storage.set('tokens', [response.data.accessToken, tokens[1]])
-                return await takeStatistic()
+                await refreshToken(takeStatistic)
             } else {
                 console.log("error in request")
             }

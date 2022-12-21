@@ -9,19 +9,31 @@
  */
 
 import axios from "axios";
+import {storage} from "../storage/storage";
+import {refreshToken} from "../utils/refreshToken";
 
 export async function startSearch(query, limit, offset, querySitesMas) {
-    console.log(JSON.stringify(querySitesMas))
     let json = JSON.stringify(querySitesMas)
+    const tokens = storage.get('tokens')
     // axios.defaults.headers['Access-Control-Allow-Origin'] = '*'
-    return await axios.post("http://localhost:8080/api/search",{
+    return await axios.post("http://localhost:8080/api/search", {
         sites: json
-    },{
-         params:{
+    }, {
+        headers: {
+            "Authorization": `Bearer ${tokens[0]}`
+        },
+        params: {
             query,
             limit,
             offset
         }
-    })
+    }).catch(
+        async (e) => {
+            if (e.response.status === 401) {
+                await refreshToken(startSearch)
+            } else {
+                console.log('error in request')
+            }
+        })
 
 }

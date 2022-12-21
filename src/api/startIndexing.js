@@ -1,6 +1,7 @@
 import axios from "axios";
 import {storage} from "../storage/storage";
 import {getNewToken} from "./auth/getNewToken";
+import {refreshToken} from "../utils/refreshToken";
 
 
 export async function startIndexing(data) {
@@ -10,14 +11,13 @@ export async function startIndexing(data) {
     return await axios.post("http://localhost:8080/api/startIndexing", {
         data: json
     }, {
-            headers: {"Authorization": `Bearer ${tokens[0]}`}
-        }).catch(
+        headers: {
+            "Authorization": `Bearer ${tokens[0]}`
+        }
+    }).catch(
         async (error) => {
-            if(error.response.status === 401){
-                const response = await getNewToken(tokens[1])
-                console.log(response.data.accessToken)
-                storage.set('tokens', [response.data.accessToken, tokens[1]])
-                return await startIndexing()
+            if (error.response.status === 401) {
+                await refreshToken(startIndexing)
             } else {
                 console.log("error in request")
             }

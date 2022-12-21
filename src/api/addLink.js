@@ -1,6 +1,6 @@
 import axios from "axios";
 import {storage} from "../storage/storage";
-import {getNewToken} from "./auth/getNewToken";
+import {refreshToken} from "../utils/refreshToken";
 
 export async function addLink(url, name, isSelected) {
     isSelected = +isSelected
@@ -15,10 +15,7 @@ export async function addLink(url, name, isSelected) {
     }).catch(
     async (error) => {
         if(error.response.status === 401){
-            const response = await getNewToken(tokens[1])
-            console.log(response.data.accessToken)
-            storage.set('tokens', [response.data.accessToken, tokens[1]])
-            return await addLink()
+            await refreshToken(addLink)
         } else {
             console.log("error in request")
         }

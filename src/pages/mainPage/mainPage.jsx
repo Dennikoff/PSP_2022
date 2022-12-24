@@ -68,11 +68,13 @@ const MainPage = () => {
     })
 
     useEffect(() => {
+        console.log(isErrorTimeout)
         if(isErrorTimeout !== '') {
             setVisible(true)
         } else {
             if(visible) {
-                window.location.reload()
+                setVisible(false)
+                setIsLoading(false)
             }
         }
     }, [isErrorTimeout])

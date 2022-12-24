@@ -12,8 +12,8 @@ import {login} from "../../api/auth/login";
 const LoginPage = () => {
     const authContext = useContext(AuthContext)
     const navigate = useNavigate();
-    const [loginText, setLoginText] = useState('')
-    const [passwordText, setPasswordText] = useState('')
+    const [loginText, setLoginText] = useState('vadim.murov@mail.ru')
+    const [passwordText, setPasswordText] = useState('admin')
 
     const handleUserLogin = async () => {
         let response
@@ -39,6 +39,7 @@ const LoginPage = () => {
                     <MyInput placeholder="Логин"
                              value={loginText}
                              onChange={(e) => {setLoginText(e.target.value)}}
+                             autoComplete={loginText}
                     />
                 </div>
                 <div className={classes.passwordInput}>

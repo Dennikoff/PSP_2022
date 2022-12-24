@@ -31,6 +31,7 @@ const getAuth = () => {
 
 function App() {
     const [isAuth, setIsAuth] = useState(getAuth())
+    console.log(isAuth)
     const theme = getTheme()
     const authContext = {
         isAuth,

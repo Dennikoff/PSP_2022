@@ -5,7 +5,8 @@ const MyInput = (props) => {
     return (
         <input {...props}
                spellCheck="false"
-               className={classes.my_input}/>
+               className={classes.my_input}
+        />
     );
 };
 

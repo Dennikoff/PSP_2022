@@ -4,11 +4,14 @@ import {AuthContext} from "../../context/authContext";
 import MyButton from "../../components/myButton/myButton";
 import {storage} from "../../storage/storage";
 import {useNavigate} from "react-router-dom";
+import {logoutUser} from "../../utils/logoutUser";
 
 
 const ProfilePage = () => {
     const authContext = useContext(AuthContext)
     const navigate = useNavigate();
+
+
     return (
         <div className={classes.profile__body}>
             <div className={classes.profile__title}>

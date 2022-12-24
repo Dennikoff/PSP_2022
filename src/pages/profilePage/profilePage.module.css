@@ -16,7 +16,7 @@
     margin-top: 26vh;
     border: 2px solid var(--color-border);
     width: 60vw;
-    height: 30vh;
+    padding: 1vw;
     background-color: var(--color-element-background);
     border-radius: 2vw;
 }
@@ -83,4 +83,18 @@
 .notificationsImage {
     margin-left: 2vw;
     width: 2vw;
+}
+
+.exitButtonContainer {
+    display: flex;
+    width: 100%;
+    margin-top: 2vh;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1vw;
+}
+
+.exitButton {
+    width: 10vw;
+    height: 100%;
 }

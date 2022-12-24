@@ -2,7 +2,7 @@ import MainPage from "../pages/mainPage/mainPage";
 import ManagementPage from "../pages/managementPage/managementPage";
 import SearchPage from "../pages/searchPage/searchPage";
 import ProfilePage from "../pages/profilePage/profilePage";
-import LoginPage from "../pages/login/loginPage";
+import LoginPage from "../pages/account/loginPage/loginPage";
 import {Navigate} from "react-router-dom";
 
 export const privateRoutes = [

@@ -7,6 +7,7 @@ import classes from './registrationPage.module.css'
 import MyInput from "../../../components/myInput/myInput";
 import {useFetching} from "../../../hooks/useFetching";
 import {login} from "../../../api/auth/login";
+import {registration} from "../../../api/registration";
 
 
 const RegistrationPage = () => {
@@ -17,19 +18,18 @@ const RegistrationPage = () => {
     const [repPasswordText, setRepPasswordText] = useState('')
 
     const handleUserLogin = async () => {
-        let response
-        try {
-            response = await login(loginText, passwordText)
-        } catch (e) {
-            console.log(e)
-            alert("Неправильный логин или пароль")
+        if(passwordText !== repPasswordText) {
+            alert('Пароли не совпадают')
             return
         }
-        const data = response.data
-        storage.set('tokens', [data.accessToken, data.refreshToken])
-        storage.set('isAuth', true)
-        authContext.setIsAuth(true)
-        navigate("/")
+        let response
+        try {
+            response = await registration(loginText, passwordText)
+        } catch (e) {
+            alert(e.response.data.error)
+            return
+        }
+        navigate("/login")
     }
 
 
@@ -61,8 +61,8 @@ const RegistrationPage = () => {
                 </div>
                 <div className={classes.repPasswordInput}>
                     <MyInput placeholder="Повторите пароль"
-                             value={passwordText}
-                             onChange={(e) => {setPasswordText(e.target.value)}}
+                             value={repPasswordText}
+                             onChange={(e) => {setRepPasswordText(e.target.value)}}
                     />
                 </div>
                 <div className={classes.buttonApply}>

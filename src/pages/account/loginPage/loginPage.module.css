@@ -18,22 +18,23 @@
 }
 
 .title {
-    font-size: 3.5vw;
+    margin-top: 1vh;
+    font-size: 3.1vw;
     font-family: "NotoSans-Bold", serif;
 }
 
 .registerText {
-    font-size: 1.3vw;
+    font-size: 1.2vw;
     margin-top: 3vh;
 }
 
 .loginInput {
-    width: 19vw;
+    width: 21vw;
     margin-top: 1.5vh;
 }
 
 .passwordInput {
-    width: 19vw;
+    width: 21vw;
     margin-top: 2.5vh;
 }
 
@@ -45,7 +46,7 @@
 }
 
 .restorePassword {
-    font-size: 1.3vw;
+    font-size: 1.2vw;
     margin-top: 1vh;
 }
 

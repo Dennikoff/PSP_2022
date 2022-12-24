@@ -12,9 +12,10 @@
     margin-top: 1vh;
     height: 50vh;
     border: 2px solid var(--color-border);
-    background-color: var(--color-element-background);
+    background-color: #D9D9D9;/*var(--color-element-background);*/
     border-radius: 2vh;
     overflow: auto;
+    overflow-x: hidden;
 }
 
 .loadingCircle {

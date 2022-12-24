@@ -1,6 +1,5 @@
 .profile__body {
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,6 +12,75 @@
     margin-top: 10vh;
 }
 
-.buttonContainer {
-    width: 200px;
+.profileContainer {
+    margin-top: 26vh;
+    border: 2px solid var(--color-border);
+    width: 60vw;
+    height: 30vh;
+    background-color: var(--color-element-background);
+    border-radius: 2vw;
+}
+
+.emailContainer {
+    margin-top: 3vh;
+    margin-left: 4vw;
+    font-size: 2vw;
+    display: flex;
+}
+
+.textTitle {
+    font-weight: bold;
+    font-family: "NotoSans-Bold";
+}
+
+.email {
+    margin-left: 4vw;
+}
+
+.changePassContainer {
+    margin-top: 1vh;
+    margin-left: 4vw;
+    font-size: 2vw;
+    display: flex;
+}
+
+.changePassInputContainer {
+    margin-left: 4vw;
+}
+
+.newPassInput {
+    width: 20vw;
+    height: 3.5vh;
+    display: flex;
+}
+
+.oldPassInput {
+    display: flex;
+    width: 20vw;
+    height: 3.5vh;
+}
+
+.saveButton {
+    display: flex;
+    margin-left: 2vw;
+}
+
+.newPassButtonContainer {
+    height: auto;
+    margin-top: 1vw;
+    display: flex;
+    align-items: center;
+
+}
+
+.notificationsContainer {
+    margin-top: 1vh;
+    margin-left: 4vw;
+    font-size: 2vw;
+    display: flex;
+}
+
+.notificationsImage {
+    margin-left: 2vw;
+    width: 2vw;
 }

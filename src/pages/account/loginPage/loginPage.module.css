@@ -7,11 +7,10 @@
 }
 
 .loginContainer {
-    width: 30vw;
-    padding: 2vw;
+    padding: 2vw 4vw;
     border-radius: 2vw;
     border: 2px solid var(--color-border);
-    background-color: #1D1D1F;
+    background-color: var(--color-element-background-2);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -23,22 +22,31 @@
     font-family: "NotoSans-Bold", serif;
 }
 
-
-
-.buttonApply {
+.registerText {
+    font-size: 1.3vw;
     margin-top: 3vh;
-    width: 15vw;
-    min-width: 100px;
-    height: 6vh;
 }
 
 .loginInput {
-    width: 25vw;
+    width: 19vw;
+    margin-top: 1.5vh;
 }
 
 .passwordInput {
-    margin-top: 10px;
-    width: 25vw;
+    width: 19vw;
+    margin-top: 2.5vh;
+}
+
+.buttonApply {
+    margin-top: 2.5vh;
+    width: 100%;
+    min-width: 100px;
+    height: 5vh;
+}
+
+.restorePassword {
+    font-size: 1.3vw;
+    margin-top: 1vh;
 }
 
 .link {

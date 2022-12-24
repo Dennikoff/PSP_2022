@@ -46,7 +46,7 @@ const LoginPage = () => {
                         </Link>
                     </div>
                     <div className={classes.loginInput}>
-                        <MyInput placeholder="Логин"
+                        <MyInput placeholder="Почта"
                                  value={loginText}
                                  onChange={(e) => {setLoginText(e.target.value)}}
                                  autoComplete={loginText}

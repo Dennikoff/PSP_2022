@@ -7,9 +7,10 @@
 }
 
 .registrationContainer {
-    padding: 2vw 4vw;
+    padding: 60px 120px;
     border-radius: 2vw;
-    border: 2px solid var(--color-border);
+    width: 600px;
+    border: 1px solid var(--color-border);
     background-color: var(--color-element-background-2);
     display: flex;
     flex-direction: column;
@@ -18,41 +19,59 @@
 }
 
 .title {
-    margin-top: 1vh;
-    font-size: 3.1vw;
-    font-family: "NotoSans-Bold", serif;
+    font-size: 3em;
+    font-weight: 700;
+    font-family: "SegoeUI-Bold", serif;
 }
 
-.loginText {
-    font-size: 1.2vw;
-    margin-top: 3vh;
-}
-
-.emailInput {
-
-    width: 21vw;
-    margin-top: 1.5vh;
+.loginInput {
+    margin-top: 100px;
+    width: 100%;
 }
 
 .passwordInput {
-    width: 21vw;
-    margin-top: 2.5vh;
+    margin-top: 30px;
+    width: 100%;
 }
 
-.repPasswordInput {
-    width: 21vw;
-    margin-top: 2.5vh;
+.repeatPasswordInput {
+    margin-top: 30px;
+    width: 100%;
+}
+
+
+.buttonApplyContainer {
+    margin-top: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.buttonRegContainer {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .buttonApply {
-    margin-top: 2.5vh;
-    width: 100%;
-    min-width: 100px;
-    height: 5vh;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+}
+
+.restorePassword {
+    margin-top: 20px;
+    font-size: 0.8em;
 }
 
 .link {
     color: #0062D6;
     margin-left: 5px;
     text-decoration: none;
+}
+
+.regLink {
+    text-decoration: none;
+    color: grey;
 }

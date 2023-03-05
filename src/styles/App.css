@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "NotoSans-Regular";
+  font-family: "SegoeUI", serif;
 }
 
 .App {
@@ -26,24 +26,24 @@
 
 
 @font-face {
-  font-family: "NotoSans-Regular";
-  src: url("../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-family: "SegoeUI";
+  src: local("SegoeUI");
   font-weight: 400;
 }
 
 @font-face {
-  font-family: "NotoSans-Medium";
-  src: url("../fonts/NotoSans-Medium.ttf") format("truetype");
+  font-family: "SegoeUI-medium";
+  src: local("SegoeUI-SemiBold");
   font-weight: 500;
 }
 
 @font-face {
-  font-family: "NotoSans-Bold";
-  src: url("../fonts/NotoSans-Bold.ttf") format("truetype");
+  font-family: "SegoeUI-bold";
+  src: local("SegoeUI-Bold");
   font-weight: 700;
 }
 
-::selection {
+*::selection {
   background-color: var(--color-selection);
   color: var(--color-font);
 }

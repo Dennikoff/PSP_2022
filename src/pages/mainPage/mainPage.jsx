@@ -54,6 +54,9 @@ const MainPage = () => {
     })
     const [fetchWithoutLoading, isLoadingTimeout, isErrorTimeout] = useFetching(async () => {
         const response = await takeStatistic()
+        if(response === undefined) {
+            throw '401'
+        }
         setFullStatistics(response["data"]["statistics"]["total"])
         let stat = []
         let index = 0
@@ -68,13 +71,12 @@ const MainPage = () => {
     })
 
     useEffect(() => {
-        console.log(isErrorTimeout)
-        if(isErrorTimeout !== '') {
+        setIsLoading(false)
+        if(isErrorTimeout !== '' && isErrorTimeout !== '401') {
             setVisible(true)
         } else {
             if(visible) {
                 setVisible(false)
-                setIsLoading(false)
             }
         }
     }, [isErrorTimeout])
@@ -83,7 +85,7 @@ const MainPage = () => {
         (async () => await fetch())()
         let interval = setInterval(() => {
             (async () => await fetchWithoutLoading("placeholder"))()
-        }, 60000)
+        }, 10000)
         return () => {
             clearInterval(interval)
         }

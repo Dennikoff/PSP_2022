@@ -1,14 +1,14 @@
 import './styles/App.css';
 import {BrowserRouter} from "react-router-dom";
-import Navbar from "./components/navbar/navbar";
 import PublicRouter from "./components/router/publicRouter";
 import React, {useEffect, useState} from 'react'
 import {ThemeContext} from "./context/themContext";
 import {storage} from "./storage/storage";
 import {AuthContext} from "./context/authContext";
-import PrivateRouter from "./components/router/privateRouter";
 import PrivatePage from "./pages/privatePage/privatePage";
-
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
 
 const getTheme = () => {
 

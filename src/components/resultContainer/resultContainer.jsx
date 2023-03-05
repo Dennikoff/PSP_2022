@@ -33,7 +33,7 @@ const ResultContainer = ({sites, isLoading, result, page, setPage, isError, flag
                                         limit={limit}
                         />
                         :
-                        flag && <h1 className={classes.placeholder}>Ничего не найдено</h1>
+                        flag && <h1 className={classes.placeholder}>Поиск не дал результатов</h1>
                 }
             </div>
         </div>

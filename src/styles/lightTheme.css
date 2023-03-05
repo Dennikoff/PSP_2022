@@ -1,8 +1,8 @@
 :root {
-    --color-background: #E8E8E8;
-    --color-element-background: #c3c3c3;
-    --color-element-background-2: #D9D9D9;
-    --color-border: #5D606C;
+    --color-background: #F5F5F5;
+    --color-element-background: #F0F0F0;
+    --color-element-background-2: white;
+    --color-border: #747E89;
     --color-font: #000000;
     --color-button-active: #A1A1A3;
     --color-selection: #A4A4A4;

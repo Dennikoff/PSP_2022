@@ -48,4 +48,17 @@
   color: var(--color-font);
 }
 
+.p-button-label {
+  font-weight: 500 !important;
+  font-family: SegoeUI-medium, serif;
+}
+
+.p-inputtext {
+  width: 100%;
+  background-color: var(--color-element-background) !important;
+  color: var(--color-font) !important;
+}
+.p-password {
+  width: 100%;
+}
 

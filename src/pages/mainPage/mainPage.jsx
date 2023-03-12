@@ -93,12 +93,12 @@ const MainPage = () => {
 
     return (
         <div className={classes.main__body}>
-            {visible &&
-                <MainErrorWindow/>
-            }
+            {/*{visible &&*/}
+            {/*    <MainErrorWindow/>*/}
+            {/*}*/}
             <div className={classes.header}>
                 <div className={classes.main__title}>
-                    <h1>Главная</h1>
+                    <h1>Статистика по индексации</h1>
                 </div>
                 <StatisticContainer
                     fullStatistic={fullStatistic}

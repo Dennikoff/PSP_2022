@@ -1,0 +1,63 @@
+.navbar {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--nav-background);
+}
+
+.logoContainer {
+    color: white;
+    height: 200px;
+}
+
+.navbarLinkContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.link {
+    text-decoration: none;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid var(--nav-border);
+}
+
+.link:last-child {
+    border-bottom: 1px solid var(--nav-border);
+}
+
+.linkText {
+    text-decoration: none;
+    color: var(--nav-textcolor);
+    font-size: 1.4em;
+    font-family: "SegoeUI-medium", sans-serif;
+    margin-left: 20px;
+}
+
+.themToggle {
+    padding: 4px;
+    border: 2px solid var(--color-border);
+    background-color: var(--color-element-background);
+    border-radius: 12px;
+    position: absolute;
+    bottom: 5vh;
+    left: 5vw;
+    cursor: pointer;
+}
+
+.linkText:hover {
+    color: #818ec7;
+}
+
+.linkText:active {
+    color: #818ec7;
+}
+
+.active {
+    color: #818ec7;
+}
+

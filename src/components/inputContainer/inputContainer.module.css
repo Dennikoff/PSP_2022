@@ -1,7 +1,6 @@
 .input_button {
-    width: 15vw;
-    min-width: 100px;
-    height: 6vh;
+    width: 25%;
+    height: 50px;
 }
 
 .input {
@@ -11,21 +10,26 @@
 }
 
 .inputAndButton {
-    margin-top: 1vh;
+    margin-top: 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .input_title {
-    margin-left: 12px;
-    font-size: 1.2vw;
+    margin-left: 5px;
+    font-size: 1.4em;
     height: 22px;
     font-weight: bold;
 }
 
-.linkInput {
+.linkInputContainer {
+    margin-top: 40px;
     display: flex;
     align-items: center;
-    width: 70vw;
+    width: 110%;
+}
+
+.linkInput {
+    width: 100%;
 }

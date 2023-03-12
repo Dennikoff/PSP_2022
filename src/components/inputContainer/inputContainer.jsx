@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import MyInput from "../myInput/myInput";
-import MyButton from "../myButton/myButton";
+import { InputText } from 'primereact/inputtext';
+import {Button} from 'primereact/button';
 import classes from './inputContainer.module.css'
 import xmark from '../../img/xmark.svg'
 import vmark from '../../img/vmark.svg'
@@ -12,88 +13,73 @@ const InputContainer = ({generateName, checkLink, link, setLink, name, setName, 
 
 
     return (
-        <div className={classes.inputContainer}>
+        <div className={classes.kek}>
             <div className={classes.input_title}>
                 Добавить ссылку
             </div>
             <div className={classes.input}>
-                <div className={classes.linkInput}>
-                    <MyInput placeholder="Ссылка *"
-                             value={link}
-                             style={{"width": "60vw"}}
-                             onChange={(e) => {
-                                 setLink(e.target.value)
+                <div className={classes.linkInputContainer}>
+                    <span className="p-float-label" style={{"width": "91%"}}>
+                        <InputText
+                            id="link-url"
+                            value={link} onChange={(e) => setLink(e.target.value)}
+                            className={classes.linkInput}
+                            onKeyDown={async (event) => {
+                                if(event.code === 'Enter') {
+                                    if (checkLink(link)) {
+                                        await setName(generateName(link))
+                                        document.getElementById("link-name").focus()
+                                    } else {
+                                        console.log("incorrect link")
+                                    }
+                                }
+                            }}
+                        />
+                        <label htmlFor="link-url">Url</label>
+                    </span>
+                    {flag === -1 ? <Tooltip title="Некорректная ссылка">
+                        <img src={xmark}
+                             alt="error"
+                             style={{
+                                 "marginLeft": "1vw", "height": "3vh"
                              }}
-                             onKeyDown={async (e) => {
-                                 if(e.key === 'Enter') {
-                                     if (checkLink(link)) {
-                                         await setName(generateName(link))
-                                         const inputs = document.getElementById("nameInput")
-                                         focus(inputs)
-                                     } else {
-                                         console.log("incorrect link")
-                                     }
-                                 }
+                        />
+                    </Tooltip> : flag === 1 ? <Tooltip title="Корректная ссылка">
+                        <img src={vmark}
+                             alt="error"
+                             style={{
+                                 "marginLeft": "1vw", "height": "3vh"
                              }}
-                    />
-                    {
-                        flag === -1
-                            ?
-                            <Tooltip title="Некорректная ссылка">
-                                <img src={xmark}
-                                     alt="error"
-                                     style={{
-                                         "marginLeft": "1vw",
-                                         "height": "3vh"
-                                     }}
-                                />
-                            </Tooltip>
-                            : flag === 1
-                                ?
-                                <Tooltip title="Корректная ссылка">
-                                    <img src={vmark}
-                                         alt="error"
-                                         style={{
-                                             "marginLeft": "1vw",
-                                             "height": "3vh"
-                                         }}
-                                    />
-                                </Tooltip>
-                                :
-                                <div>
+                        />
+                    </Tooltip> : <div>
 
-                                </div>
-                    }
+                    </div>}
                 </div>
                 <div className={classes.inputAndButton}>
-                <MyInput placeholder="Имя"
-                         id={"nameInput"}
-                         value={name}
-                         style={{"width": "42vw"}}
-                         onChange={(e) => {
-                             if(e.target.value.length < 26) {
-                                 setName(e.target.value)
-                             }
-                         }}
-                         onKeyDown={(e) => {
-                             if (e.key === 'Enter') {
-                                 btnAdd(link)
-                             }
-                         }}
-                         onFocus={(e) => e.target.select()}
-                />
-                    <div className={classes.input_button}>
-                        <MyButton children="Добавить"
-                                  onClick={() => {
-                                      btnAdd(link)
-                                  }}
+                    <span className="p-float-label" style={{"width": "70%"}}>
+                        <InputText
+                            id="link-name"
+                            value={name} onChange={(e) => setName(e.target.value)}
+                            className={classes.linkInput}
+                            onKeyDown={(event) => {
+                                if(event.code === 'Enter') {
+                                    btnAdd(link)
+                                }
+                            }}
+                            onFocus={(e) => e.target.select()}
                         />
-                    </div>
+                        <label htmlFor="link-name">Название сайта</label>
+                    </span>
+                    <Button label="Добавить"
+                            onClick={() => {
+                                btnAdd(link)
+                            }}
+                            className={classes.input_button}
+                    />
                 </div>
             </div>
 
-        </div>
-    );
+        </div>);
 };
 
 export default InputContainer;

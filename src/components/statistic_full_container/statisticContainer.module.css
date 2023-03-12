@@ -1,4 +1,21 @@
+.contentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    border-radius: 10px;
+    padding: 50px;
+}
+
 .main__statistics_container {
     display: flex;
-    margin-top: 4vh;
+    padding: 40px 20px;
+    width: 100%;
+    justify-content: center;
+
 }
+
+.kek {
+
+}
+

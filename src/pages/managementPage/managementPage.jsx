@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import classes from './managementPage.module.css'
-import MyButton from "../../components/myButton/myButton";
 import {startIndexing} from "../../api/startIndexing";
 import {useFetching} from "../../hooks/useFetching";
 import {useStopFetching} from "../../hooks/useStopFetching";
@@ -12,11 +11,11 @@ import {addLink} from "../../api/addLink";
 import {getLinks} from "../../api/getLinks";
 import {useFetchingWithTimeout} from "../../hooks/useFetchingWithTimeout";
 import {takeStatistic} from "../../api/takeStatistic";
+import {Button} from 'primereact/button';
 
 let Reg = /^((ftp|http|https):\/\/)?(www\.)?([A-Za-zА-Яа-я0-9]{1}[A-Za-zА-Яа-я0-9.]*)\.{1}[A-Za-zА-Яа-я0-9-]{2,8}$/;
 
 const ManagementPage = () => {
-
     const [flag, setFlag] = useState(0)
     const [sites, setSites] = useState([])
     const [link, setLink] = useState('')
@@ -154,24 +153,27 @@ const ManagementPage = () => {
     return (
         <div className={classes.management__body}>
             <div className={classes.management__title}>
-                <h1>Управление</h1>
+                <h1>Управление индексацией</h1>
             </div>
 
             <div className={classes.siteBody}>
                 <div className={classes.buttonContainer}>
                     {isIndexing
                         ?
-                        <MyButton children="Остановить индексацию"
-                                  onClick={async () => {
-                                      await btnStopIndexing()
-                                  }}
-                                  style={{"backgroundColor": "red"}}
+                        <Button label="Остановить индексацию"
+                                onClick={async () => {
+                                    await btnStopIndexing()
+                                }}
+                                severity="danger"
+                                className={classes.btn}
+
                         />
                         :
-                        <MyButton children="Начать индексацию"
-                                  onClick={async () => {
-                                      await btnStartIndexing()
-                                  }}
+                        <Button label="Начать индексацию"
+                                onClick={async () => {
+                                    await btnStartIndexing()
+                                }}
+                                className={classes.btn}
                         />
                     }
                 </div>

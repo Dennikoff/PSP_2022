@@ -7,6 +7,8 @@ import {useFetching} from "../../hooks/useFetching";
 import {takeStatistic} from "../../api/takeStatistic";
 import MySelectorSearch from "../../components/mySelectorSearch/mySelectorSearch";
 import {storage} from "../../storage/storage";
+import { MultiSelect } from 'primereact/multiselect';
+
 
 let flagOfSearch = false
 const SearchPage = () => {
@@ -47,7 +49,6 @@ const SearchPage = () => {
     useEffect(() => {
         (async () => await takeStat())()
         return () => {
-            console.log("im here")
             console.log(content)
             storage.set('content', content)
         }
@@ -55,11 +56,10 @@ const SearchPage = () => {
 
     const [fetch, isLoading, isError] = useFetching(async (flag) => {
         if (query) {
+            console.log(selectedSites)
             let querySiteMas = []
-            for (let cont of content) {
-                if (cont.isSelected) {
-                    querySiteMas.push(cont.url)
-                }
+            for (let cont of selectedSites) {
+                querySiteMas.push(cont.url)
             }
             let response
             if (flag) {
@@ -67,6 +67,7 @@ const SearchPage = () => {
             } else {
                 response = await startSearch(query, limit, offset, querySiteMas)
             }
+            console.log(response)
             setSites(response.data.data)
             setResult({
                 result: response.data.result,
@@ -103,6 +104,7 @@ const SearchPage = () => {
         return () => flagOfSearch = false
     }, [startS])
 
+    const [selectedSites, setSelectedSites] = useState(null)
 
     return (
         <div className={classes.searchBody}>
@@ -112,10 +114,12 @@ const SearchPage = () => {
                 </div>
                 <div className={headerClass}>
                     <div className={classes.site_selector}>
-                        <MySelectorSearch text='Выбрать сайты'
-                                          content={content}
-                                          setContent={setContent}
-                        />
+                        <MultiSelect value={selectedSites} onChange={(e) => setSelectedSites(e.value)} options={content} optionLabel="name"
+                                     placeholder="Выбрать сайт" className={classes.primeSelector} />
+                        {/*<MySelectorSearch text='Выбрать сайты'*/}
+                        {/*                  content={content}*/}
+                        {/*                  setContent={setContent}*/}
+                        {/*/>*/}
                     </div>
                     <MyInputContainer query={query}
                                       setQuery={setQuery}

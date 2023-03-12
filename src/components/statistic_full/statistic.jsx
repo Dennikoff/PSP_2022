@@ -26,10 +26,10 @@ const Statistic = ({value, isLoading, title}) => {
         <div className={classes.mainStatisticContainer}>
             {!isLoading
                 ? <div className={classes.mainStatistic}>
-                    <p>
+                    <p className={classes.text}>
                         {value}
                     </p>
-                    <p>
+                    <p className={classes.text}>
                         {getNoun(value, title[0], title[1], title[2] )}
                     </p>
                 </div>

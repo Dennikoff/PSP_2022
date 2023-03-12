@@ -12,7 +12,6 @@ import trashBinWhite from "../../img/trashBinWhite.svg";
 import {ThemeContext} from "../../context/themContext";
 
 
-
 const SiteStatistic = ({isOpenedArr, index, statistic, isOpened, setIsOpened}) => {
     const statisticClasses = [classes.site_statistic_container]
     const triangleClasses = [classes.header_triangle]
@@ -56,7 +55,7 @@ const SiteStatistic = ({isOpenedArr, index, statistic, isOpened, setIsOpened}) =
     }
 
     function deleteButtonClicked() {
-
+        console.log('delete button')
     }
 
     if (statistic.isOpened) {
@@ -77,12 +76,14 @@ const SiteStatistic = ({isOpenedArr, index, statistic, isOpened, setIsOpened}) =
                      isOpenedArr[index] = !isOpenedArr[index]
                  }}
             >
-                <span className={classes.headerName}>
-                    {statistic.name}
-                </span>
-                <span className={classes.headerUrl}>
-                    &nbsp;&mdash;&nbsp;{`${statistic.url}`}
-                </span>
+                <div className={classes.nameUrl}>
+                    <span className={classes.headerName}>
+                        {statistic.name}
+                    </span>
+                    <span className={classes.headerUrl}>
+                        &nbsp;&mdash;&nbsp;{`${statistic.url}`}
+                    </span>
+                </div>
 
 
                 <div className={classes.header_indexed}>
@@ -103,7 +104,7 @@ const SiteStatistic = ({isOpenedArr, index, statistic, isOpened, setIsOpened}) =
                 </div>
                 <div className={classes.deleteButton}>
                     <img src={trashBin} alt="error"
-                         style={{"width": "2vw"}}
+                         style={{"width": "30px"}}
                          onClick={(e) => {
                              e.stopPropagation()
                              deleteButtonClicked()
@@ -112,14 +113,14 @@ const SiteStatistic = ({isOpenedArr, index, statistic, isOpened, setIsOpened}) =
                 </div>
                 <div className={triangleClasses.join(' ')}>
                     <img src={triangle} alt="error"
-                         style={{"width": "2vw"}}
+                         style={{"width": "30px"}}
                     />
                 </div>
             </div>
             {statistic.error
-            ?
+                ?
                 <SiteStatisticBodyError statistic={statistic}/>
-            :
+                :
                 <SiteStatisticBodyNoError statistic={statistic}/>
             }
         </div>

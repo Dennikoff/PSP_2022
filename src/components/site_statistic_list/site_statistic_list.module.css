@@ -1,6 +1,7 @@
 .statistic_site_list {
-    height: 57vh;
-    margin-top: 1.7vh;
+    height: 100%;
+    width: 80%;
+    padding: 20px 0;
 }
 
 .statistic_site_list::-webkit-scrollbar {

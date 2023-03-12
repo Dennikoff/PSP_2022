@@ -30,7 +30,7 @@ export async function startSearch(query, limit, offset, querySitesMas) {
     }).catch(
         async (e) => {
             if (e.response.status === 401) {
-                await refreshToken(startSearch)
+                await refreshToken(() => startSearch(query, limit, offset, querySitesMas))
             } else {
                 console.log('error in request')
             }

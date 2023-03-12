@@ -5,7 +5,5 @@
     padding: 5px 10px;
     border: 2px solid var(--color-border);
     border-radius: 1.3vw;
-    background-color: var(--color-element-background);
-    color: var(--color-font);
     font-family: "NotoSans-Bold";
 }

@@ -1,7 +1,7 @@
 
 .site_statistic_container{
     min-width: 60vw;
-    height: 9vh;
+    height: 90px;
     background-color: var(--color-element-background-2);
     border-radius: 3vh;
     overflow: hidden;
@@ -30,25 +30,28 @@
 
 .site_statistic_container.active {
     height: auto;
+    transition: all;
 }
 
 .site_statistic_header {
     background-color: var(--color-element-background);
-    height: 9vh;
+    height: 86px;
+    padding: 25px 0 25px 30px;
     display: flex;
+    user-select: none;
     flex-direction: row;
     align-items: center;
-    padding-left: 5vh;
+    justify-content: center;
 }
 
 .headerName {
-    font-size: 1.1vw;
-    font-weight: 700;
+    font-size: 1.2em;
+    font-family: SegoeUI-bold, serif;
 }
 
 .headerUrl {
-    font-size: 1.1vw;
-    font-weight: 500;
+    font-size: 1.1em;
+    font-family: SegoeUI-medium, serif;
 }
 
 .header_indexed_icon {
@@ -57,17 +60,17 @@
 }
 
 .header_indexed {
-    width: 14.8vw;
-    margin: 0 3vh 0 auto;
+    margin-right: auto;
     display: flex;
     align-items: center;
 
 }
 
 
-.header_indexed_text {
-    font-size: 1.1vw;
+.header_indexed_text * {
+    font-size: 0.8em;
     margin-left: 1vw;
+    font-family: SegoeUI-medium, serif;
 }
 
 
@@ -99,3 +102,9 @@
     margin-left: 2vw;
 }
 
+.nameUrl {
+    width: 60%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

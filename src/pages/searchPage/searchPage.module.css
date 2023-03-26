@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
     overflow: hidden;
 }
 
@@ -16,15 +17,13 @@
 
 
 .search__title {
-    font-size: 1.5vw;
-    display: flex;
-    height: 65px;
-    margin-top: 10vh;
-    align-items: center;
-    justify-content: center;
+    font-size: 1.4em;
+    margin-top: 80px;
 }
 
 .searchHeader {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }

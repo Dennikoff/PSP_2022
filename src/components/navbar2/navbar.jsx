@@ -1,10 +1,11 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import './active.css'
 import classes from './navbar.module.css'
 import Toggle from 'react-toggle'
 import classNames from "classnames";
 import {ThemeContext} from "../../context/themContext";
+import Logo from '../../img/searchIcon.svg'
 const Navbar = () => {
     const context = useContext(ThemeContext)
     function getActive() {
@@ -18,11 +19,11 @@ const Navbar = () => {
         }
         return 0
     }
-
+    const location = useLocation();
     const [active, setActive] = useState(getActive())
     useEffect(() => {
         setActive(getActive())
-    }, [])
+    }, [location])
     const [navigationMenu, setNavigationMenu] = useState([
         {
             path: '/',
@@ -64,7 +65,7 @@ const Navbar = () => {
     return (
         <div className={classes.navbar}>
             <div className={classes.logoContainer}>
-                LOGO
+                <img src={Logo} alt="LOGO"/>
             </div>
             <div className={classes.navbarLinkContainer}>
                 <Link to={'/'} className={classes.link}>

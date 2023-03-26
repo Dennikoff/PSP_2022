@@ -62,3 +62,42 @@
   width: 100%;
 }
 
+.p-multiselect {
+  background-color: var(--color-element-background) !important;
+}
+
+.p-multiselect-header {
+  background-color: var(--color-element-background) !important;
+}
+.p-checkbox-box {
+  background-color: var(--color-element-background) !important;
+}
+.p-multiselect-items-wrapper {
+  background-color: var(--color-element-background) !important;
+}
+.p-multiselect-item {
+  background-color: var(--color-element-background) !important;
+}
+
+.p-multiselect-item span {
+  color: var(--color-font) !important;
+}
+
+.p-paginator {
+  background-color: var(--color-element-background) !important;
+}
+
+.p-paginator-page {
+  color: var(--color-font) !important;
+}
+
+.p-highlight {
+  background-color: var(--color-element-background-2) !important;
+}
+
+.p-paginator-page:hover {
+  background-color: var(--color-element-background-2) !important;
+}
+
+
+

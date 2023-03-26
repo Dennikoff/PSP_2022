@@ -3,7 +3,7 @@
     min-width: 60vw;
     height: 90px;
     background-color: var(--color-element-background-2);
-    border-radius: 3vh;
+    border-radius: 15px;
     overflow: hidden;
     margin-top: 1.5vh;
     cursor: pointer;

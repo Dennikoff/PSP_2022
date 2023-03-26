@@ -7,57 +7,51 @@
 }
 
 .profile__title {
-    font-size: 1.5vw;
-    height: 65px;
-    margin-top: 10vh;
+    font-size: 1.4em;
+    margin-top: 80px;
 }
 
 .profileContainer {
-    margin-top: 26vh;
+    margin-top: 100px;
     border: 2px solid var(--color-border);
-    width: 60vw;
-    padding: 1vw;
+    width: 800px;
+    padding: 50px 70px;
     background-color: var(--color-element-background);
-    border-radius: 2vw;
+    border-radius: 10px;
 }
 
 .emailContainer {
-    margin-top: 3vh;
-    margin-left: 4vw;
-    font-size: 2vw;
     display: flex;
+    align-items: center;
 }
 
 .textTitle {
-    font-weight: bold;
-    font-family: "NotoSans-Bold";
+    font-weight: 400;
+    font-size: 1.7em;
+    font-family: "SegoeUI-medium";
 }
 
 .email {
+    font-size: 1.5em;
     margin-left: 4vw;
 }
 
 .changePassContainer {
-    margin-top: 1vh;
-    margin-left: 4vw;
-    font-size: 2vw;
-    display: flex;
+    margin-top: 50px;
 }
 
 .changePassInputContainer {
-    margin-left: 4vw;
+    padding: 30px 20px 0 0;
 }
 
 .newPassInput {
     width: 20vw;
-    height: 3.5vh;
     display: flex;
 }
 
 .oldPassInput {
     display: flex;
     width: 20vw;
-    height: 3.5vh;
 }
 
 .saveButton {
@@ -67,17 +61,16 @@
 
 .newPassButtonContainer {
     height: auto;
-    margin-top: 1vw;
+    margin-top: 30px;
     display: flex;
     align-items: center;
 
 }
 
 .notificationsContainer {
-    margin-top: 1vh;
-    margin-left: 4vw;
-    font-size: 2vw;
+    margin-top: 50px;
     display: flex;
+    align-items: center;
 }
 
 .notificationsImage {
@@ -88,13 +81,11 @@
 .exitButtonContainer {
     display: flex;
     width: 100%;
-    margin-top: 2vh;
-    justify-content: center;
+    margin-top: 50px;
     align-items: center;
-    padding-bottom: 1vw;
 }
 
 .exitButton {
-    width: 10vw;
-    height: 100%;
+    width: 120px;
+
 }

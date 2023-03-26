@@ -10,9 +10,9 @@ import {storage} from "../../storage/storage";
 import { MultiSelect } from 'primereact/multiselect';
 
 
-let flagOfSearch = false
-const SearchPage = () => {
 
+const SearchPage = () => {
+    let [flagOfSearch, setFlagOfSearch] = useState(false)
     let headerClass = classes.headerBodyCenter
 
     if (flagOfSearch) {
@@ -49,14 +49,12 @@ const SearchPage = () => {
     useEffect(() => {
         (async () => await takeStat())()
         return () => {
-            console.log(content)
             storage.set('content', content)
         }
     }, [])
 
     const [fetch, isLoading, isError] = useFetching(async (flag) => {
         if (query) {
-            console.log(selectedSites)
             let querySiteMas = []
             for (let cont of selectedSites) {
                 querySiteMas.push(cont.url)
@@ -67,7 +65,6 @@ const SearchPage = () => {
             } else {
                 response = await startSearch(query, limit, offset, querySiteMas)
             }
-            console.log(response)
             setSites(response.data.data)
             setResult({
                 result: response.data.result,
@@ -99,11 +96,9 @@ const SearchPage = () => {
 
     useEffect(() => {
         if (startS) {
-            flagOfSearch = true
+            setFlagOfSearch(true)
         }
-        return () => flagOfSearch = false
     }, [startS])
-
     const [selectedSites, setSelectedSites] = useState(null)
 
     return (

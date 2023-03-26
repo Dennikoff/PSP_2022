@@ -2,6 +2,9 @@
     color: #989898;
     font-size: 1.8vh;
     text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .siteURL a{

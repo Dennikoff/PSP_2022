@@ -5,6 +5,7 @@
     flex-direction: column;
     align-items: center;
     overflow: auto;
+    padding-bottom: 50px;
 }
 
 .main__body::-webkit-scrollbar {
@@ -24,6 +25,10 @@
 .main__title {
     font-size: 1.4em;
     margin-top: 80px;
+}
+
+.deleteButton {
+    height: 50px;
 }
 
 

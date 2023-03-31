@@ -15,7 +15,7 @@ export async function updateLink(url, isSelected) {
     }).catch(
         async (error) => {
             if(error.response.status === 401) {
-                await refreshToken(updateLink)
+                await refreshToken(() => updateLink(url, isSelected))
             } else {
                 console.log("error in response")
             }

@@ -10,6 +10,7 @@ import SiteStatisticBodyError from "./siteStatisticBodyError/siteStatisticBodyEr
 import trashBinBlack from "../../img/trashBinBlack.svg";
 import trashBinWhite from "../../img/trashBinWhite.svg";
 import {ThemeContext} from "../../context/themContext";
+import {deleteSite} from "../../api/deleteSite";
 
 
 const SiteStatistic = ({isOpenedArr, index, statistic, isOpened, setIsOpened}) => {
@@ -54,8 +55,10 @@ const SiteStatistic = ({isOpenedArr, index, statistic, isOpened, setIsOpened}) =
         return str
     }
 
-    function deleteButtonClicked() {
+    async function deleteButtonClicked() {
         console.log('delete button')
+        let response = await deleteSite(statistic.url)
+        console.log(response)
     }
 
     if (statistic.isOpened) {

@@ -14,10 +14,12 @@
 .profileContainer {
     margin-top: 100px;
     border: 2px solid var(--color-border);
-    width: 800px;
-    padding: 50px 70px;
+    width: 700px;
+    padding: 50px 0 50px 100px;
     background-color: var(--color-element-background);
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .emailContainer {
@@ -79,13 +81,14 @@
 }
 
 .exitButtonContainer {
+    padding-left: 200px;
     display: flex;
     width: 100%;
     margin-top: 50px;
-    align-items: center;
 }
 
 .exitButton {
     width: 120px;
+
 
 }

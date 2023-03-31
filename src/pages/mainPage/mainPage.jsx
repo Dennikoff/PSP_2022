@@ -6,6 +6,8 @@ import {takeStatistic} from "../../api/takeStatistic";
 import {useFetching} from "../../hooks/useFetching";
 import {useFetchingWithTimeout} from "../../hooks/useFetchingWithTimeout";
 import MainErrorWindow from "../../components/mainErrorWindow/mainErrorWindow";
+import {Button} from "primereact/button";
+
 
 let isOpenedArr = []
 const MainPage = () => {
@@ -17,6 +19,10 @@ const MainPage = () => {
         pages: 0
     })   // MAKE SOME CHANGES TO RELOAD DATA
     const [isOpened, setIsOpened] = useState(false)
+
+    function handleDeleteButton() {
+
+    }
 
     const [fetch, isLoading, setIsLoading, isError] = useFetchingWithTimeout(async () => {
         let start = new Date()

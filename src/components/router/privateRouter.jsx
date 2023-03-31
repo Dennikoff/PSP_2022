@@ -14,7 +14,7 @@ const PrivateRouter = () => {
     const priRoutes = useRoutes(privateRoutes)
     checkAuth(useContext(AuthContext))
     return (
-        <div style={{"width": "100%", "height": "100vh"}}>
+        <div style={{"width": "100%", "height": "auto"}}>
             {priRoutes}
         </div>
     );

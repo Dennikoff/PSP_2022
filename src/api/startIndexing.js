@@ -17,7 +17,7 @@ export async function startIndexing(data) {
     }).catch(
         async (error) => {
             if (error.response.status === 401) {
-                await refreshToken(startIndexing)
+                await refreshToken(() => startIndexing(data))
             } else {
                 console.log("error in request")
             }

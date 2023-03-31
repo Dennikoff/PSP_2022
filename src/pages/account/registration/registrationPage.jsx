@@ -30,7 +30,6 @@ const RegistrationPage = () => {
             response = await registration(loginText, passwordText)
         } catch (e) {
             console.log(e)
-            alert("Неправильный логин или пароль")
             return
         }
         const data = response.data
@@ -84,7 +83,7 @@ const RegistrationPage = () => {
                 </div>
                 <div className={classes.buttonApplyContainer}>
                     <Button
-                        children={<span>&nbsp;Вход</span>}
+                        children={<span>&nbsp;Зарегистрироваться</span>}
                         className={classes.buttonApply}
                         icon="pi pi-check"
                         loading={loading}

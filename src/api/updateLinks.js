@@ -15,9 +15,9 @@ export async function updateLinks(newMas) {
     }).catch(
         async (error) => {
             if(error.response.status === 401) {
-                await refreshToken(updateLinks)
+                await refreshToken(() => updateLinks(newMas))
             } else {
-                console.log('error in response')
+                throw error
             }
         }
     )

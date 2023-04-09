@@ -10,9 +10,9 @@ export async function getLinks() {
     }).catch(
         async (error) => {
             if(error.response.status === 401){
-                await refreshToken(getLinks)
+                await refreshToken(() => getLinks())
             } else {
-                console.log("error in request")
+                throw error
             }
         })
 }

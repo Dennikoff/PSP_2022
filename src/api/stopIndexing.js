@@ -14,7 +14,7 @@ export async function stopIndexing() {
             if (e.response.status === 401) {
                 await refreshToken(stopIndexing)
             } else {
-                console.log('error in request')
+                throw error
             }
         })
 }

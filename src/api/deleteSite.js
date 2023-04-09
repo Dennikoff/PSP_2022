@@ -16,7 +16,7 @@ export async function deleteSite(url) {
             if(error.response.status === 401){
                 await refreshToken(() => deleteSite(url))
             } else {
-                console.log("error in request")
+                throw error
             }
         })
 }
@@ -32,7 +32,7 @@ export async function deleteAllSites() {
             if(error.response.status === 401){
                 await refreshToken(() => deleteAllSites())
             } else {
-                console.log("error in request")
+                throw error
             }
         })
 }

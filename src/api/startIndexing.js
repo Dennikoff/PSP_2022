@@ -19,7 +19,7 @@ export async function startIndexing(data) {
             if (error.response.status === 401) {
                 await refreshToken(() => startIndexing(data))
             } else {
-                console.log("error in request")
+                throw error
             }
         })
 }

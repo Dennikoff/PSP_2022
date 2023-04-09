@@ -12,7 +12,7 @@ export async function takeStatistic() {
             if(error.response.status === 401){
                 await refreshToken(takeStatistic)
             } else {
-                console.log("error in request")
+                throw error
             }
         }
     )

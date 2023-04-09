@@ -16,7 +16,7 @@ export async function deleteLink(url) {
             if(error.response.status === 401){
                 await refreshToken(() => deleteLink(url))
             } else {
-                console.log("error in request")
+                throw error
             }
         })
 }

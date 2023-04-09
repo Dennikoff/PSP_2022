@@ -25,18 +25,14 @@ const RegistrationPage = () => {
     const [repPasswordText, setRepPasswordText] = useState('')
 
     const [handleUserRegistration, loading, isError] = useFetching(async () => {
-        let response
         try {
-            response = await registration(loginText, passwordText)
+            await registration(loginText, passwordText)
         } catch (e) {
             console.log(e)
             return
         }
-        const data = response.data
-        storage.set('tokens', [data.accessToken, data.refreshToken])
-        storage.set('isAuth', true)
-        authContext.setIsAuth(true)
-        navigate("/")
+
+        navigate("/login")
     })
 
 

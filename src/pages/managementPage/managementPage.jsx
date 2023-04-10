@@ -144,9 +144,17 @@ const ManagementPage = () => {
 
     })
 
+
     useEffect(() => {
-        (async () => await getLnk(false))()
         fetch(setIsIndexing)
+        getLnk(false)
+        let interval = setInterval( () => {
+            getLnk(false)
+            fetch(setIsIndexing)
+        }, 10000)
+        return () => {
+            clearInterval(interval)
+        }
     }, [])
 
 

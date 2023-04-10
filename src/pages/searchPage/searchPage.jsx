@@ -21,7 +21,6 @@ const SearchPage = () => {
 
     const limit = 10
     const [query, setQuery] = useState('')
-    const [page, setPage] = useState(1)
     const [content, setContent] = useState([])
     const [result, setResult] = useState({
         result: false,
@@ -80,13 +79,9 @@ const SearchPage = () => {
 
     useEffect(() => {
         if (startS) {
-            setPage(1)
+            setOffset(0)
         }
     }, [startS])
-
-    useEffect(() => {
-        setOffset((page - 1) * limit)
-    }, [page])
 
     useEffect(() => {
         if (!startS) {
@@ -129,8 +124,8 @@ const SearchPage = () => {
                     <ResultContainer sites={sites}
                                      isLoading={isLoading}
                                      result={result}
-                                     page={page}
-                                     setPage={setPage}
+                                     page={offset}
+                                     setPage={setOffset}
                                      isError={isError}
                                      flag={flagOfSearch}
                                      limit={limit}

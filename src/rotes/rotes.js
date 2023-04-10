@@ -5,6 +5,7 @@ import ProfilePage from "../pages/profilePage/profilePage";
 import LoginPage from "../pages/account/loginPage/loginPage";
 import {Navigate} from "react-router-dom";
 import RegistrationPage from "../pages/account/registration/registrationPage";
+import ConfirmEmail from "../pages/account/registration/confirmEmail";
 
 export const privateRoutes = [
     {path: '/', element: <MainPage/>},
@@ -19,5 +20,6 @@ export const privateRoutes = [
 export const publicRoutes = [
     {path: '/login', element: <LoginPage/>},
     {path: '/register', element: <RegistrationPage/>},
+    {path: '/email-confirm', element: <ConfirmEmail/>},
     {path: '*', element: <Navigate to="/login" replace />}
 ]

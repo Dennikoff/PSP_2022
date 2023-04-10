@@ -17,8 +17,8 @@ import './custom_inputs.css'
 const LoginPage = () => {
     const authContext = useContext(AuthContext)
     const navigate = useNavigate();
-    const [loginText, setLoginText] = useState('vadim.murov@mail.ru')
-    const [passwordText, setPasswordText] = useState('admin')
+    const [loginText, setLoginText] = useState('')
+    const [passwordText, setPasswordText] = useState('')
 
     const [handleUserLogin, loading, isError] = useFetching(async () => {
         let response

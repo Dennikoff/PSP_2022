@@ -32,7 +32,7 @@ export async function startSearch(query, limit, offset, querySitesMas) {
             if (e.response.status === 401) {
                 await refreshToken(() => startSearch(query, limit, offset, querySitesMas))
             } else {
-                throw error
+                throw e
             }
         })
 

@@ -32,7 +32,7 @@ const RegistrationPage = () => {
             return
         }
 
-        navigate("/login")
+        navigate("/email-confirm")
     })
 
 

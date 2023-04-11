@@ -28,11 +28,11 @@ export async function startSearch(query, limit, offset, querySitesMas) {
             offset
         }
     }).catch(
-        async (e) => {
-            if (e.response.status === 401) {
+        async (error) => {
+            if (error.response.status === 401) {
                 await refreshToken(() => startSearch(query, limit, offset, querySitesMas))
             } else {
-                throw e
+                throw error
             }
         })
 

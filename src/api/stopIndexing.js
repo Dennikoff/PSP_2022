@@ -10,11 +10,11 @@ export async function stopIndexing() {
             "Authorization": `Bearer ${tokens[0]}`
         }
     }).catch(
-        async (e) => {
-            if (e.response.status === 401) {
+        async (error) => {
+            if (error.response.status === 401) {
                 await refreshToken(stopIndexing)
             } else {
-                throw e
+                throw error
             }
         })
 }

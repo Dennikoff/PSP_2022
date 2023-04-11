@@ -7,7 +7,8 @@ import {useFetching} from "../../hooks/useFetching";
 import {useFetchingWithTimeout} from "../../hooks/useFetchingWithTimeout";
 import MainErrorWindow from "../../components/mainErrorWindow/mainErrorWindow";
 import {Button} from "primereact/button";
-
+import axios from 'axios'
+import {getAuthInfo} from "../../api/auth/getAuthInfo";
 
 let isOpenedArr = []
 const MainPage = () => {
@@ -88,6 +89,13 @@ const MainPage = () => {
     }, [isErrorTimeout])
 
     useEffect(() => {
+
+        try{
+            getAuthInfo().then(response => console.log(response.data))
+        } catch (e) {
+            console.log(e)
+        }
+
         (async () => await fetch())()
         let interval = setInterval(() => {
             (async () => await fetchWithoutLoading("placeholder"))()

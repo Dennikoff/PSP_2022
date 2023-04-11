@@ -1,6 +1,6 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useRef} from 'react';
 import {AuthContext} from "../../../context/authContext";
-
+import { Toast } from 'primereact/toast';
 import {Button} from 'primereact/button';
 import {InputText} from 'primereact/inputtext';
 import {Password} from 'primereact/password';
@@ -19,14 +19,14 @@ const LoginPage = () => {
     const navigate = useNavigate();
     const [loginText, setLoginText] = useState('')
     const [passwordText, setPasswordText] = useState('')
+    const toast = useRef(null);
 
     const [handleUserLogin, loading, isError] = useFetching(async () => {
         let response
         try {
             response = await login(loginText, passwordText)
         } catch (e) {
-            console.log(e)
-            alert("Неправильный логин или пароль")
+            toast.current.show({severity:'error', summary: 'Ошибка', detail:e.response.data.error, life: 3000});
             return
         }
         const data = response.data
@@ -39,6 +39,7 @@ const LoginPage = () => {
 
     return (
         <div className={classes.loginBody}>
+            <Toast ref={toast}></Toast>
             <div className={classes.loginContainer}>
 
                 <h1 className={classes.title}>

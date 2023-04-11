@@ -31,7 +31,7 @@ const RegistrationPage = () => {
             console.log(e)
             return
         }
-
+        storage.set('email', loginText)
         navigate("/email-confirm")
     })
 

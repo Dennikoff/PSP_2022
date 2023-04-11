@@ -84,12 +84,10 @@ const LoginPage = () => {
                 </div>
                 <div className={classes.buttonRegContainer}>
                     <Button
-                        children={<Link className={classes.regLink} to={'/register'}>
-                            Регистрация
-                        </Link>}
+                        label={'Регистрация'}
                         severity="secondary" outlined
                         className={classes.buttonApply}
-
+                        onClick={() => navigate('/registration')}
                     />
                 </div>
                 <div className={classes.restorePassword}>

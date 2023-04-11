@@ -89,12 +89,10 @@ const RegistrationPage = () => {
                 </div>
                 <div className={classes.buttonRegContainer}>
                     <Button
-                        children={<Link className={classes.regLink} to={'/login'}>
-                            Уже есть аккаунт
-                        </Link>}
+                        label={'Уже есть аккаунт'}
                         severity="secondary" outlined
                         className={classes.buttonApply}
-
+                        onClick={() => navigate('login')}
                     />
                 </div>
             </div>

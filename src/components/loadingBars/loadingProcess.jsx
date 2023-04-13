@@ -2,7 +2,7 @@ import React from 'react';
 import {ColorRing} from "react-loader-spinner";
 import './loadingProcess.css'
 
-const LoadingProcess = () => {
+const LoadingProcess = ({color}) => {
     return (
         <ColorRing
             visible={true}
@@ -11,7 +11,7 @@ const LoadingProcess = () => {
             ariaLabel="blocks-loading"
             wrapperStyle={{}}
             wrapperClass="wrapper"
-            colors={['#3261BC','#3261BC','#3261BC','#3261BC','#3261BC']}
+            colors={[color,color,color,color,color]}
         />
     );
 };

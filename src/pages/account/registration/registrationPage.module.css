@@ -29,7 +29,7 @@
     width: 100%;
 }
 
-.passwordInput {
+.passwordInputContainer {
     margin-top: 30px;
     width: 100%;
 }
@@ -74,4 +74,10 @@
 .regLink {
     text-decoration: none;
     color: grey;
+}
+
+
+
+.passwordInput {
+
 }

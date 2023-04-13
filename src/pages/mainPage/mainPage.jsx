@@ -98,7 +98,7 @@ const MainPage = () => {
 
         (async () => await fetch())()
         let interval = setInterval(() => {
-            (async () => await fetchWithoutLoading("placeholder"))()
+            fetchWithoutLoading("placeholder")
         }, 10000)
         return () => {
             clearInterval(interval)
@@ -124,6 +124,7 @@ const MainPage = () => {
                     siteStatistics={siteStatistics}
                     isOpened={isOpened}
                     setIsOpened={setIsOpened}
+                    fetchWithoutLoading={fetchWithoutLoading}
                 />
         </div>
     );

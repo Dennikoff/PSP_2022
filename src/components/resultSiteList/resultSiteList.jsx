@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import ResultSiteElement from "../resultSiteElement/resultSiteElement";
 import classes from './resultSiteList.module.css'
 import { Paginator } from 'primereact/paginator';
@@ -6,7 +6,7 @@ import loginPage from "../../pages/account/loginPage/loginPage";
 
 const ResultSiteList = ({sites, result, page, setPage, limit}) => {
 
-    const totalPage = Math.ceil(result.count / limit)
+
     return (
         <div className={classes.resultList}>
             {sites.map((site) =>
@@ -18,7 +18,7 @@ const ResultSiteList = ({sites, result, page, setPage, limit}) => {
             <Paginator
                 first={page}
                 rows={10}
-                totalRecords={totalPage}
+                totalRecords={result.count}
                 onPageChange={(e) => {
                     setPage(e.first)
                 }}

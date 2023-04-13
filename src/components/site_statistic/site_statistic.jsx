@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import classes from './site_statistic.module.css'
 import imageOk from '../../img/indexInfoOk.svg'
 import imageProcess from '../../img/indexInfoProcess.svg'
@@ -11,54 +11,21 @@ import trashBinBlack from "../../img/trashBinBlack.svg";
 import trashBinWhite from "../../img/trashBinWhite.svg";
 import {ThemeContext} from "../../context/themContext";
 import {deleteSite} from "../../api/deleteSite";
+import {Toast} from "primereact/toast";
 
 
-const SiteStatistic = ({isOpenedArr, index, statistic, isOpened, setIsOpened}) => {
+const SiteStatistic = ({isOpenedArr, index, statistic, isOpened, setIsOpened, fetchWithoutLoading}) => {
     const statisticClasses = [classes.site_statistic_container]
     const triangleClasses = [classes.header_triangle]
     const [trashBin, setTrashBin] = useState()
     let context = React.useContext(ThemeContext)
-
-    function getDate(date) {
-        let str = ''
-        if (date.getDate().toString().length < 2) {
-            str = str + `0${date.getDate().toString()}.`
-        } else {
-            str = str + date.getDate().toString() + '.'
-        }
-        if (date.getMonth().toString().length < 2) {
-            str = str + `0${(date.getMonth() + 1).toString()}.`
-        } else {
-            str = str + (date.getMonth() + 1).toString() + '.'
-        }
-        str += date.getFullYear().toString()
-        return str
-    }
-
-    function getTime(date) {
-        let str = ''
-        if (date.getHours().toString().length < 2) {
-            str = str + `0${date.getHours().toString()}:`
-        } else {
-            str = str + date.getHours().toString() + ':'
-        }
-        if (date.getMinutes().toString().length < 2) {
-            str = str + `0${date.getMinutes().toString()}:`
-        } else {
-            str = str + date.getMinutes().toString() + ':'
-        }
-        if (date.getSeconds().toString().length < 2) {
-            str = str + `0${date.getSeconds().toString()}`
-        } else {
-            str = str + date.getSeconds().toString()
-        }
-        return str
-    }
+    const toast = useRef(null);
 
     async function deleteButtonClicked() {
-        console.log('delete button')
-        let response = await deleteSite(statistic.url)
-        console.log(response)
+        setTimeout(() => fetchWithoutLoading(), 300)
+        await deleteSite(statistic.url)
+        fetchWithoutLoading()
+        toast.current.show({severity:'success', summary: 'Успешно', detail:'Сайт успешно удален', life: 3000});
     }
 
     if (statistic.isOpened) {
@@ -72,6 +39,7 @@ const SiteStatistic = ({isOpenedArr, index, statistic, isOpened, setIsOpened}) =
 
     return (
         <div className={statisticClasses.join(' ')}>
+            <Toast ref={toast}></Toast>
             <div className={classes.site_statistic_header}
                  onClick={() => {
                      statistic.isOpened = !statistic.isOpened
@@ -94,15 +62,20 @@ const SiteStatistic = ({isOpenedArr, index, statistic, isOpened, setIsOpened}) =
                         {statistic.status === "INDEXED" ?
                             <img src={imageOk} alt="Error"/>
                             : statistic.status === 'INDEXING'
-                                ? <LoadingProcess/>
-                                : <img src={imageError} alt="Error"/>}
+                                ? <LoadingProcess color='#3261BC'/>
+                                : statistic.status === 'DELETING'
+                                    ? <LoadingProcess color={'red'}/>
+                                    : <img src={imageError} alt="Error"/>}
+
                     </div>
                     <div className={classes.header_indexed_text}>
                         {statistic.status === "INDEXED" ?
                             <span>Проиндексирован</span>
                             : statistic.status === 'INDEXING'
                                 ? <span>Индексация</span>
-                                : <span>Ошибка</span>}
+                                : statistic.status === 'DELETING'
+                                    ? <span>Удаление</span>
+                                    : <span>Ошибка</span>}
                     </div>
                 </div>
                 <div className={classes.deleteButton}>

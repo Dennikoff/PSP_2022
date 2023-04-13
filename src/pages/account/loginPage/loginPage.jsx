@@ -53,6 +53,11 @@ const LoginPage = () => {
                 <div className={classes.loginInput}>
                     <span className="p-float-label">
                         <InputText
+                            onKeyDown={(event) => {
+                                if(event.code === 'Enter') {
+                                    document.getElementById("password").children[0].focus()
+                                }
+                            }}
                             id="username"
                             value={loginText}
                             onChange={(e) => setLoginText(e.target.value)}
@@ -67,6 +72,11 @@ const LoginPage = () => {
                             value={passwordText}
                             onChange={(e) => setPasswordText(e.target.value)}
                             toggleMask
+                            onKeyDown={(event) => {
+                                if(event.code === 'Enter') {
+                                    handleUserLogin()
+                                }
+                            }}
                             feedback={false}
                         />
                         <label htmlFor="password">Пароль</label>

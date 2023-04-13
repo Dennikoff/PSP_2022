@@ -1,6 +1,7 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useContext, useState, useEffect, useRef} from 'react';
 import classes from './profilePage.module.css'
 import {AuthContext} from "../../context/authContext";
+import {Toast} from 'primereact/toast'
 import MyButton from "../../components/myButton/myButton";
 import {storage} from "../../storage/storage";
 import {useNavigate} from "react-router-dom";
@@ -10,6 +11,7 @@ import Selected from "../../img/siteSelectedBlack.svg";
 import {Password} from 'primereact/password';
 import {Button} from "primereact/button";
 import {getAuthInfo} from "../../api/auth/getAuthInfo";
+import {changePassword} from "../../api/changePassword";
 
 
 const ProfilePage = () => {
@@ -18,11 +20,21 @@ const ProfilePage = () => {
     const [oldPassword, setOldPassword] = useState('')
     const [newPassword, setNewPassword] = useState('')
     const [email, setEmail] = useState('')
+    const toast = useRef(null)
 
-    function handleSaveClicked() {
-        if (oldPassword !== newPassword) {
+    async function handleSaveClicked() {
+        let response
 
+        try {
+            response = await changePassword(email, oldPassword, newPassword)
+        } catch(e) {
+            toast.current.show({severity:'error', summary: 'Ошибка', detail:e.response.data.error, life: 3000});
+            return
         }
+
+        const data = response.data
+        storage.set('tokens', [data.accessToken, data.refreshToken])
+        storage.set('isAuth', true)
     }
 
     useEffect(() => {
@@ -39,6 +51,7 @@ const ProfilePage = () => {
 
     return (
         <div className={classes.profile__body}>
+            <Toast ref={toast}></Toast>
             <div className={classes.profile__title}>
                 <h1>Профиль</h1>
             </div>

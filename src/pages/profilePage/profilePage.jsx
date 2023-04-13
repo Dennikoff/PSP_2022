@@ -35,6 +35,9 @@ const ProfilePage = () => {
         const data = response.data
         storage.set('tokens', [data.accessToken, data.refreshToken])
         storage.set('isAuth', true)
+        toast.current.show({severity:'success', summary: 'Успешно', detail: 'Пароль успешно изменён', life: 3000});
+        setNewPassword('')
+        setOldPassword('')
     }
 
     useEffect(() => {

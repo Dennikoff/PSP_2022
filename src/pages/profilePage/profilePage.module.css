@@ -15,7 +15,7 @@
     margin-top: 100px;
     border: 2px solid var(--color-border);
     width: 700px;
-    padding: 50px 0 50px 100px;
+    padding: 100px 100px;
     background-color: var(--color-element-background);
     border-radius: 10px;
     display: flex;
@@ -35,7 +35,7 @@
 
 .email {
     font-size: 1.5em;
-    margin-left: 4vw;
+    margin-left: 40px;
 }
 
 .changePassContainer {
@@ -43,27 +43,26 @@
 }
 
 .changePassInputContainer {
-    padding: 30px 20px 0 0;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
 }
 
 .newPassInput {
-    width: 20vw;
     display: flex;
 }
 
 .oldPassInput {
     display: flex;
-    width: 20vw;
 }
 
 .saveButton {
     display: flex;
-    margin-left: 2vw;
+    margin-top: 20px;
 }
 
 .newPassButtonContainer {
     height: auto;
-    margin-top: 30px;
     display: flex;
     align-items: center;
 
@@ -81,10 +80,9 @@
 }
 
 .exitButtonContainer {
-    padding-left: 200px;
     display: flex;
     width: 100%;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .exitButton {

@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import classes from './profilePage.module.css'
 import {AuthContext} from "../../context/authContext";
 import MyButton from "../../components/myButton/myButton";
@@ -9,6 +9,7 @@ import MyInput from "../../components/myInput/myInput";
 import Selected from "../../img/siteSelectedBlack.svg";
 import {Password} from 'primereact/password';
 import {Button} from "primereact/button";
+import {getAuthInfo} from "../../api/auth/getAuthInfo";
 
 
 const ProfilePage = () => {
@@ -16,12 +17,25 @@ const ProfilePage = () => {
     const navigate = useNavigate();
     const [oldPassword, setOldPassword] = useState('')
     const [newPassword, setNewPassword] = useState('')
+    const [email, setEmail] = useState('')
 
     function handleSaveClicked() {
         if (oldPassword !== newPassword) {
 
         }
     }
+
+    useEffect(() => {
+
+        try {
+            (async () => {
+                const response = await getAuthInfo()
+                setEmail(response.data)
+            })()
+        } catch (e) {
+            console.log(e)
+        }
+    }, [])
 
     return (
         <div className={classes.profile__body}>
@@ -35,7 +49,7 @@ const ProfilePage = () => {
                             Почта:
                         </div>
                         <div className={classes.email}>
-                            vadim.murov@mail.ru
+                            {email}
                         </div>
                     </div>
                     <div className={classes.changePassContainer}>
@@ -78,13 +92,13 @@ const ProfilePage = () => {
                                         <label htmlFor="new-password">Новый пароль</label>
                                     </span>
                                 </div>
-                                <div className={classes.saveButton}>
-                                    <Button label='Сохранить'
-                                            onClick={() => handleSaveClicked()}
-                                            className={classes.saveButton}
-                                    />
-                                </div>
                             </div>
+                        </div>
+                        <div className={classes.saveButton}>
+                            <Button label='Сохранить'
+                                    onClick={() => handleSaveClicked()}
+                                    className={classes.saveButton}
+                            />
                         </div>
                     </div>
                     <div className={classes.notificationsContainer}>

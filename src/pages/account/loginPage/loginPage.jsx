@@ -102,7 +102,7 @@ const LoginPage = () => {
                 </div>
                 <div className={classes.restorePassword}>
                     Забыли пароль?
-                    <Link className={classes.link} to={'/notFound'}>
+                    <Link className={classes.link} to={'/password-recover'}>
                         Восстановить
                     </Link>
                 </div>

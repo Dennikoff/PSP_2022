@@ -24,7 +24,7 @@ const RegistrationPage = () => {
     const [repPasswordText, setRepPasswordText] = useState('')
     const toast = useRef(null);
     const [handleUserRegistration, loading, isError] = useFetching(async () => {
-        if(passwordText !== repPasswordText && checkPassword(passwordText)) {
+        if(passwordText !== repPasswordText) {
             toast.current.show({severity:'error', summary: 'Ошибка', detail: 'Пароли не совпадают', life: 3000});
             return
         }

@@ -4,7 +4,7 @@ import {refreshToken} from "../../utils/refreshToken";
 
 export async function getAuthInfo() {
     const tokens = storage.get('tokens')
-    return await axios.post("http://localhost:8080/api/auth/info", null, {
+    return await axios.post("http://localhost:8080/api/user/info", null, {
         headers: {"Authorization": `Bearer ${tokens[0]}`},
     }).catch(
         async (error) => {

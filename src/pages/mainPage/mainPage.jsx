@@ -8,7 +8,7 @@ import {useFetchingWithTimeout} from "../../hooks/useFetchingWithTimeout";
 import MainErrorWindow from "../../components/mainErrorWindow/mainErrorWindow";
 import {Button} from "primereact/button";
 import axios from 'axios'
-import {getAuthInfo} from "../../api/auth/getAuthInfo";
+import {getAuthInfo} from "../../api/user/getAuthInfo";
 
 let isOpenedArr = []
 const MainPage = () => {

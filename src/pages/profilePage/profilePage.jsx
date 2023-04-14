@@ -7,26 +7,49 @@ import {storage} from "../../storage/storage";
 import {useNavigate} from "react-router-dom";
 import {logoutUser} from "../../utils/logoutUser";
 import MyInput from "../../components/myInput/myInput";
-import Selected from "../../img/siteSelectedBlack.svg";
+import SelectedBlack from "../../img/siteSelectedBlack.svg";
+import UnSelectedBlack from "../../img/siteNotSelectedBlack.svg";
 import {Password} from 'primereact/password';
 import {Button} from "primereact/button";
-import {getAuthInfo} from "../../api/auth/getAuthInfo";
-import {changePassword} from "../../api/changePassword";
-
+import {getAuthInfo} from "../../api/user/getAuthInfo";
+import {changePassword} from "../../api/user/changePassword";
+import notSelectedBlack from "../../img/siteNotSelectedBlack.svg";
+import notSelectedWhite from "../../img/siteNotSelectedWhite.svg";
+import selectedBlack from "../../img/siteSelectedBlack.svg";
+import selectedWhite from "../../img/siteSelectedWhite.svg";
+import trashBinBlack from "../../img/trashBinBlack.svg";
+import trashBinWhite from "../../img/trashBinWhite.svg";
+import {ThemeContext} from "../../context/themContext";
+import * as string_decoder from "string_decoder";
+import {setNotify} from "../../api/user/setNotify";
 
 const ProfilePage = () => {
+    const [selected, setSelected] = useState()
+    const [notSelected, setNotSelected] = useState()
     const authContext = useContext(AuthContext)
+    let context = React.useContext(ThemeContext)
     const navigate = useNavigate();
     const [oldPassword, setOldPassword] = useState('')
     const [newPassword, setNewPassword] = useState('')
-    const [email, setEmail] = useState('')
+    const [login, setLogin] = useState('')
+
     const toast = useRef(null)
+    const [notificationFlag, setNotificationFlag] = useState(true)
+
+    async function handleNotification() {
+        try {
+            await setNotify(login, !notificationFlag)
+        } catch(e) {
+            console.log(e)
+        }
+        setNotificationFlag(!notificationFlag)
+    }
 
     async function handleSaveClicked() {
         let response
 
         try {
-            response = await changePassword(email, oldPassword, newPassword)
+            response = await changePassword(login, oldPassword, newPassword)
         } catch(e) {
             toast.current.show({severity:'error', summary: 'Ошибка', detail:e.response.data.error, life: 3000});
             return
@@ -39,13 +62,18 @@ const ProfilePage = () => {
         setNewPassword('')
         setOldPassword('')
     }
-
+    useEffect(() => {
+        setNotSelected(context.theme ? notSelectedBlack : notSelectedWhite)
+        setSelected(context.theme ? selectedBlack : selectedWhite)
+    }, [context])
     useEffect(() => {
 
         try {
             (async () => {
                 const response = await getAuthInfo()
-                setEmail(response.data)
+                console.log(response)
+                setLogin(response.data.login)
+                setNotificationFlag(response.data.flag)
             })()
         } catch (e) {
             console.log(e)
@@ -65,7 +93,7 @@ const ProfilePage = () => {
                             Почта:
                         </div>
                         <div className={classes.email}>
-                            {email}
+                            {login}
                         </div>
                     </div>
                     <div className={classes.changePassContainer}>
@@ -121,8 +149,8 @@ const ProfilePage = () => {
                         <div className={classes.textTitle}>
                             Получать уведомления на почту
                         </div>
-                        <img src={Selected} alt="error" style={{"width": "30px"}}
-                             className={classes.notificationsImage}
+                        <img src={notificationFlag ? selected : notSelected} alt="error" style={{"width": "30px"}}
+                             className={classes.notificationsImage} onClick={handleNotification}
                         />
                     </div>
                     <div className={classes.exitButtonContainer}>

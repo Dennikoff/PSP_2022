@@ -9,6 +9,7 @@ import {Toast} from 'primereact/toast'
 import {storage} from "../../storage/storage";
 import {sendRecoverEmail} from "../../api/email/sendRecoverEmail";
 import {recoverPassword} from "../../api/user/recoverPassword";
+import {Tooltip} from "primereact/tooltip";
 
 const RecoverPassword = () => {
     const [code, setCode] = useState('')
@@ -27,8 +28,8 @@ const RecoverPassword = () => {
         }
         try {
             await recoverPassword(email, password, code)
-            toast.current.show({severity: 'success', summary: 'Успешно', detail: 'Пароль успешно изменён', life: 3000});
-            navigate('/login')
+            toast.current.show({severity: 'success', summary: 'Успешно', detail: 'Пароль успешно изменён', life: 1400});
+            setTimeout(() => navigate('/login'), 1500)
         } catch (e) {
             toast.current.show({severity: 'error', summary: 'Ошибка', detail: e.response.data.error, life: 3000});
             return
@@ -52,6 +53,13 @@ const RecoverPassword = () => {
     return (
         <div className={classes.recoverBody}>
             <Toast ref={toast}></Toast>
+            <Tooltip target="#password" autoHide={false} event="both">
+                <div>
+                    Пароль должен быть не менее 8 символов <br/>
+                    Содержать одну заглавную и одну строчкую <br/>
+                    букву, а также спецсимвол
+                </div>
+            </Tooltip>
             <div className={classes.recoverContainer}>
 
                 <h1 className={classes.title}>

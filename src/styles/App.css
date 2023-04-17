@@ -90,14 +90,27 @@
 .p-paginator-page {
   color: var(--color-font) !important;
 }
-
-.p-highlight {
+.p-paginator-page.p-highlight {
   background-color: var(--color-element-background-2) !important;
 }
+
 
 .p-paginator-page:hover {
   background-color: var(--color-element-background-2) !important;
 }
+
+.p-multiselect:not(.p-disabled).p-focus {
+  box-shadow: none !important;
+}
+
+.p-multiselect-close {
+  display: none !important;
+}
+
+.p-checkbox-icon {
+  color: black !important;
+}
+
 
 
 

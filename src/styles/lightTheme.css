@@ -4,9 +4,9 @@
     --color-element-background-2: white;
     --nav-background: #333333;
     --nav-textcolor: #DDDDDD;
-    --nav-border: #666666;
-    --color-border: #747E89;
-    --color-font: #000000;
+    --nav-border: rgba(102,102,102, 0.4);
+    --color-border: rgba(116, 126, 137, 0.2);
+    --color-font: #1e1d29;
     --color-button-active: #A1A1A3;
     --color-selection: #A4A4A4;
 }

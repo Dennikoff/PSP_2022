@@ -19,5 +19,5 @@ export const refreshToken = async (callback) => {
     //     return
     // }
     storage.set('tokens', [response.data.accessToken, tokens[1]])
-    return await callback
+    return await callback()
 }

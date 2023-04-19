@@ -10,7 +10,7 @@ export async function getLinks() {
     }).catch(
         async (error) => {
             if(error.response.status === 401){
-                await refreshToken(() => getLinks())
+                return await refreshToken(async () => await getLinks())
             } else {
                 throw error
             }

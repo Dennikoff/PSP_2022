@@ -12,7 +12,7 @@ export async function stopIndexing() {
     }).catch(
         async (error) => {
             if (error.response.status === 401) {
-                await refreshToken(stopIndexing)
+                return await refreshToken(async () => await stopIndexing())
             } else {
                 throw error
             }

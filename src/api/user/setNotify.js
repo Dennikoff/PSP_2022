@@ -12,7 +12,7 @@ export async function setNotify(login, flag) {
     }).catch(
         async (error) => {
             if(error.response.status === 401){
-                return await refreshToken(() => setNotify(login, flag))
+                return await refreshToken(async () => await setNotify(login, flag))
             } else {
                 throw error
             }

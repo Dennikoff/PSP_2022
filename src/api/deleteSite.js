@@ -30,7 +30,7 @@ export async function deleteAllSites() {
     }).catch(
         async (error) => {
             if(error.response.status === 401){
-                await refreshToken(() => deleteAllSites())
+                return await refreshToken(async () => await deleteAllSites())
             } else {
                 throw error
             }

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import classes from './managementPage.module.css'
 import {startIndexing} from "../../api/startIndexing";
 import {useFetching} from "../../hooks/useFetching";
@@ -12,7 +12,7 @@ import {getLinks} from "../../api/getLinks";
 import {useFetchingWithTimeout} from "../../hooks/useFetchingWithTimeout";
 import {takeStatistic} from "../../api/takeStatistic";
 import {Button} from 'primereact/button';
-
+import { Toast } from 'primereact/toast'
 let Reg = /^((ftp|http|https):\/\/)?(www\.)?([A-Za-zА-Яа-я0-9]{1}[A-Za-zА-Яа-я0-9.]*)\.{1}[A-Za-zА-Яа-я0-9-]{2,8}$/;
 
 const ManagementPage = () => {
@@ -20,7 +20,7 @@ const ManagementPage = () => {
     const [sites, setSites] = useState([])
     const [link, setLink] = useState('')
     const [name, setName] = useState('')
-
+    const toast = useRef(null)
     async function btnStartIndexing() {
         const selectedSites = {}
         for (let site of sites) {
@@ -31,7 +31,7 @@ const ManagementPage = () => {
         if (Object.keys(selectedSites).length !== 0) {
             await startIndex(selectedSites)
         } else {
-            alert("Не выбрана ни одна ссылка")
+            toast.current.show({severity: 'error', summary: 'Ошибка', detail: 'Не выбрана ни одна ссылка', life: 2000})
         }
     }
 
@@ -76,7 +76,7 @@ const ManagementPage = () => {
     const btnAdd = async () => {
         let temp_link = link.trim()
         if (!checkLink(temp_link)) {
-            alert('Неверный формат ссылки')
+            toast.current.show({severity: 'error', summary: 'Ошибка', detail: 'Неверный формат ссылки', life: 2000})
             return
         }
         let newName = name
@@ -146,11 +146,14 @@ const ManagementPage = () => {
 
 
     useEffect(() => {
-        fetch(setIsIndexing)
-        getLnk(false)
-        let interval = setInterval( () => {
-            getLnk(false)
-            fetch(setIsIndexing)
+        (async () => {
+            await fetch(setIsIndexing)
+            await getLnk(false)
+        })()
+
+        let interval = setInterval( async () => {
+            await getLnk(false)
+            await fetch(setIsIndexing)
         }, 10000)
         return () => {
             clearInterval(interval)
@@ -160,6 +163,7 @@ const ManagementPage = () => {
 
     return (
         <div className={classes.management__body}>
+            <Toast ref={toast} />
             <div className={classes.management__title}>
                 <h1>Управление индексацией</h1>
             </div>

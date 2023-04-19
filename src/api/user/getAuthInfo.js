@@ -9,7 +9,7 @@ export async function getAuthInfo() {
     }).catch(
         async (error) => {
             if(error.response.status === 401){
-                return await refreshToken(() => getAuthInfo())
+                return await refreshToken(async () => await getAuthInfo())
             } else {
                 throw error
             }

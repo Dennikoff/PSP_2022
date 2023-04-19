@@ -29,10 +29,12 @@ const MainPage = () => {
         let start = new Date()
         const response = await takeStatistic()
         let end = new Date()
+        console.log('kek1')
         let delay = 300 - (end - start)
         isOpenedArr = []
         if(delay > 0) {
             setTimeout(() => {
+                console.log(response)
                 setFullStatistics(response["data"]["statistics"]["total"])
                 let stat = []
                 for (let statistic of response["data"]["statistics"]["detailed"]) {
@@ -43,6 +45,7 @@ const MainPage = () => {
                     stat.push(statistic)
                 }
                 setSiteStatistics(stat)
+
                 setIsLoading(false)
             }, delay)
         } else {
@@ -89,13 +92,6 @@ const MainPage = () => {
     }, [isErrorTimeout])
 
     useEffect(() => {
-
-        try{
-            getAuthInfo().then(response => console.log(response.data))
-        } catch (e) {
-            console.log(e)
-        }
-
         (async () => await fetch())()
         let interval = setInterval(() => {
             fetchWithoutLoading("placeholder")

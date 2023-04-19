@@ -10,7 +10,7 @@ export async function takeStatistic() {
     }).catch(
         async (error) => {
             if(error.response.status === 401){
-                await refreshToken(takeStatistic)
+                return await refreshToken(async () =>  await takeStatistic())
             } else {
                 throw error
             }

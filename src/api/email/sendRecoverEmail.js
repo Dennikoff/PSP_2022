@@ -11,7 +11,7 @@ export async function sendRecoverEmail(login) {
     }).catch(
         async (error) => {
             if(error.response.status === 401){
-                return await refreshToken(() => sendRecoverEmail(login))
+                return await refreshToken(async () => await sendRecoverEmail(login))
             } else {
                 throw error
             }

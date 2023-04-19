@@ -13,7 +13,7 @@ export async function recoverPassword(login, password, code) {
     }).catch(
         async (error) => {
             if (error.response.status === 401) {
-                return await refreshToken(() => recoverPassword(login, password, code))
+                return await refreshToken(async () => await recoverPassword(login, password, code))
             } else {
                 throw error
             }

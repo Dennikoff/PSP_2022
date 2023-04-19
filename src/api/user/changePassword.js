@@ -15,7 +15,7 @@ export async function changePassword(login, password, newPassword) {
     }).catch(
         async (error) => {
             if(error.response.status === 401){
-                await refreshToken(() => changePassword(login, password, newPassword))
+                return await refreshToken(async () => await changePassword(login, password, newPassword))
             } else {
                 throw error
             }

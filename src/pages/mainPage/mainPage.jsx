@@ -29,7 +29,6 @@ const MainPage = () => {
         let start = new Date()
         const response = await takeStatistic()
         let end = new Date()
-        console.log('kek1')
         let delay = 300 - (end - start)
         isOpenedArr = []
         if(delay > 0) {

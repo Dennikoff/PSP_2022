@@ -40,14 +40,12 @@ const ManagementPage = () => {
     }
 
     const [startIndex, isIndexing, setIsIndexing, isErrorStart] = useStartIndexing(async (data) => {
-        const response = await startIndexing(data)
-        console.log(response)
+        await startIndexing(data)
     })
 
-    const [stopIndex, isErrorStop] = useStopFetching(setIsIndexing, async () => {
-        const response = await stopIndexing()
-        console.log(response)
-    }, isIndexing)
+    const [stopIndex, isStopIndexing, isErrorStop] = useStopFetching(setIsIndexing, async () => {
+        await stopIndexing()
+    })
 
     const generateName = (link) => {
         let newName = link
@@ -176,6 +174,7 @@ const ManagementPage = () => {
                                 onClick={async () => {
                                     await btnStopIndexing()
                                 }}
+                                loading={isStopIndexing}
                                 severity="danger"
                                 className={classes.btn}
 

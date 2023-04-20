@@ -33,7 +33,6 @@ const MainPage = () => {
         isOpenedArr = []
         if(delay > 0) {
             setTimeout(() => {
-                console.log(response)
                 setFullStatistics(response["data"]["statistics"]["total"])
                 let stat = []
                 for (let statistic of response["data"]["statistics"]["detailed"]) {

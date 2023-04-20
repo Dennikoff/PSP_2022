@@ -22,7 +22,7 @@ const SiteStatistic = ({isOpenedArr, index, statistic, isOpened, setIsOpened, fe
     const toast = useRef(null);
 
     async function deleteButtonClicked() {
-        setTimeout(() => fetchWithoutLoading(), 300)
+        setTimeout(() => fetchWithoutLoading(), 100)
         await deleteSite(statistic.url)
         fetchWithoutLoading()
         toast.current.show({severity:'success', summary: 'Успешно', detail:'Сайт успешно удален', life: 3000});

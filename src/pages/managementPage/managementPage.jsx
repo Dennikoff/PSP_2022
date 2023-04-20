@@ -13,6 +13,7 @@ import {useFetchingWithTimeout} from "../../hooks/useFetchingWithTimeout";
 import {takeStatistic} from "../../api/takeStatistic";
 import {Button} from 'primereact/button';
 import { Toast } from 'primereact/toast'
+import {updateLink} from "../../api/updateLink";
 
 
 const ManagementPage = () => {
@@ -21,18 +22,40 @@ const ManagementPage = () => {
     const [link, setLink] = useState('')
     const [name, setName] = useState('')
     const toast = useRef(null)
+
+    const [getLnk, _, isError] = useFetching(async (flag) => {
+        let response = await getLinks()
+        let links = response["data"]["links"]
+        let tempSites = []
+        for (let li of links) {
+            let newLink = {
+                name: li['name'],
+                url: li['url'],
+                isSelected: Boolean(li['isSelected'])
+            }
+            tempSites.push(newLink)
+        }
+        tempSites.sort(compareFunction)
+        setSites(tempSites)
+    })
+
     async function btnStartIndexing() {
         const selectedSites = {}
         for (let site of sites) {
             if (site.isSelected) {
                 selectedSites[site.url] = site.name
+                await updateLink(site.url, 0)
             }
         }
+
         if (Object.keys(selectedSites).length !== 0) {
+            await getLnk(false)
             await startIndex(selectedSites)
+
         } else {
             toast.current.show({severity: 'error', summary: 'Ошибка', detail: 'Не выбрана ни одна ссылка', life: 2000})
         }
+
     }
 
     async function btnStopIndexing() {
@@ -85,16 +108,17 @@ const ManagementPage = () => {
         const site = {
             url: temp_link,
             name: newName,
-            isSelected: true
+            isSelected: false
         }
         try {
             await addLink(temp_link, newName, 1)
         } catch (error) {
-            alert(error["response"]["data"]["error"])
+            toast.current.show({severity: 'error', summary: 'Ошибка', detail: error["response"]["data"]["error"], life: 2000})
             return
         }
         setSites([...sites, site])
     }
+
 
     useEffect(() => {
         let temp_link = link.trim()
@@ -110,6 +134,7 @@ const ManagementPage = () => {
         }
     }, [link])
 
+
     let compareFunction = (a, b) => {
         if (a.name > b.name) {
             return 1
@@ -118,28 +143,12 @@ const ManagementPage = () => {
         }
     }
 
-    const [getLnk, _, isError] = useFetching(async (flag) => {
-        let response = await getLinks()
-        let links = response["data"]["links"]
-        let tempSites = []
-        for (let li of links) {
-            let newLink = {
-                name: li['name'],
-                url: li['url'],
-                isSelected: Boolean(li['isSelected'])
-            }
-            tempSites.push(newLink)
-        }
-        tempSites.sort(compareFunction)
-        setSites(tempSites)
-    })
 
     const [fetch, isLoading] = useFetching(async (setIsIndexing) => {
         const response = await takeStatistic()
         if (response["data"]["statistics"]["total"]["indexing"]) {
             setIsIndexing(true)
         }
-
     })
 
 

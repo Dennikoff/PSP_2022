@@ -13,7 +13,7 @@ import {useFetchingWithTimeout} from "../../hooks/useFetchingWithTimeout";
 import {takeStatistic} from "../../api/takeStatistic";
 import {Button} from 'primereact/button';
 import { Toast } from 'primereact/toast'
-let Reg = /^((ftp|http|https):\/\/)?(www\.)?([A-Za-zА-Яа-я0-9]{1}[A-Za-zА-Яа-я0-9.]*)\.{1}[A-Za-zА-Яа-я0-9-]{2,8}$/;
+
 
 const ManagementPage = () => {
     const [flag, setFlag] = useState(0)
@@ -58,7 +58,7 @@ const ManagementPage = () => {
     }
 
     const checkLink = (link) => {
-        let Reg = /^((ftp|http|https):\/\/)?(www\.)?([A-Za-zА-Яа-я0-9]{1}[A-Za-zА-Яа-я0-9.]*)\.{1}[A-Za-zА-Яа-я0-9-]{2,8}$/;
+        let Reg = /^(https?:\/\/)?([\w-]{1,32}\.[\w-]{1,32})[^\s@]*$/;
         if (Reg.test(link)) {
             if (link.includes("..")) {
                 return false

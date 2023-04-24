@@ -22,10 +22,10 @@ const SiteStatistic = ({isOpenedArr, index, statistic, isOpened, setIsOpened, fe
     const toast = useRef(null);
 
     async function deleteButtonClicked() {
-        setTimeout(() => fetchWithoutLoading(), 100)
+        setTimeout(() => fetchWithoutLoading(), 50)
         await deleteSite(statistic.url)
         fetchWithoutLoading()
-        toast.current.show({severity:'success', summary: 'Успешно', detail:'Сайт успешно удален', life: 3000});
+        toast.current.show({severity: 'success', summary: 'Успешно', detail: 'Сайт успешно удален', life: 3000});
     }
 
     if (statistic.isOpened) {
@@ -78,15 +78,14 @@ const SiteStatistic = ({isOpenedArr, index, statistic, isOpened, setIsOpened, fe
                                     : <span>Ошибка</span>}
                     </div>
                 </div>
-                <div className={classes.deleteButton}>
-                    <img src={trashBin} alt="error"
-                         style={{"width": "30px"}}
-                         onClick={(e) => {
-                             e.stopPropagation()
-                             deleteButtonClicked()
-                         }}
-                    />
-                </div>
+                <img src={trashBin} alt="error"
+                     className={classes.deleteButton}
+                     onClick={(e) => {
+                         e.stopPropagation()
+                         deleteButtonClicked()
+                     }}
+                />
+
                 <div className={triangleClasses.join(' ')}>
                     <img src={triangle} alt="error"
                          style={{"width": "30px"}}

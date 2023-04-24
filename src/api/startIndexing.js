@@ -5,11 +5,9 @@ import {refreshToken} from "../utils/refreshToken";
 
 
 export async function startIndexing(data) {
-    console.log(data)
-    let json = JSON.stringify(data)
     const tokens = storage.get('tokens')
     return await axios.post("http://localhost:8080/api/startIndexing", {
-        data: json
+        data
     }, {
         headers: {
             "Authorization": `Bearer ${tokens[0]}`

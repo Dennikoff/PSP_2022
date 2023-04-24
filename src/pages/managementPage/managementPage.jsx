@@ -9,7 +9,6 @@ import SiteListManagement from "../../components/siteListManagement/siteListMana
 import {useStartIndexing} from "../../hooks/useStartIndexing";
 import {addLink} from "../../api/addLink";
 import {getLinks} from "../../api/getLinks";
-import {useFetchingWithTimeout} from "../../hooks/useFetchingWithTimeout";
 import {takeStatistic} from "../../api/takeStatistic";
 import {Button} from 'primereact/button';
 import { Toast } from 'primereact/toast'

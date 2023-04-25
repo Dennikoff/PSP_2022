@@ -110,7 +110,7 @@ const ManagementPage = () => {
             isSelected: false
         }
         try {
-            await addLink(temp_link, newName, 1)
+            await addLink(temp_link, newName, false)
         } catch (error) {
             toast.current.show({severity: 'error', summary: 'Ошибка', detail: error["response"]["data"]["error"], life: 2000})
             return

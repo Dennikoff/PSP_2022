@@ -112,10 +112,12 @@ const ManagementPage = () => {
         try {
             await addLink(temp_link, newName, false)
         } catch (error) {
-            toast.current.show({severity: 'error', summary: 'Ошибка', detail: error["response"]["data"]["error"], life: 2000})
+            toast.current.show({severity: 'error', summary: 'Ошибка', detail: error.response?.data.error || 'Неизвестная ошибка', life: 2000})
             return
         }
         setSites([...sites, site])
+        setLink('')
+        setName('')
     }
 
 

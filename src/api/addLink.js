@@ -14,7 +14,7 @@ export async function addLink(url, name, isSelected) {
         }
     }).catch(
     async (error) => {
-        if(error.response.status === 401){
+        if(error.response?.status === 401){
             return await refreshToken(async () => await addLink(url, name, isSelected))
         } else {
             throw error

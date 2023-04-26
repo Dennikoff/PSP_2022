@@ -9,7 +9,7 @@
 }
 
 .headerBodyCenter{
-    /*transition: all .2s ease-in-out;*/
+    transition: all .2s ease-in-out;
     width: 60vw;
     margin-top: 23.7vh;
 }

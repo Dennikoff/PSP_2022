@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import classes from './searchPage.module.css'
 import MyInputContainer from "../../components/myInputContainer/myInputContainer";
 import ResultContainer from "../../components/resultContainer/resultContainer";
@@ -7,18 +7,19 @@ import {useFetching} from "../../hooks/useFetching";
 import {takeStatistic} from "../../api/takeStatistic";
 import MySelectorSearch from "../../components/mySelectorSearch/mySelectorSearch";
 import {storage} from "../../storage/storage";
-import { MultiSelect } from 'primereact/multiselect';
-
+import {MultiSelect} from 'primereact/multiselect';
+import {Toast} from "primereact/toast";
 
 
 const SearchPage = () => {
     let [flagOfSearch, setFlagOfSearch] = useState(false)
+    const [selectedSites, setSelectedSites] = useState([])
     let headerClass = classes.headerBodyCenter
-
-    if (flagOfSearch) {
+    const [sites, setSites] = useState([])
+    if (sites.length !== 0) {
         headerClass = classes.headerBody
     }
-
+    const toast = useRef(null);
     const limit = 10
     const [query, setQuery] = useState('')
     const [content, setContent] = useState([])
@@ -26,7 +27,7 @@ const SearchPage = () => {
         result: false,
         count: 10
     })
-    const [sites, setSites] = useState([])
+
     const [offset, setOffset] = useState(0)
 
     const [startS, setStartS] = useState(false)
@@ -58,19 +59,39 @@ const SearchPage = () => {
             for (let cont of selectedSites) {
                 querySiteMas.push(cont.url)
             }
-            let response
-            if (flag) {
-                response = await startSearch(query, limit, 0, querySiteMas)
-            } else {
-                response = await startSearch(query, limit, offset, querySiteMas)
+            if (selectedSites.length === 0) {
+                toast.current.show({
+                    severity: 'error',
+                    summary: 'Ошибка',
+                    detail: 'Не выбран ни один сайт',
+                    life: 2000
+                });
+                return;
             }
-            console.log(response.data.data)
+            let response
+            try {
+                if (flag) {
+                    response = await startSearch(query, limit, 0, querySiteMas)
+                } else {
+                    response = await startSearch(query, limit, offset, querySiteMas)
+                }
+            } catch (e) {
+                if(e.response.status === 404) {
+                    toast.current.show({severity: 'warn', summary: 'Предупреждение', detail: e.response.data.error || 'Неизвестная ошибка', life: 2000});
+                } else {
+                    toast.current.show({severity: 'error', summary: 'Ошибка', detail: e.response.data.error || 'Неизвестная ошибка', life: 2000});
+                }
+                setSites([])
+            }
+            console.log(response.data.data || [])
             setSites(response.data.data || [])
             setResult({
                 result: response.data.result,
                 count: response.data.count
             })
             setStartS(false)
+        } else {
+            toast.current.show({severity: 'error', summary: 'Ошибка', detail: 'Поисковой запрос пуст', life: 2000});
         }
     })
 
@@ -95,18 +116,19 @@ const SearchPage = () => {
             setFlagOfSearch(true)
         }
     }, [startS])
-    const [selectedSites, setSelectedSites] = useState(null)
 
     return (
         <div className={classes.searchBody}>
+            <Toast ref={toast}/>
             <div className={classes.searchHeader}>
                 <div className={classes.search__title}>
                     <h1>Поиск</h1>
                 </div>
                 <div className={headerClass}>
                     <div className={classes.site_selector}>
-                        <MultiSelect value={selectedSites} onChange={(e) => setSelectedSites(e.value)} options={content} optionLabel="name"
-                                     placeholder="Выбрать сайт" className={classes.primeSelector} />
+                        <MultiSelect value={selectedSites} onChange={(e) => setSelectedSites(e.value)} options={content}
+                                     optionLabel="name"
+                                     placeholder="Выбрать сайт" className={classes.primeSelector}/>
                         {/*<MySelectorSearch text='Выбрать сайты'*/}
                         {/*                  content={content}*/}
                         {/*                  setContent={setContent}*/}
@@ -121,7 +143,7 @@ const SearchPage = () => {
                 </div>
             </div>
             <div className={classes.siteBody}>
-                {flagOfSearch &&
+                {sites.length !== 0 &&
                     <ResultContainer sites={sites}
                                      isLoading={isLoading}
                                      result={result}

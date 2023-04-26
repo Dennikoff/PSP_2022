@@ -7,13 +7,11 @@ function returnSnippetArr(snippet){
         if(arr.length % 2 === 0) {
             arr.push(snippet.slice(0, snippet.indexOf('<b>')))
             snippet = snippet.slice(snippet.indexOf('<b>') + 3)
-            console.log('kek1')
         } else {
             arr.push(snippet.slice(0, snippet.indexOf('</b>')))
             snippet = snippet.slice(snippet.indexOf('</b>') + 4)
-            console.log('kek2')
         }
-        console.log(snippet)
+
     }
     arr.push(snippet)
     return arr
@@ -36,9 +34,9 @@ const ResultSiteElement = ({site}) => {
                         {snippetArr.map((value, index)=>
                             index % 2 === 1
                                 ?
-                                <span key={value}><b>{value}</b></span>
+                                <span key={index}><b>{value}</b></span>
                                 :
-                                <span key={value}>{value}</span>
+                                <span key={index}>{value}</span>
 
                         )}
                     </div>

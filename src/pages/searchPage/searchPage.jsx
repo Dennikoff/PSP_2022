@@ -64,7 +64,8 @@ const SearchPage = () => {
             } else {
                 response = await startSearch(query, limit, offset, querySiteMas)
             }
-            setSites(response.data.data)
+            console.log(response.data.data)
+            setSites(response.data.data || [])
             setResult({
                 result: response.data.result,
                 count: response.data.count

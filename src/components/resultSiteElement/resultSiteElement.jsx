@@ -3,9 +3,17 @@ import classes from './resultSiteElement.module.css'
 
 function returnSnippetArr(snippet){
     let arr = []
-    while(snippet.indexOf('<') !== -1) {
-        arr.push(snippet.slice(0, snippet.indexOf('<')))
-        snippet = snippet.slice(snippet.indexOf('>')+1, snippet.length)
+    while(snippet.indexOf('<b>') !== -1 || snippet.indexOf('</b>') !== -1) {
+        if(arr.length % 2 === 0) {
+            arr.push(snippet.slice(0, snippet.indexOf('<b>')))
+            snippet = snippet.slice(snippet.indexOf('<b>') + 3)
+            console.log('kek1')
+        } else {
+            arr.push(snippet.slice(0, snippet.indexOf('</b>')))
+            snippet = snippet.slice(snippet.indexOf('</b>') + 4)
+            console.log('kek2')
+        }
+        console.log(snippet)
     }
     arr.push(snippet)
     return arr

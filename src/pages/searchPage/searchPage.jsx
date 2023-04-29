@@ -119,7 +119,6 @@ const SearchPage = () => {
 
     const [block, setBlock] = useState(true)
     useEffect(() => {
-        setBlock(true)
         setTimeout(() => setBlock(false), 500)
     })
 

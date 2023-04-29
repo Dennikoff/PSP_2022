@@ -106,7 +106,7 @@ const SearchPage = () => {
     }, [startS])
 
     useEffect(() => {
-        if (!startS) {
+        if (!startS && !block) {
             fetch()
         }
     }, [offset])
@@ -116,6 +116,12 @@ const SearchPage = () => {
             setFlagOfSearch(true)
         }
     }, [startS])
+
+    const [block, setBlock] = useState(true)
+    useEffect(() => {
+        setBlock(true)
+        setTimeout(() => setBlock(false), 500)
+    })
 
     return (
         <div className={classes.searchBody}>

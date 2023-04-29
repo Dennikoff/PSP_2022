@@ -35,10 +35,19 @@ const MyInputContainer = ({query, setQuery, fetch, isLoading, setStartS}) => {
                     <label htmlFor="query">Поисковой запрос</label>
                 </span>
             </div>
-                <Button label='Поиск'
-                        onClick={() => handleOkClick(isLoading)}
-                        className={classes.query_button}
-                />
+                {/*<Button label='Поиск'*/}
+                {/*        onClick={() => handleOkClick(isLoading)}*/}
+                {/*        className={classes.query_button}*/}
+                {/*/>*/}
+            <Button
+                // children={<span>&nbsp;Вход</span>}
+                label='Поиск'
+                icon="pi pi-check"
+                loading={isLoading}
+                className={classes.query_button}
+                // severity="success"
+                onClick={() => handleOkClick(isLoading)}
+            />
         </div>
     )
         ;

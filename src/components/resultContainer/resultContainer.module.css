@@ -9,7 +9,7 @@
 
 .result_sites_container {
     margin-top: 1vh;
-    height: 50vh;
+    max-height: 50vh;
     border: 1px solid var(--color-border);
     background-color: var(--color-element-background);
     border-bottom-left-radius:  6px;
@@ -32,9 +32,24 @@
 
 .loadingCircle {
     display: flex;
+    margin-top: 5%;
     justify-content: center;
-    margin-top: 5vh;
+    align-items: start;
 }
+
+.isLoading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/*.isLoading::-webkit-scrollbar {*/
+/*    background-color: var(--color-element-background-opacity) !important;*/
+
+/*}*/
+
+/*.isLoading::-webkit-scrollbar-thumb {*/
+/*    background-color: var(--color-element-background-2) !important;*/
+/*}*/
 
 .placeholder {
     display: flex;
@@ -47,13 +62,13 @@
     position: absolute;
     z-index: 1;
     bottom: 1px;
-    right: 20px;
+    right: 16px;
     left: 1px;
     border-radius: 6px;
     display:flex;
     justify-content: center;
     background: var(--color-element-background);
-
 }
+
 
 

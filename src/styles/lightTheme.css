@@ -16,6 +16,7 @@
     :root {
         --color-background: #19191C;
         --color-element-background: #29292C;
+        --color-element-background-opacity: #1F1F22;
         --color-element-background-2: #222224;
         --nav-background: #121214;
         --nav-textcolor: #DDDDDD;

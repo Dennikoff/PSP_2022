@@ -1,6 +1,6 @@
 .siteURL {
     color: #989898;
-    font-size: 1.2em;
+    font-size: 1em;
     text-decoration: none;
     white-space: nowrap;
     overflow: hidden;
@@ -18,9 +18,10 @@
 
 
 .siteTitle {
-    margin-top: 10px;
+    margin-top: 4px;
     color: #6699EB;
     font-weight: bold;
+    font-size: 1.2em;
 }
 
 .siteSnippet {

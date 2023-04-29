@@ -10,20 +10,17 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import './styles/lightTheme.css'
+
 const getTheme = () => {
 
-    let theme = storage.get('theme')
-    if (theme === undefined) {
-        const darkThemeMq = window.matchMedia("(prefers-color-scheme: light)");
-        theme = darkThemeMq.matches;
-    }
+    const darkThemeMq = window.matchMedia("(prefers-color-scheme: light)");
+    let theme = darkThemeMq.matches;
     return theme
-
 }
 
 const getAuth = () => {
     let isAuth = storage.get('isAuth')
-    if(isAuth === undefined) {
+    if (isAuth === undefined) {
         isAuth = false
     }
     return isAuth
@@ -57,7 +54,7 @@ function App() {
                 <AuthContext.Provider value={authContext}>
                     {
                         isAuth
-                        ?
+                            ?
                             <PrivatePage/>
                             :
                             <PublicRouter/>

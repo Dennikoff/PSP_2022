@@ -9,7 +9,7 @@
 
 
 .query_container {
-    transition: all .0s ease;
+    transition: top .0s ease;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

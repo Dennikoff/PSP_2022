@@ -40,14 +40,14 @@ const ResultSiteElement = ({site}) => {
 
                         )}
                     </div>
-                    <div className={classes.siteRelevance}>
-                        {site.relevance !==  1
-                            ?
-                            Math.ceil(site.relevance * 100) / 100
-                            :
-                            "1.00"
-                        }
-                    </div>
+                    {/*<div className={classes.siteRelevance}>*/}
+                    {/*    {site.relevance !==  1*/}
+                    {/*        ?*/}
+                    {/*        Math.ceil(site.relevance * 100) / 100*/}
+                    {/*        :*/}
+                    {/*        "1.00"*/}
+                    {/*    }*/}
+                    {/*</div>*/}
                 </div>
             </div>
         </div>

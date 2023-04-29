@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "SegoeUI", serif;
+
 }
 
 .App {
@@ -135,6 +136,7 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   box-shadow: 0 0 0 30px var(--color-element-background) inset !important;
 }
+
 
 
 

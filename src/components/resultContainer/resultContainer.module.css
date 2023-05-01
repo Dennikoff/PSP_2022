@@ -9,7 +9,7 @@
 
 .result_sites_container {
     margin-top: 1vh;
-    max-height: 50vh;
+    max-height: 55vh;
     border: 1px solid var(--color-border);
     background-color: var(--color-element-background);
     border-bottom-left-radius:  6px;

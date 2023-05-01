@@ -1,6 +1,6 @@
 .siteURL {
     color: #989898;
-    font-size: 1em;
+    font-size: 0.8em;
     text-decoration: none;
     white-space: nowrap;
     overflow: hidden;
@@ -18,16 +18,15 @@
 
 
 .siteTitle {
-    margin-top: 4px;
+    margin-top: 1px;
     color: #6699EB;
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1.05em;
 }
 
 .siteSnippet {
-    margin-top: 10px;
-
-
+    margin-top: 3px;
+    font-size: 0.9em;
 }
 
 
@@ -40,7 +39,7 @@
 
 .listElement {
 
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 
 }
 

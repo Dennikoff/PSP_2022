@@ -1,3 +1,4 @@
+
 .query_button {
     width: 25%;
 }
@@ -6,13 +7,11 @@
     width: 70%;
 }
 
-
-
 .query_container {
     transition: top .0s ease;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: 25px;
     align-items: center;
 }

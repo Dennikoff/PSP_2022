@@ -63,8 +63,8 @@ const ProfilePage = () => {
         setOldPassword('')
     }
     useEffect(() => {
-        setNotSelected(context.theme ? notSelectedBlack : notSelectedWhite)
-        setSelected(context.theme ? selectedBlack : selectedWhite)
+        setNotSelected(context.theme === 'light' ? notSelectedBlack : notSelectedWhite)
+        setSelected(context.theme === 'light' ? selectedBlack : selectedWhite)
     }, [context])
     useEffect(() => {
 

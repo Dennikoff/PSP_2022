@@ -34,7 +34,7 @@ const SiteStatistic = ({isOpenedArr, index, statistic, isOpened, setIsOpened, fe
     }
 
     useEffect(() => {
-        setTrashBin(context.theme ? trashBinBlack : trashBinWhite)
+        setTrashBin(context.theme === 'light' ? trashBinBlack : trashBinWhite)
     }, [context])
 
     return (

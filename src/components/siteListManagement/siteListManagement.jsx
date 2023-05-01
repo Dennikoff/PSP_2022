@@ -78,9 +78,9 @@ const SiteListManagement = ({content, setContent}) => {
     }, [content])
 
     useEffect(() => {
-        setNotSelected(context.theme ? notSelectedBlack : notSelectedWhite)
-        setSelected(context.theme ? selectedBlack : selectedWhite)
-        setTrashBin(context.theme ? trashBinBlack : trashBinWhite)
+        setNotSelected(context.theme === 'light' ? notSelectedBlack : notSelectedWhite)
+        setSelected(context.theme === 'light' ? selectedBlack : selectedWhite)
+        setTrashBin(context.theme === 'light' ? trashBinBlack : trashBinWhite)
     }, [context])
 
     return (

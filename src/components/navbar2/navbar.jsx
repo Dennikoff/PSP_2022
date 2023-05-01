@@ -101,14 +101,14 @@ const Navbar = () => {
                     </span>
                 </Link>
             </div>
-            <div className={classes.themToggle}
-                 onClick={() => {
-                    context.toggleTheme()
-                 }
-                 }
-            >
-                Сменить тему
-            </div>
+            {/*<div className={classes.themToggle}*/}
+            {/*     onClick={() => {*/}
+            {/*        context.toggleTheme()*/}
+            {/*     }*/}
+            {/*     }*/}
+            {/*>*/}
+            {/*    Сменить тему*/}
+            {/*</div>*/}
         </div>
     );
 };

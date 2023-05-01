@@ -6,7 +6,7 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 // import {startSearch} from "../../api/startSearch"
 import { Toast } from 'primereact/toast';
-const MyInputContainer = ({query, setQuery, fetch, isLoading, setStartS}) => {
+const MyInputContainer = ({query, setQuery, fetch, isLoading, setStartS, sites}) => {
     const toast = useRef(null);
     function handleOkClick(isLoading) {
         if(isLoading) {
@@ -42,7 +42,7 @@ const MyInputContainer = ({query, setQuery, fetch, isLoading, setStartS}) => {
             <Button
                 // children={<span>&nbsp;Вход</span>}
                 label='Поиск'
-                icon="pi pi-check"
+                icon={sites.length ? "pi pi-check" : 'pi'}
                 loading={isLoading}
                 className={classes.query_button}
                 // severity="success"

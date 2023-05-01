@@ -144,6 +144,7 @@ const SearchPage = () => {
                                       fetch={fetch}
                                       isLoading={isLoading}
                                       setStartS={setStartS}
+                                      sites={sites}
                     />
                 </div>
             </div>

@@ -109,19 +109,7 @@ const Navbar = () => {
             </div>
             <div className={classes.themToggle}>
                 <ThemeToggle/>
-                {/*<Button*/}
-                {/*    onClick={() => {*/}
-                {/*        console.log(context.theme)*/}
-                {/*        if (context.theme === themes.light) {*/}
-                {/*            context.changeTheme(themes.dark)*/}
-                {/*        }*/}
-                {/*        if (context.theme === themes.dark) {*/}
-                {/*            context.changeTheme(themes.light)*/}
-                {/*        }*/}
-                {/*    }}*/}
-                {/*    className={classes.toggleThemeButton}*/}
-                {/*    label={'Сменить тему'}*/}
-                {/*/>*/}
+
             </div>
         </div>
     );

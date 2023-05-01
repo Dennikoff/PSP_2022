@@ -5,6 +5,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
 }
 
 .siteURL a{
@@ -12,7 +13,8 @@
 }
 
 .siteText {
-
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -34,7 +36,6 @@
     display: flex;
     justify-content: space-between;
     text-align: justify;
-    padding-right: 100px;
 }
 
 .listElement {

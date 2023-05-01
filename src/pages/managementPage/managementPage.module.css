@@ -8,6 +8,11 @@
     padding-bottom: 50px;
 }
 
+.management__body::-webkit-scrollbar {
+    width: 0;   //TODO: скроллбар убрать или подвинуть
+    /*background-color: red;*/
+}
+
 .siteBody {
     width: 60vw;
 }

@@ -6,6 +6,8 @@ import Toggle from 'react-toggle'
 import classNames from "classnames";
 import {ThemeContext, themes} from "../../context/themContext";
 import Logo from '../../img/searchIcon.svg'
+import {Button} from "primereact/button";
+import ThemeToggle from "../themeToggler/ThemeToggler";
 
 const Navbar = () => {
     const context = useContext(ThemeContext)
@@ -105,20 +107,21 @@ const Navbar = () => {
                     </span>
                 </Link>
             </div>
-            <div className={classes.themToggle}
-                 onClick={() => {
-                     console.log(context.theme)
-                     if (context.theme === themes.light) {
-                         console.log('mem1')
-                         context.changeTheme(themes.dark)
-                     }
-                     if (context.theme === themes.dark) {
-                         console.log('mem2')
-                         context.changeTheme(themes.light)
-                     }
-                 }}
-            >
-                Сменить тему
+            <div className={classes.themToggle}>
+                <ThemeToggle/>
+                {/*<Button*/}
+                {/*    onClick={() => {*/}
+                {/*        console.log(context.theme)*/}
+                {/*        if (context.theme === themes.light) {*/}
+                {/*            context.changeTheme(themes.dark)*/}
+                {/*        }*/}
+                {/*        if (context.theme === themes.dark) {*/}
+                {/*            context.changeTheme(themes.light)*/}
+                {/*        }*/}
+                {/*    }}*/}
+                {/*    className={classes.toggleThemeButton}*/}
+                {/*    label={'Сменить тему'}*/}
+                {/*/>*/}
             </div>
         </div>
     );

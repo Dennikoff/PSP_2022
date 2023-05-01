@@ -1,0 +1,18 @@
+.toggleContent {
+    margin-top: 10px;
+    align-items: center;
+    gap: 15px;
+    display: flex;
+}
+
+.toggleHeader {
+    font-size: 1.1em;
+    color: #DDDDDD;
+    font-family: "SegoeUI-medium";
+}
+
+.toggleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

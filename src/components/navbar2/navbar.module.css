@@ -44,9 +44,9 @@
 }
 
 .themToggle {
-    margin-top: auto;
-    align-self: center;
-    margin-bottom: 40px;
+    position: absolute;
+    right: 20px;
+    top: 15px;
 
 }
 

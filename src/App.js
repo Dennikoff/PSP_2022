@@ -2,7 +2,7 @@ import './styles/App.css';
 import {BrowserRouter} from "react-router-dom";
 import PublicRouter from "./components/router/publicRouter";
 import React, {useEffect, useState} from 'react'
-import {ThemeContext} from "./context/themContext";
+import {ThemeContext, themes} from "./context/themContext";
 import {storage} from "./storage/storage";
 import {AuthContext} from "./context/authContext";
 import PrivatePage from "./pages/privatePage/privatePage";
@@ -11,11 +11,15 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import './styles/lightTheme.css'
 
-const getTheme = () => {
 
-    const darkThemeMq = window.matchMedia("(prefers-color-scheme: light)");
-    let theme = darkThemeMq.matches;
-    return theme
+const getTheme = () => {
+    const theme = storage.get('theme')
+    if (Object.values(themes).includes(theme)) return theme
+
+    const userMedia = window.matchMedia('(prefers-color-scheme: light)')
+    if (userMedia.matches) return themes.light
+
+    return themes.dark
 }
 
 const getAuth = () => {
@@ -29,25 +33,26 @@ const getAuth = () => {
 function App() {
     const [isAuth, setIsAuth] = useState(getAuth())
     console.log(isAuth)
-    const theme = getTheme()
+    const [theme, setTheme] = useState(getTheme())
+
     const authContext = {
         isAuth,
         setIsAuth
     }
+
+    useEffect(() => {
+        console.log(theme)
+        document.documentElement.dataset.theme = theme
+        storage.set('theme', theme)
+    }, [theme])
+
     const themeContext = {
         theme: theme,
-        toggleTheme: () => {
-            storage.set('theme', !theme)
-            window.location.reload()
+        changeTheme: (cur) => {
+            setTheme(cur)
         }
     }
-    useEffect(() => {
-        if (theme) {
-            import('./styles/lightTheme.css')
-        } else {
-            import('./styles/darkTheme.css')
-        }
-    }, [])
+
     return (
         <BrowserRouter>
             <ThemeContext.Provider value={themeContext}>

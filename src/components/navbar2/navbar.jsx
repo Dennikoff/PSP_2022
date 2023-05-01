@@ -4,21 +4,24 @@ import './active.css'
 import classes from './navbar.module.css'
 import Toggle from 'react-toggle'
 import classNames from "classnames";
-import {ThemeContext} from "../../context/themContext";
+import {ThemeContext, themes} from "../../context/themContext";
 import Logo from '../../img/searchIcon.svg'
+
 const Navbar = () => {
     const context = useContext(ThemeContext)
+
     function getActive() {
         const href = window.location.href
-        if(href.includes('management')) {
+        if (href.includes('management')) {
             return 1
-        } else if(href.includes('search')) {
+        } else if (href.includes('search')) {
             return 2
-        } else if(href.includes('profile')) {
+        } else if (href.includes('profile')) {
             return 3
         }
         return 0
     }
+
     const location = useLocation();
     const [active, setActive] = useState(getActive())
     useEffect(() => {
@@ -46,10 +49,11 @@ const Navbar = () => {
             isActive: false
         },
     ])
+
     function lnkClicked(index) {
         let newMas = []
         navigationMenu.map((value, ind) => {
-            if(ind === index) {
+            if (ind === index) {
                 let temp = value
                 temp.isActive = true
                 newMas.push(temp)
@@ -101,14 +105,21 @@ const Navbar = () => {
                     </span>
                 </Link>
             </div>
-            {/*<div className={classes.themToggle}*/}
-            {/*     onClick={() => {*/}
-            {/*        context.toggleTheme()*/}
-            {/*     }*/}
-            {/*     }*/}
-            {/*>*/}
-            {/*    Сменить тему*/}
-            {/*</div>*/}
+            <div className={classes.themToggle}
+                 onClick={() => {
+                     console.log(context.theme)
+                     if (context.theme === themes.light) {
+                         console.log('mem1')
+                         context.changeTheme(themes.dark)
+                     }
+                     if (context.theme === themes.dark) {
+                         console.log('mem2')
+                         context.changeTheme(themes.light)
+                     }
+                 }}
+            >
+                Сменить тему
+            </div>
         </div>
     );
 };

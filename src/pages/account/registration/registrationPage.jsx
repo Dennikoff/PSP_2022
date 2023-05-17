@@ -48,7 +48,7 @@ const RegistrationPage = () => {
             <Tooltip target="#password" autoHide={false} event="both">
                 <div>
                     Пароль должен быть не менее 8 символов <br/>
-                    Содержать Одну заглавную и одну строчкую <br/>
+                    Содержать Одну заглавную и одну строчную <br/>
                     букву, а также спецсимвол
                 </div>
             </Tooltip>

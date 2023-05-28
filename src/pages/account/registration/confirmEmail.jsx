@@ -25,7 +25,7 @@ const ConfirmEmail = () => {
     }
 
     return (
-        <div className={classes.confirmationBody}>
+        <div className={classes.confirmationContent}>
             <Toast ref={toast}></Toast>
             <div className={classes.confirmationContainer}>
 

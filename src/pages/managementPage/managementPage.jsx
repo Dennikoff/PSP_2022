@@ -13,7 +13,7 @@ import {takeStatistic} from "../../api/takeStatistic";
 import {Button} from 'primereact/button';
 import { Toast } from 'primereact/toast'
 import {updateLink} from "../../api/updateLink";
-
+import {generateName} from "../../utils/generateName"
 
 const ManagementPage = () => {
     const [flag, setFlag] = useState(0)
@@ -69,15 +69,7 @@ const ManagementPage = () => {
         await stopIndexing()
     })
 
-    const generateName = (link) => {
-        let newName = link
-        if (newName.indexOf('//') !== -1) {
-            newName = newName.slice(newName.indexOf('/') + 2, newName.lastIndexOf('.'))
-        } else {
-            newName = newName.slice(0, newName.lastIndexOf('.'))
-        }
-        return newName.slice(0, 25)
-    }
+
 
     const checkLink = (link) => {
         let Reg = /^(https?:\/\/)?([\w-]{1,32}\.[\w-]{1,32})[^\s@]*$/;

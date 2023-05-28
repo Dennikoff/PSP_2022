@@ -13,6 +13,7 @@ import {useFetching} from "../../../hooks/useFetching";
 import {login} from "../../../api/auth/login";
 
 import './custom_inputs.css'
+import ThemeToggle from "../../../components/themeToggler/ThemeToggler";
 
 const LoginPage = () => {
     const authContext = useContext(AuthContext)
@@ -106,6 +107,9 @@ const LoginPage = () => {
                         Восстановить
                     </Link>
                 </div>
+            </div>
+            <div className={classes.themToggle}>
+                <ThemeToggle/>
             </div>
         </div>
     );
